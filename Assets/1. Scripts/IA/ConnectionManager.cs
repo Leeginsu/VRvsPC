@@ -10,10 +10,11 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        print("서버 접속");
+     
         //서버 접속
         //서버에 App ID, 지역 요청
         PhotonNetwork.ConnectUsingSettings();
+        print("서버 접속");
     }
 
 
