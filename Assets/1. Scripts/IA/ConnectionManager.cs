@@ -43,7 +43,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     {
         base.OnJoinedLobby();
         print("æ¿¿Ãµø");
-        //PhotonNetwork.LoadLevel("LobbyScene");
+        PhotonNetwork.LoadLevel("LobbyScene");
     }
 
 
