@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 220
+  zoomSpeed: 200
 --- !u!1 &451239082
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +372,9 @@ MonoBehaviour:
   moveSpeed: 5
   jumpCount: 1
   jumpPower: 3
+  rocketCount: 0
+  isRocket: 0
+  rocketPower: 20
 --- !u!136 &451239085
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1167,6 +1171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653178509319}
   - component: {fileID: 5866666021356921469}
+  - component: {fileID: 5866666021356921470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2467,6 +2472,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5866666021356921470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148636115645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8062a66e00d6a24b99f99b97487d2d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5901452234707544708
 Transform:
   m_ObjectHideFlags: 0

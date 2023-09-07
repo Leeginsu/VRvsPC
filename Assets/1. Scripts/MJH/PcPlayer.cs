@@ -18,11 +18,18 @@ public class PcPlayer : MonoBehaviour
     bool isJump = false;
     public float jumpPower = 10f;
 
+    // 로켓 아이템
+    [SerializeField]
+    int rocketCount = 0;
+    public bool isRocket = false;
+    public float rocketPower = 20f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         jumpCount = 1;
+        rocketCount = 2;
         anim = player.GetComponent<Animator>();
 
     }
@@ -66,6 +73,16 @@ public class PcPlayer : MonoBehaviour
                 jumpCount--;
             }
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if(rocketCount > 0 && isRocket == false)
+            {
+                transform.GetComponent<Rigidbody>().AddForce(Vector3.up * rocketPower, ForceMode.Impulse);
+                isRocket = true;
+                anim.SetTrigger("Jumping");
+                rocketCount--;
+            }
+        }
 
         Vector3 dir = new Vector3(moveX, 0, moveZ);
         dir.Normalize();
@@ -90,6 +107,16 @@ public class PcPlayer : MonoBehaviour
             {
                 anim.SetTrigger("Land");
                 isJump = false;
+            }
+
+            if(isRocket == true)
+            {
+                anim.SetTrigger("Land");
+                isRocket = false;
+            }
+            else
+            {
+                anim.SetTrigger("Land");
             }
 
         }
