@@ -10,19 +10,32 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public GameObject StartBTN;
 
-    public List<string> players = new List<string>();
+
 
     public Transform PlayerPanel;
 
     bool isVR;
+    int VRPlayerCnt = 0;
 
     private void Awake()
     {
         isVR = ConnectionManager.instance.isVR;
         print("VR 접속 여부" + isVR);
+        photonView.RPC("setVRPlayer", RpcTarget.All);
     }
+
+    [PunRPC]
+    void setVRPlayer()
+    {
+        if (isVR)
+        {
+            VRPlayerCnt++;
+        }
+    }
+
     void Start()
     {
+
         CreateRoom();
         if (ConnectionManager.instance.isVR)
         {
@@ -33,12 +46,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             StartBTN.SetActive(false);
         }
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            print("마스터 서버 접속");
-            //players.Add(PhotonNetwork.NickName);
-            //photonView.RPC("NotionRPC", RpcTarget.All);
-        }
+       
     }
 
 
@@ -90,35 +98,43 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         Debug.Log($"플레이어 {newPlayer.NickName} 방 참가.");
         Debug.Log($"MAX {PhotonNetwork.CurrentRoom.PlayerCount} / {PhotonNetwork.CurrentRoom.MaxPlayers}");
-
-    
         //players.Add(newPlayer.NickName);
         //photonView.RPC("UpdatePlayerList", RpcTarget.All, players);
 
     }
 
+    public List<string> players = new List<string>();
+
     [PunRPC]
     void setPlayers()
     {
         print("플레이어 추가");
-        players.Add(PhotonNetwork.NickName);
+      
+        photonView.RPC("NotionRPC", RpcTarget.All);
     }
 
-
+    void RemoveRoomList()
+    {
+        for (int i = 0; i < PlayerPanel.childCount; i++)
+        {
+            Destroy(PlayerPanel.GetChild(i).gameObject);
+        }
+    }
+  
     [PunRPC]
     void NotionRPC()
     {
-        
-        //players.Add(PhotonNetwork.NickName);
-        foreach (var item in players)
+        RemoveRoomList();
+        //remove
+        for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt; i++)
         {
-            print("플레이어" + item);
+            int num = PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt;
+            print("PC플레이어" + num);
             GameObject obj = Resources.Load<GameObject>("PlayerListTXT");
             GameObject playerList = Instantiate(obj, PlayerPanel);
             TextMeshProUGUI txt = playerList.GetComponent<TextMeshProUGUI>();
-            txt.text = item;
-        }
-           
+            txt.text = "Player" + i;
+        } 
     }
     int PCPlayerCount = 0;
     [PunRPC]
@@ -130,10 +146,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     //joinRoom은 방참가!
     public void JoinRoom()
     {
-        print("방참가");
-        
+
         //조인 후
-        //PhotonNetwork.JoinRoom("Main");
+        PhotonNetwork.JoinRoom("Main");
 
     }
 
@@ -143,10 +158,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         base.OnJoinedRoom();
         print("OnJoinedRoom 입장!");
-        photonView.RPC("setPlayers", RpcTarget.All);
         photonView.RPC("NotionRPC", RpcTarget.All);
-        //닉네임 설정
-        //photonView.RPC("makeNickName", RpcTarget.All);
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        //    print("마스터 서버 접속");
+        //    photonView.RPC("NotionRPC", RpcTarget.All);
+        //}
     }
 
     //방 참가 요청 실패 

@@ -51,7 +51,6 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        print("마스터 접속");
         makeNickName();
         //로비 진입 요청
         PhotonNetwork.JoinLobby();
