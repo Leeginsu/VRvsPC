@@ -7,10 +7,8 @@ public class Bomb : MonoBehaviour
     Rigidbody rb;
     public float speed = 10000;
     bool isHit;
-    Quaternion hitRotation;
-    Vector3 hitPosition;
     Transform vrPlayerPos;
-    float turnSpeed = 5f;
+    //float turnSpeed = 5f;
     // Start is called before the first frame update
     void Start()
     {
