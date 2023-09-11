@@ -158,15 +158,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 
     [PunRPC]
-    void NotionRPC()
+    void NotionRPC(int cnt)
     {
         RemovePlayerList();
         //remove
         //int cnt = VRPlayerList.Count;
-        for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt; i++)
+        for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - cnt; i++)
         {
-            print("VRPlayerCnt" + VRPlayerCnt);
-            int num = PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt;
+            print("VRPlayerCnt" + cnt);
+            int num = PhotonNetwork.CurrentRoom.PlayerCount - cnt;
             print("PC플레이어" + num);
             GameObject obj = Resources.Load<GameObject>("PlayerListTXT");
             GameObject playerList = Instantiate(obj, PlayerPanel);
