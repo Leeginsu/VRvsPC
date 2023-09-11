@@ -15,38 +15,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     bool isVR;
     public int VRPlayerCnt = 0;
-
+    public List<int> VRPlayerList = new List<int>(); 
     private void Awake()
     {
         isVR = ConnectionManager.instance.isVR;
         print("VR 접속 여부" + isVR);
     }
 
-    void setVRPlayer()
-    {
-        if (isVR)
-        {
-            //VRPlayerCnt++;
-            //VRPlayerTXT.SetActive(true);
-            photonView.RPC("setVRPlayerTXT", RpcTarget.All);
-            StartBTN.SetActive(true);
-        }
-        else
-        {
-            photonView.RPC("NotionRPC", RpcTarget.All);
-            VRPlayerTXT.SetActive(false);
-            StartBTN.SetActive(false);
-        }
-    }
-
-   
-
-    [PunRPC]
-    void setVRPlayerTXT()
-    {
-        VRPlayerCnt++;
-        VRPlayerTXT.SetActive(true);
-    }
 
     void Start()
     {
@@ -117,22 +92,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
     }
   
-    [PunRPC]
-    void NotionRPC()
-    {
-        RemovePlayerList();
-        //remove
-        for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt; i++)
-        {
-            print("VRPlayerCnt" + VRPlayerCnt);
-            int num = PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt;
-            print("PC플레이어" + num);
-            GameObject obj = Resources.Load<GameObject>("PlayerListTXT");
-            GameObject playerList = Instantiate(obj, PlayerPanel);
-            TextMeshProUGUI txt = playerList.GetComponent<TextMeshProUGUI>();
-            txt.text = "Player" + i;
-        } 
-    }
 
 
     //joinRoom은 방참가!
@@ -150,15 +109,72 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         base.OnJoinedRoom();
         print("OnJoinedRoom 입장!");
-        //photonView.RPC("setVRPlayer", RpcTarget.All);
-        setVRPlayer();
-        //if (!isVR)
-        //{
-        //    photonView.RPC("NotionRPC", RpcTarget.All);
-        //}
+
+        int cnt = 0;
+        
+        //setVRPlayer();
+        if(isVR)
+        {
+            cnt++;
+            StartBTN.SetActive(true);
+        }
+        else
+        {
+            photonView.RPC("NotionRPC", RpcTarget.All, cnt);
+            VRPlayerTXT.SetActive(false);
+            StartBTN.SetActive(false);
+        }
+        
+    }
+
+
+    void setVRPlayer()
+    {
         
 
+        if (isVR)
+        {
+            //VRPlayerCnt++;
+            //VRPlayerTXT.SetActive(true);
+            photonView.RPC("setVRPlayerTXT", RpcTarget.All);
+            StartBTN.SetActive(true);
+        } else
+        {
+            photonView.RPC("NotionRPC", RpcTarget.All);
+            VRPlayerTXT.SetActive(false);
+            StartBTN.SetActive(false);
+        }
     }
+    
+
+
+
+    [PunRPC]
+    void setVRPlayerTXT()
+    {
+        VRPlayerCnt++;
+        VRPlayerTXT.SetActive(true);
+    }
+
+
+    [PunRPC]
+    void NotionRPC()
+    {
+        RemovePlayerList();
+        //remove
+        //int cnt = VRPlayerList.Count;
+        for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt; i++)
+        {
+            print("VRPlayerCnt" + VRPlayerCnt);
+            int num = PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt;
+            print("PC플레이어" + num);
+            GameObject obj = Resources.Load<GameObject>("PlayerListTXT");
+            GameObject playerList = Instantiate(obj, PlayerPanel);
+            TextMeshProUGUI txt = playerList.GetComponent<TextMeshProUGUI>();
+            txt.text = "Player" + i;
+        }
+    }
+
 
     //방 참가 요청 실패 
     public override void OnJoinRoomFailed(short returnCode, string message)
