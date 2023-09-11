@@ -165,7 +165,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(transform.position);
-            stream.SendNext(transform.rotation);
+            stream.SendNext(player.transform.rotation);
             stream.SendNext(moveZ);
             stream.SendNext(moveX);
         }
