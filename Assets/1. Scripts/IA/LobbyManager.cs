@@ -34,6 +34,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         else
         {
+            photonView.RPC("NotionRPC", RpcTarget.All);
             VRPlayerTXT.SetActive(false);
             StartBTN.SetActive(false);
         }
@@ -156,16 +157,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         print("OnJoinedRoom 입장!");
         //photonView.RPC("setVRPlayer", RpcTarget.All);
         setVRPlayer();
-        if (!isVR)
-        {
-            photonView.RPC("NotionRPC", RpcTarget.All);
-        }
-        
-        //if (PhotonNetwork.IsMasterClient)
+        //if (!isVR)
         //{
-        //    print("마스터 서버 접속");
         //    photonView.RPC("NotionRPC", RpcTarget.All);
         //}
+        
+
     }
 
     //방 참가 요청 실패 
