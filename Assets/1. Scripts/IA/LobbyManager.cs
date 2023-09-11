@@ -152,6 +152,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void setVRPlayerTXT()
     {
+        print("11111111");
         VRPlayerCnt++;
         VRPlayerTXT.SetActive(true);
     }
@@ -160,6 +161,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void NotionRPC()
     {
+        print("222222");
         RemovePlayerList();
         //remove
         //int cnt = VRPlayerList.Count;
