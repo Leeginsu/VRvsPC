@@ -22,14 +22,13 @@ public class CameraPos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetButton("Fire1"))
+        if(Input.GetButtonDown("Fire1"))
         {
-            print("조준 중");
+            ry = -transform.eulerAngles.x;
+            rx = transform.eulerAngles.y;
             attackMode = true;
-            AttackCam();
-
         }
+        
         else if (Input.GetButtonUp("Fire1"))
         {
             
@@ -38,9 +37,14 @@ public class CameraPos : MonoBehaviour
 
         }
 
+       
         if (attackMode == false)
         {
             NormalCam();
+        }
+        else
+        {
+            AttackCam();
         }
 
         
@@ -78,7 +82,7 @@ public class CameraPos : MonoBehaviour
         rx += mx * rotSpeed * Time.deltaTime;
         ry += my * rotSpeed * Time.deltaTime;
 
-        transform.eulerAngles = new Vector3(-ry, rx, 0);
+        transform.localEulerAngles = new Vector3(-ry, rx, 0);
 
         // 크로스헤어 UI 활성화
 
