@@ -38,9 +38,14 @@ MonoBehaviour:
   - DestroyRpc
   - DestroySpaceship
   - Fire
-  - NotionRPC
   - RespawnSpaceship
-  - setPlayerTXT
+  - NotionRPC
+  - makeNickName
+  - PlusCount
+  - UpdatePlayerList
+  - setPlayers
+  - setVRPlayer
+  - setVRPlayerTXT
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
