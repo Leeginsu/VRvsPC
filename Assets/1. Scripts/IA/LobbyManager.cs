@@ -20,7 +20,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         isVR = ConnectionManager.instance.isVR;
         print("VR 立加 咯何" + isVR);
-       
     }
 
     void setVRPlayer()
@@ -62,7 +61,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
-
         //规 可记 汲沥
         RoomOptions roomOptions = new RoomOptions();
 
@@ -75,7 +73,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         //规积己 夸没
         PhotonNetwork.JoinOrCreateRoom("Main", roomOptions, TypedLobby.Default);
-        
 
     }
 
@@ -125,6 +122,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //remove
         for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt; i++)
         {
+            print("VRPlayerCnt" + VRPlayerCnt);
             int num = PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt;
             print("PC敲饭捞绢" + num);
             GameObject obj = Resources.Load<GameObject>("PlayerListTXT");
@@ -133,12 +131,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             txt.text = "Player" + i;
         } 
     }
-    int PCPlayerCount = 0;
-    [PunRPC]
-    void PlusCount()
-    {
-        PCPlayerCount++;
-    }
+
 
     //joinRoom篮 规曼啊!
     public void JoinRoom()

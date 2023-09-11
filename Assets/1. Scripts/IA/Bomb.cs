@@ -15,7 +15,6 @@ public class Bomb : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         vrPlayerPos = GameObject.FindWithTag("VRPlayer").transform;
         transform.LookAt(vrPlayerPos);
-        
     }
     void Update()
     {
