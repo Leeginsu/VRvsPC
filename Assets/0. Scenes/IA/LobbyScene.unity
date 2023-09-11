@@ -397,7 +397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &900653595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -975,6 +975,8 @@ MonoBehaviour:
   StartBTN: {fileID: 900653594}
   PlayerPanel: {fileID: 1757698031}
   VRPlayerTXT: {fileID: 1713237529}
+  VRPlayerCnt: 0
+  VRPlayerList: 
   players: []
 --- !u!114 &1528759224
 MonoBehaviour:
@@ -1152,7 +1154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1713237530
 RectTransform:
   m_ObjectHideFlags: 0
