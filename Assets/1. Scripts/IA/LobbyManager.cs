@@ -50,7 +50,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.AutomaticallySyncScene = true;
         CreateRoom();
-        setVRPlayer();
+        //setVRPlayer();
 
     }
 
@@ -155,6 +155,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         print("OnJoinedRoom ¿‘¿Â!");
         //photonView.RPC("setVRPlayer", RpcTarget.All);
+        setVRPlayer();
         if (!isVR)
         {
             photonView.RPC("NotionRPC", RpcTarget.All);

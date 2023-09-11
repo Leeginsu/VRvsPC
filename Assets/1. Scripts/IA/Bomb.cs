@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     Rigidbody rb;
-    public float speed = 10000;
+    float speed = 50;
     bool isHit;
     Transform vrPlayerPos;
     //float turnSpeed = 5f;
@@ -28,7 +28,8 @@ public class Bomb : MonoBehaviour
         //var pos = vrPlayerPos.position - transform.position;
         //var rotation = Quaternion.LookRotation(pos);
         //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-        transform.Rotate(0, 0, 360 * Time.deltaTime);
+
+        //transform.Rotate(0, 0, 360 * Time.deltaTime);
     }
 
     void Move()
