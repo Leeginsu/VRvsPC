@@ -109,14 +109,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         print("OnJoinedRoom ¿‘¿Â!");
         
         setPlayerList();
-        
     }
 
 
     void setPlayerList()
     {
 
-        photonView.RPC("setPlayerTXT", RpcTarget.All, isVR);
+        photonView.RPC("setPlayerTXT", RpcTarget.AllBuffered, isVR);
         StartBTN.SetActive(isVR);
 
         //if (isVR)
