@@ -112,18 +112,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         int cnt = 0;
         
-        //setVRPlayer();
-        if(isVR)
-        {
-            cnt++;
-            StartBTN.SetActive(true);
-        }
-        else
-        {
-            photonView.RPC("NotionRPC", RpcTarget.All, cnt);
-            VRPlayerTXT.SetActive(false);
-            StartBTN.SetActive(false);
-        }
+        setVRPlayer();
+        //if(isVR)
+        //{
+        //    cnt++;
+        //    StartBTN.SetActive(true);
+        //}
+        //else
+        //{
+        //    photonView.RPC("NotionRPC", RpcTarget.All, cnt);
+        //    VRPlayerTXT.SetActive(false);
+        //    StartBTN.SetActive(false);
+        //}
         
     }
 
@@ -136,7 +136,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             //VRPlayerCnt++;
             //VRPlayerTXT.SetActive(true);
-            photonView.RPC("setVRPlayerTXT", RpcTarget.All);
+            photonView.RPC("setVRPlayerTXT", RpcTarget.AllBuffered);
             StartBTN.SetActive(true);
         } else
         {
@@ -158,15 +158,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 
     [PunRPC]
-    void NotionRPC(int cnt)
+    void NotionRPC()
     {
         RemovePlayerList();
         //remove
         //int cnt = VRPlayerList.Count;
-        for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - cnt; i++)
+        for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt; i++)
         {
-            print("VRPlayerCnt" + cnt);
-            int num = PhotonNetwork.CurrentRoom.PlayerCount - cnt;
+            print("VRPlayerCnt" + VRPlayerCnt);
+            int num = PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt;
             print("PC플레이어" + num);
             GameObject obj = Resources.Load<GameObject>("PlayerListTXT");
             GameObject playerList = Instantiate(obj, PlayerPanel);
