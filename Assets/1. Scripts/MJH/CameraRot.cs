@@ -28,14 +28,18 @@ public class CameraRot : MonoBehaviour
     void Update()
     {
 
-        float my = Input.GetAxis("Mouse Y");
+        if(GetComponentInParent<CameraPos>().attackMode == false)
+        {
+            float my = Input.GetAxis("Mouse Y");
+
+            ry += my * rotSpeed * Time.deltaTime;
+
+            // 위아래 각도 제한
+            ry = Mathf.Clamp(ry, -30, -5);
+
+            transform.eulerAngles = new Vector3(-ry, transform.parent.localEulerAngles.y, 0);
+        }
         
-        ry += my * rotSpeed * Time.deltaTime;
-
-        // 위아래 각도 제한
-        ry = Mathf.Clamp(ry, -30, -5);
-
-        transform.eulerAngles = new Vector3(-ry, transform.parent.localEulerAngles.y, 0);
     
     }
 
