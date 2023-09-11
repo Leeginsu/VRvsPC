@@ -128,30 +128,37 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     void setVRPlayer()
     {
-        
-        if (isVR)
-        {
-            //VRPlayerCnt++;
-            //VRPlayerTXT.SetActive(true);
-            photonView.RPC("setVRPlayerTXT", RpcTarget.AllBuffered);
-            StartBTN.SetActive(true);
-        } else
-        {
-            photonView.RPC("NotionRPC", RpcTarget.All);
-            //VRPlayerTXT.SetActive(false);
-            //StartBTN.SetActive(false);
-        }
+
+        photonView.RPC("setVRPlayerTXT", RpcTarget.AllBuffered, isVR);
+        StartBTN.SetActive(isVR);
+
+        //if (isVR)
+        //{
+        //    //VRPlayerCnt++;
+        //    //VRPlayerTXT.SetActive(true);
+        //    photonView.RPC("setVRPlayerTXT", RpcTarget.AllBuffered, true);
+        //    StartBTN.SetActive(true);
+        //} else
+        //{
+        //    photonView.RPC("setVRPlayerTXT", RpcTarget.All, false);
+        //    //photonView.RPC("NotionRPC", RpcTarget.All);
+        //    //VRPlayerTXT.SetActive(false);
+        //    //StartBTN.SetActive(false);
+        //}
     }
     
 
 
 
     [PunRPC]
-    void setVRPlayerTXT()
+    void setVRPlayerTXT(bool vr)
     {
         print("11111111");
-        VRPlayerCnt++;
-        VRPlayerTXT.SetActive(true);
+        if(vr)
+        {
+            VRPlayerCnt++;
+            VRPlayerTXT.SetActive(true);
+        }
 
         NotionRPC();
     }
