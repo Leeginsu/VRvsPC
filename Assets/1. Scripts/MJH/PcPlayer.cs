@@ -19,8 +19,8 @@ public class PcPlayer : MonoBehaviour
     public float jumpPower = 10f;
 
     // 로켓 아이템
-    //[SerializeField]
-    public int rocketCount = 0;
+    [SerializeField]
+    int rocketCount = 0;
     public bool isRocket = false;
     public float rocketPower = 20f;
 
