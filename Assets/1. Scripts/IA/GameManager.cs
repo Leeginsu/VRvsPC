@@ -16,10 +16,20 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Start()
     {
         int PCplayerCnt = PhotonNetwork.CurrentRoom.PlayerCount;
-        PhotonNetwork.Instantiate("VRPlayer", VRspawnPos.position, Quaternion.identity);
-        for (int i = 0; i < PCplayerCnt-1; i++)
+
+        //for (int i = 0; i < PCplayerCnt-1; i++)
+        //{
+
+        // 게임 씬에 입장한 플레이어 수에 따라 스폰 위치 선택
+        int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+
+        if (ConnectionManager.instance.isVR)
         {
-            PhotonNetwork.Instantiate("Player_Proto", PCspawnList[i].position, Quaternion.identity);
+            PhotonNetwork.Instantiate("VRPlayer", VRspawnPos.position, Quaternion.identity);
+        }
+        else
+        {
+            PhotonNetwork.Instantiate("Player_Proto", PCspawnList[0].position, Quaternion.identity);
         }
     }
 
