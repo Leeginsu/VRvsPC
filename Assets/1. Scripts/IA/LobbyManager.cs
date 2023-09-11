@@ -102,34 +102,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom("Main");
 
     }
-
-
     public override void OnJoinedRoom()
     {
 
         base.OnJoinedRoom();
         print("OnJoinedRoom ¿‘¿Â!");
         
-        setVRPlayer();
-        //if(isVR)
-        //{
-        //    cnt++;
-        //    StartBTN.SetActive(true);
-        //}
-        //else
-        //{
-        //    photonView.RPC("NotionRPC", RpcTarget.All, cnt);
-        //    VRPlayerTXT.SetActive(false);
-        //    StartBTN.SetActive(false);
-        //}
+        setPlayerList();
         
     }
 
 
-    void setVRPlayer()
+    void setPlayerList()
     {
 
-        photonView.RPC("setVRPlayerTXT", RpcTarget.AllBuffered, isVR);
+        photonView.RPC("setPlayerTXT", RpcTarget.All, isVR);
         StartBTN.SetActive(isVR);
 
         //if (isVR)
@@ -151,9 +138,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 
     [PunRPC]
-    void setVRPlayerTXT(bool vr)
+    void setPlayerTXT(bool vr)
     {
-        print("11111111");
         if(vr)
         {
             VRPlayerCnt++;
@@ -166,7 +152,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void NotionRPC()
     {
-        print("222222");
         RemovePlayerList();
         //remove
         //int cnt = VRPlayerList.Count;
