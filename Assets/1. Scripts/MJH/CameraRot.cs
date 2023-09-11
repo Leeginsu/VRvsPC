@@ -35,9 +35,9 @@ public class CameraRot : MonoBehaviour
             ry += my * rotSpeed * Time.deltaTime;
 
             // 위아래 각도 제한
-            ry = Mathf.Clamp(ry, -30, -5);
+            ry = Mathf.Clamp(ry, -30, 30);
 
-            transform.eulerAngles = new Vector3(-ry, transform.parent.localEulerAngles.y, 0);
+            transform.localEulerAngles = new Vector3(-ry, 0, 0);
         }
         
     
