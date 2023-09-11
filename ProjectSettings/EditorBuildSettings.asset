@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0. Scenes/IA/ProtoScene.unity
     guid: 48b93acb47892ca48aaeca4701d82ba3
+  - enabled: 1
+    path: Assets/0. Scenes/IA/ProtoScene_Net.unity
+    guid: 42e2a01b80dc68e4d8cf622a602792d4
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4f3ab1b10cdbe8844b19a4eecf82157c, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 541a905f5dbbe1e489334c801f87af95, type: 2}

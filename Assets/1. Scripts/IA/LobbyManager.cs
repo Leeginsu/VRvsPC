@@ -179,7 +179,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         //if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
         //{
-            PhotonNetwork.LoadLevel("ProtoScene");
+            PhotonNetwork.LoadLevel("ProtoScene_Net");
         //}
     }
 }
