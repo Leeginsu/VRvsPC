@@ -18,6 +18,6 @@ public class T_PlayerMove : MonoBehaviour
         Vector3 dir = new Vector3(h, 0, v);
         dir.Normalize();
 
-        transform.position += dir * 10 * Time.deltaTime;
+        transform.position += dir * 50 * Time.deltaTime;
     }
 }
