@@ -23,13 +23,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
        
     }
 
-    //[PunRPC]
     void setVRPlayer()
     {
         if (isVR)
         {
             //VRPlayerCnt++;
-            VRPlayerTXT.SetActive(true);
+            //VRPlayerTXT.SetActive(true);
+            photonView.RPC("setVRPlayerTXT", RpcTarget.All);
             StartBTN.SetActive(true);
         }
         else
@@ -39,6 +39,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
+    void setVRPlayerTXT()
+    {
+        VRPlayerCnt++;
+        VRPlayerTXT.SetActive(true);
+    }
+
     void Start()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -46,8 +53,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         setVRPlayer();
 
     }
-
-
 
     void Update()
     {
