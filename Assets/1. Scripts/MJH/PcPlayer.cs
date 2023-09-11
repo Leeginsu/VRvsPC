@@ -121,7 +121,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         else
         {
             transform.position = Vector3.Lerp(transform.position, receivePos, lerpSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, receiveRot, lerpSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(player.transform.rotation, receiveRot, lerpSpeed * Time.deltaTime);
         }
 
         anim.SetFloat("Horizontal", moveZ);
