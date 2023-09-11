@@ -10,9 +10,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public GameObject StartBTN;
 
-
-
     public Transform PlayerPanel;
+    public GameObject VRPlayerTXT;
 
     bool isVR;
     int VRPlayerCnt = 0;
@@ -21,32 +20,31 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         isVR = ConnectionManager.instance.isVR;
         print("VR 접속 여부" + isVR);
-        photonView.RPC("setVRPlayer", RpcTarget.All);
+       
     }
 
-    [PunRPC]
+    //[PunRPC]
     void setVRPlayer()
     {
         if (isVR)
         {
-            VRPlayerCnt++;
+            //VRPlayerCnt++;
+            VRPlayerTXT.SetActive(true);
+            StartBTN.SetActive(true);
+        }
+        else
+        {
+            VRPlayerTXT.SetActive(false);
+            StartBTN.SetActive(false);
         }
     }
 
     void Start()
     {
-
+        PhotonNetwork.AutomaticallySyncScene = true;
         CreateRoom();
-        if (ConnectionManager.instance.isVR)
-        {
-            StartBTN.SetActive(true);
-        }
-        else
-        {
-            StartBTN.SetActive(false);
-        }
+        setVRPlayer();
 
-       
     }
 
 
@@ -105,15 +103,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public List<string> players = new List<string>();
 
-    [PunRPC]
-    void setPlayers()
-    {
-        print("플레이어 추가");
-      
-        photonView.RPC("NotionRPC", RpcTarget.All);
-    }
 
-    void RemoveRoomList()
+    void RemovePlayerList()
     {
         for (int i = 0; i < PlayerPanel.childCount; i++)
         {
@@ -124,7 +115,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void NotionRPC()
     {
-        RemoveRoomList();
+        RemovePlayerList();
         //remove
         for (int i = 1; i <= PhotonNetwork.CurrentRoom.PlayerCount - VRPlayerCnt; i++)
         {
@@ -158,7 +149,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         base.OnJoinedRoom();
         print("OnJoinedRoom 입장!");
-        photonView.RPC("NotionRPC", RpcTarget.All);
+        //photonView.RPC("setVRPlayer", RpcTarget.All);
+        if (!isVR)
+        {
+            photonView.RPC("NotionRPC", RpcTarget.All);
+        }
+        
         //if (PhotonNetwork.IsMasterClient)
         //{
         //    print("마스터 서버 접속");
@@ -173,8 +169,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         print("OnJoinRoomFailed 입장 실패");
     }
     
-    public void onStart()
+    public void onStartBTNClick()
     {
-        PhotonNetwork.LoadLevel("ProtoScene");
+
+        //if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        //{
+            PhotonNetwork.LoadLevel("ProtoScene");
+        //}
     }
 }
