@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PcPlayer : MonoBehaviour
+
+public class PcPlayer : MonoBehaviourPun, IPunObservable
 {
 
     Animator anim;
@@ -25,9 +27,27 @@ public class PcPlayer : MonoBehaviour
     public float rocketPower = 20f;
 
 
+    /// <summary>
+    /// Æ÷Åæ
+    /// </summary>
+    Vector3 receivePos;
+
+    Quaternion receiveRot = Quaternion.identity;
+
+    float lerpSpeed = 50;
+    public GameObject trCam;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        PhotonNetwork.SerializationRate = 60;
+
+        if (photonView.IsMine)
+        {
+            trCam.SetActive(true);
+        }
+
         jumpCount = 1;
         rocketCount = 2;
         anim = player.GetComponent<Animator>();
@@ -41,56 +61,67 @@ public class PcPlayer : MonoBehaviour
     }
 
 
+    float moveZ;
+    float moveX;
     void PlayerMove()
     {
-        float moveZ = 0f;
-        float moveX = 0f;
+        if (photonView.IsMine)
+        {
+            moveZ = 0f;
+            moveX = 0f;
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveZ += 1f;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveX -= 1f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveZ -= 1f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveX += 1f;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (jumpCount > 0)
+            if (Input.GetKey(KeyCode.W))
             {
-                transform.GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-                isJump = true;
-                anim.SetTrigger("Jump");
-                jumpCount--;
+                moveZ += 1f;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                moveX -= 1f;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                moveZ -= 1f;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                moveX += 1f;
+            }
+
+            Vector3 dir = new Vector3(moveX, 0, moveZ);
+            dir.Normalize();
+            transform.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
+
+            if (moveX != 0 || moveZ != 0)
+            {
+                player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 20f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (jumpCount > 0)
+                {
+                    transform.GetComponent<Rigidbody>().AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+                    isJump = true;
+                    photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Jump");
+                    jumpCount--;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (rocketCount > 0 && isRocket == false)
+                {
+                    transform.GetComponent<Rigidbody>().AddForce(Vector3.up * rocketPower, ForceMode.Impulse);
+                    isRocket = true;
+                    photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Jumping");
+                    rocketCount--;
+                }
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        else
         {
-            if(rocketCount > 0 && isRocket == false)
-            {
-                transform.GetComponent<Rigidbody>().AddForce(Vector3.up * rocketPower, ForceMode.Impulse);
-                isRocket = true;
-                anim.SetTrigger("Jumping");
-                rocketCount--;
-            }
-        }
-
-        Vector3 dir = new Vector3(moveX, 0, moveZ);
-        dir.Normalize();
-        transform.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
-
-        if(moveX != 0 || moveZ != 0)
-        {
-            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 20f);
+            transform.position = Vector3.Lerp(transform.position, receivePos, lerpSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, receiveRot, lerpSpeed * Time.deltaTime);
         }
 
         anim.SetFloat("Horizontal", moveZ);
@@ -105,20 +136,45 @@ public class PcPlayer : MonoBehaviour
             jumpCount = 1;
             if (isJump == true)
             {
-                anim.SetTrigger("Land");
+                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
                 isJump = false;
             }
 
             if(isRocket == true)
             {
-                anim.SetTrigger("Land");
+                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
                 isRocket = false;
             }
             else
             {
-                anim.SetTrigger("Land");
+                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
             }
 
+        }
+    }
+
+
+    [PunRPC]
+    void SetTriggerRpc(string parameter)
+    {
+        anim.SetTrigger(parameter);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+            stream.SendNext(moveZ);
+            stream.SendNext(moveX);
+        }
+        else
+        {
+            receivePos = (Vector3)stream.ReceiveNext();
+            receiveRot = (Quaternion)stream.ReceiveNext();
+            moveZ = (float)stream.ReceiveNext();
+            moveX = (float)stream.ReceiveNext();
         }
     }
 
