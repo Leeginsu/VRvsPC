@@ -14,7 +14,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject VRPlayerTXT;
 
     bool isVR;
-    int VRPlayerCnt = 0;
+    public int VRPlayerCnt = 0;
 
     private void Awake()
     {
@@ -38,6 +38,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             StartBTN.SetActive(false);
         }
     }
+
+   
 
     [PunRPC]
     void setVRPlayerTXT()
