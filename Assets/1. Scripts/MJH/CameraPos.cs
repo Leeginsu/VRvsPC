@@ -16,7 +16,8 @@ public class CameraPos : MonoBehaviour
         
     }
 
-    bool attackMode = false;
+    
+    public bool attackMode = false;
     // Update is called once per frame
     void Update()
     {
