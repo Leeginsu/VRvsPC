@@ -137,7 +137,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             StartBTN.SetActive(true);
         } else
         {
-            photonView.RPC("TTTTTT", RpcTarget.MasterClient);
+            photonView.RPC("NotionRPC", RpcTarget.All);
             //VRPlayerTXT.SetActive(false);
             //StartBTN.SetActive(false);
         }
@@ -152,14 +152,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         print("11111111");
         VRPlayerCnt++;
         VRPlayerTXT.SetActive(true);
-    }
 
-    [PunRPC]
-    void TTTTTT()
-    {
-        photonView.RPC("NotionRPC", RpcTarget.All);
+        NotionRPC();
     }
-
 
     [PunRPC]
     void NotionRPC()
