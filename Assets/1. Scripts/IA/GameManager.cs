@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         SetTime();
         if (isEnd)
         {
-            print("°ÔÀÓ Á¾·á");
-            //Á¡¼ö °¡Áö°í ¿£µù¾À ³Ñ¾î°¡±â
+            print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½
             //PhotonNetwork.LoadLevel("EndingScene");
         }
     }
