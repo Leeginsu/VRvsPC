@@ -9,7 +9,6 @@ public class VRCamController : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-
         if (photonView.IsMine)
         {
             cam.SetActive(true);
