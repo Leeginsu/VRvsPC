@@ -3407,6 +3407,7 @@ GameObject:
   - component: {fileID: 8602375595307588999}
   - component: {fileID: 1952737688}
   - component: {fileID: 1952737690}
+  - component: {fileID: 8518372621171342829}
   m_Layer: 17
   m_Name: VRPlayer_TEST
   m_TagString: Untagged
@@ -3540,6 +3541,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1097388972693858654}
+--- !u!114 &8518372621171342829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644690002277474284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4800075950418594412
 GameObject:
   m_ObjectHideFlags: 0
