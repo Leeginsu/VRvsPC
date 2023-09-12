@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Rocket : MonoBehaviour
+public class Rocket : MonoBehaviourPun
 {
     public Rigidbody rb;
 
@@ -17,15 +18,38 @@ public class Rocket : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
         //rb.velocity = transform.forward * rocketSpeed;
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
-        rb.transform.forward = rb.velocity.normalized;
+        //rb.transform.forward = rb.velocity.normalized;
+
+
+        
     }
 
+    [PunRPC]
+    void InstantiateRpc(Transform dir)
+    {
+        transform.parent = dir;
+        //rb.useGravity = isBool;
+    }
+
+    [PunRPC]
+    void RocketTest(Vector3 dir, bool isBool)
+    {
+        //rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
+        transform.forward = dir + Vector3.up * 0.5f;
+        rb.useGravity = isBool;
+        rb.velocity = transform.forward * 50f;
+        spark1.SetActive(true);
+    }
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -34,4 +58,7 @@ public class Rocket : MonoBehaviour
         Destroy(gameObject);
         
     }
+
+
+
 }
