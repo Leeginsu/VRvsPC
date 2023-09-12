@@ -147,7 +147,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             }
             else
             {
-                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
+                //photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
             }
 
         }

@@ -1163,6 +1163,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 7766620493454638764, guid: 9e9157092e641064380e904884ba72e9, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766620493454638764, guid: 9e9157092e641064380e904884ba72e9, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e9157092e641064380e904884ba72e9, type: 3}
 --- !u!1001 &1531911155397590594
