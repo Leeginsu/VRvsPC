@@ -8,6 +8,7 @@ public class HandAttack : MonoBehaviour
     public OVRInput.Controller controller;
 
     public GameObject wave;
+    public GameObject carving;
 
     bool isGrab;
     // Start is called before the first frame update
@@ -70,11 +71,22 @@ public class HandAttack : MonoBehaviour
             {
                 GameObject shockWave = Instantiate(wave);
                 shockWave.transform.localPosition = hitInfo.point + new Vector3(1 * Random.value * 2f, 0, -i);
-                shockWave.transform.forward = hand.transform.forward + new Vector3(0,0,3);
+                //shockWave.transform.forward = hand.transform.forward + new Vector3(0,0,3);
                 shockWave.transform.localScale = new Vector3(1, 1, 1) * Random.Range(1.8f, 2.8f);
                 shockWave.transform.localRotation = Quaternion.Euler(1 * Random.value * 45, 1 * Random.value * 45, 1 * Random.value * 45);
+                Destroy(shockWave.gameObject, 2);
+                //for (int j = 0; j < 10; j++)
+                //{
+                //    GameObject carvingStone = Instantiate(carving);
+                //    carvingStone.transform.localPosition = hitInfo.point + new Vector3(1, 0, -i);
+                //    carvingStone.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f) * Random.Range(0.5f, 2f);
+                //    carvingStone.transform.localRotation = Quaternion.Euler(0, 0, 1 * Random.value * 130);
+                //    Destroy(carvingStone.gameObject, 2);
+                //}
                 yield return new WaitForSeconds(0.01f);
             }
+
+            
         }
     }
 }
