@@ -131,7 +131,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Untagged")
+        if (collision.gameObject.tag == "Ground")
         {
             jumpCount = 1;
             if (isJump == true)
