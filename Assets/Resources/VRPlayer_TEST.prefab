@@ -1220,6 +1220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 407057416001173880}
   - component: {fileID: 8174628184856745465}
+  - component: {fileID: 1932366565}
   m_Layer: 17
   m_Name: RightHandAnchor
   m_TagString: Untagged
@@ -1260,6 +1261,22 @@ MonoBehaviour:
   controller: 2
   wave: {fileID: 8196539761960262646, guid: 3ec6c2c57e6b5a94eb0f51264f1aca41, type: 3}
   carving: {fileID: 1733041838389817956, guid: 3047f44cd0131414795a204daddf19eb, type: 3}
+--- !u!114 &1932366565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811151790845157212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
 --- !u!1 &1882786758201489910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1367,6 @@ GameObject:
   - component: {fileID: 518719625355063330}
   - component: {fileID: 8192338827504328340}
   - component: {fileID: 8293743509622762940}
-  - component: {fileID: 56547654}
   m_Layer: 17
   m_Name: CustomHandLeft
   m_TagString: Untagged
@@ -1366,7 +1382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078584468227086884}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0.2, y: -0.5, z: 0.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1428,22 +1444,6 @@ MonoBehaviour:
   m_controller: 1
   m_animator: {fileID: 4147103604159454722}
   m_defaultGrabPose: {fileID: 11437176, guid: 35525acb4c3b75c4a8c4dc2c117427be, type: 3}
---- !u!114 &56547654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078584468227086884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
 --- !u!1 &2270694949641599054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1614,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6591012363730614598}
-  - component: {fileID: 986852365}
   m_Layer: 17
   m_Name: LeftControllerAnchor
   m_TagString: Untagged
@@ -1638,22 +1637,6 @@ Transform:
   m_Father: {fileID: 7608917567281863587}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &986852365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2518483230921892360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
 --- !u!1 &2550363324564825910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3323,6 +3306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7608917567281863587}
   - component: {fileID: 8174628184856745466}
+  - component: {fileID: 1932366566}
   m_Layer: 17
   m_Name: LeftHandAnchor
   m_TagString: Untagged
@@ -3363,6 +3347,22 @@ MonoBehaviour:
   controller: 1
   wave: {fileID: 8196539761960262646, guid: 3ec6c2c57e6b5a94eb0f51264f1aca41, type: 3}
   carving: {fileID: 1733041838389817956, guid: 3047f44cd0131414795a204daddf19eb, type: 3}
+--- !u!114 &1932366566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440123534107754611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
 --- !u!1 &4588909783048662580
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,10 +3560,8 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 8518372621171342829}
-  - {fileID: 986852365}
-  - {fileID: 986852364}
-  - {fileID: 56547654}
-  - {fileID: 56547653}
+  - {fileID: 1932366566}
+  - {fileID: 1932366565}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -4174,7 +4172,6 @@ GameObject:
   - component: {fileID: 9004181501585788763}
   - component: {fileID: 8704706332851462639}
   - component: {fileID: 4825689043523896215}
-  - component: {fileID: 56547653}
   m_Layer: 17
   m_Name: CustomHandRight
   m_TagString: Untagged
@@ -4190,7 +4187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6410876703898658977}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 0.2, y: -0.5, z: 0.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4252,22 +4249,6 @@ MonoBehaviour:
   m_controller: 2
   m_animator: {fileID: 129009515822600085}
   m_defaultGrabPose: {fileID: 11437176, guid: 35525acb4c3b75c4a8c4dc2c117427be, type: 3}
---- !u!114 &56547653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6410876703898658977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
 --- !u!1 &6559393187718188614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5817,7 +5798,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2966126877655911888}
-  - component: {fileID: 986852364}
   m_Layer: 17
   m_Name: RightControllerAnchor
   m_TagString: Untagged
@@ -5841,19 +5821,3 @@ Transform:
   m_Father: {fileID: 407057416001173880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &986852364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8758774726793024573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
