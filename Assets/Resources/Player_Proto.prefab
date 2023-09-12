@@ -266,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1531911154161681049}
   - component: {fileID: 1531911154161681054}
+  - component: {fileID: 208359547721649739}
   m_Layer: 0
   m_Name: CameraPos
   m_TagString: Untagged
@@ -304,6 +305,29 @@ MonoBehaviour:
   rocketBullet: {fileID: 466776199987807670, guid: 9e9157092e641064380e904884ba72e9, type: 3}
   firePos: {fileID: 1531911155538872253}
   ch: {fileID: 0}
+  rocket: {fileID: 0}
+--- !u!114 &208359547721649739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531911154161681048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1531911155070573512
 GameObject:
   m_ObjectHideFlags: 0
