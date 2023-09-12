@@ -58,6 +58,7 @@ public class CamPos : MonoBehaviour
             rocket.transform.forward = dir + Vector3.up * 0.5f;
             rocket.GetComponent<Rigidbody>().useGravity = true;
             rocket.GetComponent<Rocket>().rb.velocity = rocket.transform.forward * 50f;
+            rocket.GetComponent<Rocket>().spark1.SetActive(true);
             //RocketFire();
 
         }
