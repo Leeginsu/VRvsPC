@@ -9,15 +9,16 @@ public class VRCamController : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        //Camera vrcam = cam.GetComponent<Camera>();
-        //if (photonView.IsMine)
-        //{
-        //    vrcam.enabled = true;
-        //}
-        //else
-        //{
-        //    vrcam.enabled = false;
-        //}
+        Camera vrcam = cam.GetComponent<Camera>();
+
+        if (photonView.IsMine)
+        {
+            vrcam.enabled = true;
+        }
+        else
+        {
+            vrcam.enabled = false;
+        }
 
     }
 
