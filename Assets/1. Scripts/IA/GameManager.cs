@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (ConnectionManager.instance.isVR)
         {
-            PhotonNetwork.Instantiate("VRPlayer", VRspawnPos.position, Quaternion.identity);
+            PhotonNetwork.Instantiate("VRPlayer_TEST", VRspawnPos.position, Quaternion.identity);
         }
         else
         {
