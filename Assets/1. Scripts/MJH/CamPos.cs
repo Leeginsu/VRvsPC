@@ -46,6 +46,7 @@ public class CamPos : MonoBehaviour
         else if (Input.GetButton("Fire1"))
         {
             //rocket.transform.eulerAngles = transform.eulerAngles;
+
              dir = transform.forward;
             
         }
@@ -105,6 +106,8 @@ public class CamPos : MonoBehaviour
 
         mainCam.transform.localEulerAngles = new Vector3(-ry, rx, 0);
     }
+
+
 
     void RocketFire()
     {
