@@ -6,6 +6,9 @@ public class Rocket : MonoBehaviour
 {
     public Rigidbody rb;
 
+    public GameObject spark1;
+    public GameObject spark2;
+
     [Tooltip("로켓 발사 스피드")]
     [Range(10f,50f)]public float rocketSpeed = 50f;
 
