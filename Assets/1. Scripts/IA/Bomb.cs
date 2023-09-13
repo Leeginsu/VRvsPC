@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Bomb : MonoBehaviour
+using Photon.Pun;
+public class Bomb : MonoBehaviourPun
 {
     Rigidbody rb;
     float speed = 50;
@@ -13,7 +13,15 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        vrPlayerPos = GameObject.FindWithTag("VRPlayer").transform;
+        if(GameObject.FindWithTag("VRPlayer") == null)
+        {
+            vrPlayerPos = GameObject.Find("VRPlayerPos").transform;
+        }
+        else
+        {
+            vrPlayerPos = GameObject.FindWithTag("VRPlayer").transform;
+        }
+     
         transform.LookAt(vrPlayerPos);
     }
     void Update()
@@ -32,6 +40,13 @@ public class Bomb : MonoBehaviour
     }
 
     void Move()
+    {
+        print("Move");
+        transform.position += transform.forward * speed * Time.deltaTime;
+    }
+
+    [PunRPC]
+    void UpdatePosRpc()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
     }

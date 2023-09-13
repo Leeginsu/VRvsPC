@@ -3512,7 +3512,7 @@ GameObject:
   - component: {fileID: 1066995928}
   m_Layer: 17
   m_Name: VRPlayer_TEST
-  m_TagString: Untagged
+  m_TagString: VRPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
