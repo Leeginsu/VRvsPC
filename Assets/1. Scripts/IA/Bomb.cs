@@ -55,21 +55,27 @@ public class Bomb : MonoBehaviourPun
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
         Destroy(fx, 1.5f);
         Destroy(gameObject);
-        if (other.gameObject.CompareTag("Hand"))
-        {
-            //컬러 변경
-        }
-        else if (other.gameObject.CompareTag("Head"))
-        {
-            //파티클
-            //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
-            //Destroy(fx, 1.5f);
-            //Destroy(gameObject);
-        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        //Destroy(fx, 1.5f);
+        //Destroy(gameObject);
+        //if (other.gameObject.CompareTag("Hand"))
+        //{
+        //    //컬러 변경
+        //}
+        //else if (other.gameObject.CompareTag("Head"))
+        //{
+        //    //파티클
+        //    //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        //    //Destroy(fx, 1.5f);
+        //    //Destroy(gameObject);
+        //}
     }
 }
