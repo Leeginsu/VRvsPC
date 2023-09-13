@@ -66,10 +66,10 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
             if (hitTime >= 3f)
             {
-                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Hit", false, false);
+                photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", false);
                 //anim.SetBool("Hit", false);
                 hitTime = 0;
-                //isHit = false;
+                isHit = false;
             }  
         }
     }
@@ -174,9 +174,9 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         {
             if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
             {
-                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Hit", true, true);
+                photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", true);
                 //anim.SetBool("Hit",true);
-                //isHit = true;
+                isHit = true;
                 
                 
             }
@@ -184,10 +184,10 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     }
 
     [PunRPC]
-    void SetBool(string parameter, bool isBool, bool hit)
+    void SetBool(string parameter, bool isBool)
     {
         anim.SetBool(parameter, isBool);
-        isHit = hit;
+        
     }
 
 
