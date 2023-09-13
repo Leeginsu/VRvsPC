@@ -471,6 +471,7 @@ MonoBehaviour:
   isRocket: 0
   rocketPower: 20
   trCam: {fileID: 1531911155070573512}
+  hitTime: 0
 --- !u!54 &1531911155282027244
 Rigidbody:
   m_ObjectHideFlags: 0

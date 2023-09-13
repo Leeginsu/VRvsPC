@@ -9995,6 +9995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433d267536e61a8488f72c1685d474d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smokeFX: {fileID: 6143067370498535161, guid: a7f4880a352733f49bd6e932b8a45c26, type: 3}
+  hitFX: {fileID: 8178179439809665916, guid: 625fa8ba2db4f454683928193caaeef9, type: 3}
 --- !u!114 &-3649682940201388471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10013,7 +10015,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -1978563580788101051}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

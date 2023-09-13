@@ -7,6 +7,7 @@ public class BombTrigger : MonoBehaviourPun
     public GameObject bomb;
     public Transform firePos;
     public float chargeTime = 5f;
+
     PhotonView pv;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,8 @@ public class BombTrigger : MonoBehaviourPun
                 //StartCoroutine(makeBomb());
                 //makeBomb();
                 print("트리거체크111");
-                photonView.RPC("setTriggerBomb", RpcTarget.All);
+                StartCoroutine(makeBomb());
+                //photonView.RPC("setTriggerBomb", RpcTarget.All);
             }
         }
     }

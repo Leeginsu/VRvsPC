@@ -8,6 +8,9 @@ public class Bomb : MonoBehaviourPun
     float speed = 50;
     bool isHit;
     Transform vrPlayerPos;
+
+    public GameObject smokeFX;
+    public GameObject hitFX;
     //float turnSpeed = 5f;
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,7 @@ public class Bomb : MonoBehaviourPun
     void Move()
     {
         print("Move");
+        smokeFX.SetActive(true);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
@@ -53,6 +57,9 @@ public class Bomb : MonoBehaviourPun
 
     private void OnTriggerEnter(Collider other)
     {
+        var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        Destroy(fx, 1.5f);
+        Destroy(gameObject);
         if (other.gameObject.CompareTag("Hand"))
         {
             //컬러 변경
@@ -60,7 +67,9 @@ public class Bomb : MonoBehaviourPun
         else if (other.gameObject.CompareTag("Head"))
         {
             //파티클
-            Destroy(gameObject, 2f);
+            //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+            //Destroy(fx, 1.5f);
+            //Destroy(gameObject);
         }
     }
 }

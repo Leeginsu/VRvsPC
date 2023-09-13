@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     bool isGameReady = false;
 
     public GameObject TimePanel;
-
-    // Start is called before the first frame update
-    void Start()
+    int playerIndex = 0;
+   // Start is called before the first frame update
+   void Start()
     {
         int PCplayerCnt = PhotonNetwork.CurrentRoom.PlayerCount;
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         //{
 
         // 게임 씬에 입장한 플레이어 수에 따라 스폰 위치 선택
-        int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+   
 
         if (ConnectionManager.instance.isVR)
         {
@@ -30,8 +30,19 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            PhotonNetwork.Instantiate("Player_Proto", PCspawnList[0].position, Quaternion.identity);
+            if (photonView.IsMine)
+            {
+                photonView.RPC("setPlayerCnt", RpcTarget.All);
+            }
+            PhotonNetwork.Instantiate("Player_Proto", PCspawnList[playerIndex].position, Quaternion.identity);
+
         }
+    }
+
+    [PunRPC]
+    void setPlayerCnt()
+    {
+        playerIndex++;
     }
 
     float currentTime = 0;
