@@ -38,6 +38,10 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     public GameObject trCam;
 
 
+
+    int randomIndex;
+    GameObject respawnPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,13 +56,17 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         rocketCount = 2;
         anim = player.GetComponent<Animator>();
 
+        respawnPos = GameObject.Find("PCPlayerPosList");
+
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMove();
-
+        PlayerRespawn();
         
         if (photonView.IsMine && isHit == true)
         {
@@ -140,6 +148,17 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         anim.SetFloat("Horizontal", moveZ);
         anim.SetFloat("Vertical", moveX);
+    }
+
+
+    void PlayerRespawn()
+    {
+        randomIndex = Random.Range(0, respawnPos.transform.childCount);
+
+        if (transform.position.y < -60f)
+        {
+                transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
+        }
     }
 
 
