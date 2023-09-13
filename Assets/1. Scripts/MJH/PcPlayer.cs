@@ -58,6 +58,20 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     void Update()
     {
         PlayerMove();
+
+        
+        if (photonView.IsMine && isHit == true)
+        {
+            hitTime += Time.deltaTime;
+
+            if (hitTime >= 3f)
+            {
+                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Hit", false, false);
+                //anim.SetBool("Hit", false);
+                hitTime = 0;
+                //isHit = false;
+            }  
+        }
     }
 
 
@@ -129,6 +143,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     }
 
 
+    public float hitTime = 0;
+    bool isHit;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -151,6 +167,27 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             }
 
         }
+
+
+
+        if(collision.gameObject.tag == "Untagged")
+        {
+            if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
+            {
+                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Hit", true, true);
+                //anim.SetBool("Hit",true);
+                //isHit = true;
+                
+                
+            }
+        }
+    }
+
+    [PunRPC]
+    void SetBool(string parameter, bool isBool, bool hit)
+    {
+        anim.SetBool(parameter, isBool);
+        isHit = hit;
     }
 
 
