@@ -38,6 +38,10 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     public GameObject trCam;
 
 
+
+    int randomIndex;
+    GameObject respawnPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,12 +56,30 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         rocketCount = 2;
         anim = player.GetComponent<Animator>();
 
+        respawnPos = GameObject.Find("PCPlayerPosList");
+
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMove();
+        PlayerRespawn();
+        
+        if (photonView.IsMine && isHit == true)
+        {
+            hitTime += Time.deltaTime;
+
+            if (hitTime >= 3f)
+            {
+                photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", false);
+                //anim.SetBool("Hit", false);
+                hitTime = 0;
+                isHit = false;
+            }  
+        }
     }
 
 
@@ -129,6 +151,19 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     }
 
 
+    void PlayerRespawn()
+    {
+        randomIndex = Random.Range(0, respawnPos.transform.childCount);
+
+        if (transform.position.y < -60f)
+        {
+                transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
+        }
+    }
+
+
+    public float hitTime = 0;
+    bool isHit;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -151,6 +186,27 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             }
 
         }
+
+
+
+        if(collision.gameObject.tag == "Untagged")
+        {
+            if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
+            {
+                photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", true);
+                //anim.SetBool("Hit",true);
+                isHit = true;
+                
+                
+            }
+        }
+    }
+
+    [PunRPC]
+    void SetBool(string parameter, bool isBool)
+    {
+        anim.SetBool(parameter, isBool);
+        
     }
 
 

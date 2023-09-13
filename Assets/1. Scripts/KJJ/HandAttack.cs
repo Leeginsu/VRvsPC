@@ -8,7 +8,7 @@ public class HandAttack : MonoBehaviour
     public OVRInput.Controller controller;
 
     public GameObject wave;
-    public GameObject carving;
+    //public GameObject carving;
 
     bool isGrab;
     // Start is called before the first frame update
@@ -33,26 +33,30 @@ public class HandAttack : MonoBehaviour
     }
 
     bool shock = true;
+
     // 물리충돌계산
     private void FixedUpdate()
     {
+        print("isGrab"+isGrab);
         if (isGrab)
         {
-            Collider[] cols = Physics.OverlapSphere(hand.transform.position, 0.5f);
+            //int layerMask = 1 << LayerMask.NameToLayer("Ground");
 
+            Collider[] cols = Physics.OverlapSphere(hand.transform.position,0.5f);
+
+            print("cols"+ cols);
             for (int i = 0; i < cols.Length; i++)
             {
+                print("colsi" + cols[i]);
                 if (cols[i] != null)
                 {
                     if (cols[i].CompareTag("Ground"))
                     {
                         if (shock)
                         {
-                           
-                           StartCoroutine(ShockWave());
+                            StartCoroutine(ShockWave());
                             shock = false;
                         }
-                        //print("쇼크웨이브");
                     }
                 }
                 print("충돌한 물체 : " + cols[i].gameObject.name);
@@ -62,6 +66,7 @@ public class HandAttack : MonoBehaviour
 
     IEnumerator ShockWave()
     {
+        print("6");
         Ray ray = new Ray(hand.position, hand.forward);
         RaycastHit hitInfo;
 
@@ -86,7 +91,7 @@ public class HandAttack : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
             }
 
-            
+
         }
     }
 }

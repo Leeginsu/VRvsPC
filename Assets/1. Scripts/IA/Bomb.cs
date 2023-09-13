@@ -1,19 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Bomb : MonoBehaviour
+using Photon.Pun;
+public class Bomb : MonoBehaviourPun
 {
     Rigidbody rb;
     float speed = 50;
     bool isHit;
     Transform vrPlayerPos;
+
+    public GameObject smokeFX;
+    public GameObject hitFX;
     //float turnSpeed = 5f;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        vrPlayerPos = GameObject.FindWithTag("VRPlayer").transform;
+        if(GameObject.FindWithTag("VRPlayer") == null)
+        {
+            vrPlayerPos = GameObject.Find("VRPlayerPos").transform;
+        }
+        else
+        {
+            vrPlayerPos = GameObject.FindWithTag("VRPlayer").transform;
+        }
+     
         transform.LookAt(vrPlayerPos);
     }
     void Update()
@@ -33,19 +44,38 @@ public class Bomb : MonoBehaviour
 
     void Move()
     {
+        print("Move");
+        smokeFX.SetActive(true);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
+    [PunRPC]
+    void UpdatePosRpc()
+    {
+        transform.position += transform.forward * speed * Time.deltaTime;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        Destroy(fx, 1.5f);
+        Destroy(gameObject);
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Hand"))
-        {
-            //컬러 변경
-        }
-        else if (other.gameObject.CompareTag("Head"))
-        {
-            //파티클
-            Destroy(gameObject, 2f);
-        }
+        //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        //Destroy(fx, 1.5f);
+        //Destroy(gameObject);
+        //if (other.gameObject.CompareTag("Hand"))
+        //{
+        //    //컬러 변경
+        //}
+        //else if (other.gameObject.CompareTag("Head"))
+        //{
+        //    //파티클
+        //    //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        //    //Destroy(fx, 1.5f);
+        //    //Destroy(gameObject);
+        //}
     }
 }
