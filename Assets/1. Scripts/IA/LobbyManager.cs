@@ -27,14 +27,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        if (isVR)
-        {
-            cv.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-        }
-        else
-        {
-            cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
-        }
+        //if (isVR)
+        //{
+        //    cv.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+        //}
+        //else
+        //{
+        //    cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        //}
 
         CreateRoom();
         //setVRPlayer();
