@@ -42,6 +42,10 @@ MonoBehaviour:
   - RespawnSpaceship
   - setPlayerTXT
   - SetTriggerRpc
+  - RocketFireRpc
+  - RocketInstantiateRpc
+  - RocketTest
+  - InstantiateRpc
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
