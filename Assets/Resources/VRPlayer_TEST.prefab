@@ -2053,6 +2053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7862131487055101931}
+  - component: {fileID: 1062157397}
   m_Layer: 17
   m_Name: TrackingSpace
   m_TagString: Untagged
@@ -2083,6 +2084,22 @@ Transform:
   m_Father: {fileID: 5042721406608873164}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062157397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177527451295791024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &3211467727104946204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,6 +3629,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 1066995928}
   - {fileID: 774802761}
+  - {fileID: 1062157397}
   - {fileID: 1195153915}
   - {fileID: 1195153912}
   - {fileID: 1195153914}
