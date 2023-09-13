@@ -46,6 +46,7 @@ MonoBehaviour:
   - RocketInstantiateRpc
   - RocketTest
   - InstantiateRpc
+  - SetBool
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
