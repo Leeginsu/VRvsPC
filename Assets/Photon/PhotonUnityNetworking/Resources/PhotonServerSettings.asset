@@ -37,20 +37,16 @@ MonoBehaviour:
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
-  - downTrigger
   - Fire
-  - InstantiateRpc
-  - Move
   - NotionRPC
   - RespawnSpaceship
+  - setPlayerTXT
+  - SetTriggerRpc
   - RocketFireRpc
   - RocketInstantiateRpc
   - RocketTest
-  - setPlayerTXT
-  - setTriggerBomb
-  - SetTriggerRpc
-  - upTrigger
-  - UpdatePosRpc
+  - InstantiateRpc
+  - SetBool
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
