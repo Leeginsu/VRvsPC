@@ -1220,7 +1220,6 @@ GameObject:
   m_Component:
   - component: {fileID: 407057416001173880}
   - component: {fileID: 8174628184856745465}
-  - component: {fileID: 1932366565}
   m_Layer: 17
   m_Name: RightHandAnchor
   m_TagString: Untagged
@@ -1261,22 +1260,6 @@ MonoBehaviour:
   controller: 2
   wave: {fileID: 8196539761960262646, guid: 3ec6c2c57e6b5a94eb0f51264f1aca41, type: 3}
   carving: {fileID: 1733041838389817956, guid: 3047f44cd0131414795a204daddf19eb, type: 3}
---- !u!114 &1932366565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811151790845157212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
 --- !u!1 &1882786758201489910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1469,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6275499610452009461}
-  - component: {fileID: 1352462854}
   m_Layer: 17
   m_Name: TrackerAnchor
   m_TagString: Untagged
@@ -1509,22 +1491,6 @@ Transform:
   m_Father: {fileID: 7862131487055101931}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1352462854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2300805351797238468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
 --- !u!1 &2318972117403130106
 GameObject:
   m_ObjectHideFlags: 0
@@ -3323,7 +3289,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7608917567281863587}
   - component: {fileID: 8174628184856745466}
-  - component: {fileID: 1932366566}
   m_Layer: 17
   m_Name: LeftHandAnchor
   m_TagString: Untagged
@@ -3364,22 +3329,6 @@ MonoBehaviour:
   controller: 1
   wave: {fileID: 8196539761960262646, guid: 3ec6c2c57e6b5a94eb0f51264f1aca41, type: 3}
   carving: {fileID: 1733041838389817956, guid: 3047f44cd0131414795a204daddf19eb, type: 3}
---- !u!114 &1932366566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4440123534107754611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
 --- !u!1 &4588909783048662580
 GameObject:
   m_ObjectHideFlags: 0
@@ -3458,7 +3407,7 @@ GameObject:
   - component: {fileID: 8602375595307588999}
   - component: {fileID: 1952737688}
   - component: {fileID: 1952737690}
-  - component: {fileID: 8518372621171342829}
+  - component: {fileID: 1126470094}
   m_Layer: 17
   m_Name: VRPlayer_TEST
   m_TagString: Untagged
@@ -3576,10 +3525,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 8518372621171342829}
-  - {fileID: 1352462854}
-  - {fileID: 1932366566}
-  - {fileID: 1932366565}
+  - {fileID: 1126470094}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -3596,7 +3542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1097388972693858654}
---- !u!114 &8518372621171342829
+--- !u!114 &1126470094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3605,13 +3551,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 4644690002277474284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 1
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 4
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 10
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1 &4800075950418594412
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     bool isVR;
     public int VRPlayerCnt = 0;
-    public List<int> VRPlayerList = new List<int>(); 
+    public List<int> VRPlayerList = new List<int>();
+    public Canvas cv;
     private void Awake()
     {
         isVR = ConnectionManager.instance.isVR;
@@ -26,6 +27,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
+        if (isVR)
+        {
+            cv.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+        }
+        else
+        {
+            cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        }
+
         CreateRoom();
         //setVRPlayer();
 
@@ -173,7 +183,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         base.OnJoinRoomFailed(returnCode, message);
         print("OnJoinRoomFailed 입장 실패");
     }
-    
+
+    public void onStartVRBTNClick()
+    {
+
+        //if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        //{
+        PhotonNetwork.LoadLevel("ProtoScene_Net");
+        //}
+    }
+
     public void onStartBTNClick()
     {
 

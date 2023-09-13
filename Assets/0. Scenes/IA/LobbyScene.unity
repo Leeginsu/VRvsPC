@@ -1111,6 +1111,7 @@ MonoBehaviour:
   VRPlayerTXT: {fileID: 1713237529}
   VRPlayerCnt: 0
   VRPlayerList: 
+  cv: {fileID: 1789133143}
   players: []
 --- !u!114 &1528759224
 MonoBehaviour:
