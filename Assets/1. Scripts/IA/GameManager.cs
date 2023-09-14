@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviourPunCallbacks
    // Start is called before the first frame update
    void Start()
     {
+        gameTime = originGameTime;
         //UI set
         ScorePanel.SetActive(false);
         TimePanel.SetActive(true);
@@ -55,8 +56,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     float currentTime = 0;
-    public float originGameTime = 10f;
-    float gameTime = 10f;
+    public float originGameTime = 60f;
+    float gameTime;
     
     // Update is called once per frame
     void SetTime()
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        
         //currentTime += Time.deltaTime;
         SetTime();
     }
