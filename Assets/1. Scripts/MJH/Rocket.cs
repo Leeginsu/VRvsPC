@@ -18,6 +18,9 @@ public class Rocket : MonoBehaviourPun
     public float rocketPower = 50f;
     public float rocketUp = 0.5f;
 
+    bool useGravity;
+    public float gravity = -9.81f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +36,13 @@ public class Rocket : MonoBehaviourPun
     
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //rb.transform.forward = rb.velocity.normalized;
-
+        if (useGravity)
+        {
+            rb.velocity += new Vector3(0, gravity * Time.fixedDeltaTime, 0);
+        }
 
         
     }
@@ -53,7 +59,7 @@ public class Rocket : MonoBehaviourPun
     {
         //rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
         transform.forward = dir + Vector3.up * rocketUp;
-        rb.useGravity = isBool;
+        useGravity = isBool;
         rb.velocity = transform.forward * rocketPower;
         spark1.SetActive(true);
     }

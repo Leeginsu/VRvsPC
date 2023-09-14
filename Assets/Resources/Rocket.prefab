@@ -138,6 +138,7 @@ MonoBehaviour:
   rocketSpeed: 25
   rocketPower: 50
   rocketUp: 0.5
+  gravity: -9.81
 --- !u!114 &7331865318103212074
 MonoBehaviour:
   m_ObjectHideFlags: 0
