@@ -9,8 +9,8 @@ public class Bomb : MonoBehaviourPun
     bool isHit;
     Transform vrPlayerPos;
 
-    public GameObject smokeFX;
-    public GameObject hitFX;
+    //public GameObject smokeFX;
+    //public GameObject hitFX;
     //float turnSpeed = 5f;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class Bomb : MonoBehaviourPun
         }
         else
         {
-            vrPlayerPos = GameObject.FindWithTag("VRPlayer").transform;
+            vrPlayerPos = GameObject.FindWithTag("VRPlayer_TEST").transform;
         }
      
         transform.LookAt(vrPlayerPos);
@@ -45,7 +45,7 @@ public class Bomb : MonoBehaviourPun
     void Move()
     {
         print("Move");
-        smokeFX.SetActive(true);
+        //smokeFX.SetActive(true);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
@@ -57,12 +57,12 @@ public class Bomb : MonoBehaviourPun
 
     private void OnCollisionEnter(Collision collision)
     {
-        var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
         if (collision.gameObject.CompareTag("Head"))
         {
             ScoreManager.instance.PCSCORE += 1;
         }
-        Destroy(fx, 1.5f);
+        //Destroy(fx, 1.5f);
         Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)
