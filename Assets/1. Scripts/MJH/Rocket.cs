@@ -56,6 +56,11 @@ public class Rocket : MonoBehaviourPun
         var fx = Instantiate(hitFX, transform.position,Quaternion.identity);
         Destroy(fx, 1.5f);
         Destroy(gameObject);
+
+        if(collision.gameObject.tag == "Head")
+        {
+
+        }
         
     }
 
