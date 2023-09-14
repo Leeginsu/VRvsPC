@@ -66,8 +66,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     void Update()
     {
         PlayerMove();
-        PlayerRespawn();
-        
+
         if (photonView.IsMine && isHit == true)
         {
             hitTime += Time.deltaTime;
@@ -80,6 +79,18 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
                 isHit = false;
             }  
         }
+
+        PlayerRespawn();
+        if (fall)
+        {
+            respawn();
+        }
+    }
+    void respawn()
+    {
+        transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
+        ScoreManager.instance.VRSCORE += 1;
+        fall = false;
     }
 
 
@@ -150,14 +161,14 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         anim.SetFloat("Vertical", moveX);
     }
 
-
+    bool fall = false;
     void PlayerRespawn()
     {
         randomIndex = Random.Range(0, respawnPos.transform.childCount);
 
         if (transform.position.y < -60f)
         {
-                transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
+            fall = true;
         }
     }
 
