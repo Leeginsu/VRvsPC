@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 485687174}
   - component: {fileID: 485687173}
   - component: {fileID: 485687175}
+  - component: {fileID: 485687176}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -483,7 +484,8 @@ MonoBehaviour:
   - {fileID: 445677168}
   - {fileID: 1121597036}
   VRspawnPos: {fileID: 2028116939}
-  TimePanel: {fileID: 2119621902}
+  TimePanel: {fileID: 1388984362}
+  ScorePanel: {fileID: 1815772535}
 --- !u!4 &485687174
 Transform:
   m_ObjectHideFlags: 0
@@ -521,6 +523,23 @@ MonoBehaviour:
   sceneViewId: 4
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &485687176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485687172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15cb8848ab0464249a2161bdfc6d21f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrScore: 0
+  pcScore: 0
+  vrScoreTXT: {fileID: 0}
+  pcScoreTXT: {fileID: 0}
+  WinnerTXT: {fileID: 0}
 --- !u!1 &581270365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,7 +2335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1815772536
 RectTransform:
   m_ObjectHideFlags: 0

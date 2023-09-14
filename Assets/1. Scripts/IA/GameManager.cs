@@ -2,27 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
+using TMPro;
+
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager instance;
     public Transform[] PCspawnList;
     public Transform VRspawnPos;
-    bool isGameReady = false;
 
+    //UI 관련
     public GameObject TimePanel;
+    public GameObject ScorePanel;
+    TextMeshProUGUI TimeTXT;
+
+
     int playerIndex = 0;
    // Start is called before the first frame update
    void Start()
     {
+        //UI set
+        ScorePanel.SetActive(false);
+        TimePanel.SetActive(true);
+        TimeTXT = TimePanel.GetComponent<TextMeshProUGUI>();
         int PCplayerCnt = PhotonNetwork.CurrentRoom.PlayerCount;
-
-        //for (int i = 0; i < PCplayerCnt-1; i++)
-        //{
+ 
 
         // 게임 씬에 입장한 플레이어 수에 따라 스폰 위치 선택
    
-
         if (ConnectionManager.instance.isVR)
         {
             GameObject vr = PhotonNetwork.Instantiate("VRPlayer_TEST", VRspawnPos.position, Quaternion.identity);
@@ -47,25 +53,27 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     float currentTime = 0;
     float gameTime = 120f;
-    bool isEnd;
+    
     // Update is called once per frame
     void SetTime()
     {
         gameTime -= currentTime;
-        if(gameTime < 0)
+        TimeTXT.text = gameTime.ToString();
+
+        if (gameTime < 0)
         {
-            isEnd = true; 
+            ScoreManager.instance.scoreView();
+
+            //UI 켜기
+            ScorePanel.SetActive(true);
+            TimePanel.SetActive(false);
+
         }
     }
     // Update is called once per frame
     void Update()
     {
+        currentTime += Time.deltaTime;
         SetTime();
-        if (isEnd)
-        {
-            print("���� ����");
-            //���� ������ ������ �Ѿ��
-            //PhotonNetwork.LoadLevel("EndingScene");
-        }
     }
 }
