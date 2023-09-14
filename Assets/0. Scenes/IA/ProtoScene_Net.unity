@@ -486,6 +486,7 @@ MonoBehaviour:
   VRspawnPos: {fileID: 2028116939}
   TimePanel: {fileID: 1388984362}
   ScorePanel: {fileID: 1815772535}
+  originGameTime: 100
 --- !u!4 &485687174
 Transform:
   m_ObjectHideFlags: 0
@@ -537,8 +538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrScore: 0
   pcScore: 0
-  ScoreTXT: {fileID: 0}
-  WinnerTXT: {fileID: 0}
+  ScoreTXT: {fileID: 173647656}
+  WinnerTXT: {fileID: 775268474}
 --- !u!1 &581270365
 GameObject:
   m_ObjectHideFlags: 0

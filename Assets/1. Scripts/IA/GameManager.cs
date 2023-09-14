@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject ScorePanel;
     TextMeshProUGUI TimeTXT;
 
-
+    void Awake()
+    {
+        instance = this;
+    }
     int playerIndex = 0;
    // Start is called before the first frame update
    void Start()
@@ -52,13 +55,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     float currentTime = 0;
-    float gameTime = 120f;
+    public float originGameTime = 10f;
+    float gameTime = 10f;
     
     // Update is called once per frame
     void SetTime()
     {
-        gameTime -= currentTime;
-        TimeTXT.text = gameTime.ToString();
+        Timer();
 
         if (gameTime < 0)
         {
@@ -67,13 +70,30 @@ public class GameManager : MonoBehaviourPunCallbacks
             //UI 켜기
             ScorePanel.SetActive(true);
             TimePanel.SetActive(false);
-
+            gameTime = originGameTime;
         }
     }
+
+    float min;
+    float sec;
+    void Timer()
+    {
+        gameTime -= Time.deltaTime;
+
+        if (gameTime >= 0)
+        {
+            min = (int)gameTime / 60;
+            // 60으로 나눠서 생기는 나머지를 초단위로 설정
+            sec = gameTime % 60;
+            // UI를 표현해준다
+            TimeTXT.text = string.Format("{00:00}:{01:00}", min, (int)sec);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
+        //currentTime += Time.deltaTime;
         SetTime();
     }
 }
