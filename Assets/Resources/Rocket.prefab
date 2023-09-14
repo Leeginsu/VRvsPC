@@ -136,8 +136,8 @@ MonoBehaviour:
   spark2: {fileID: 1303567116587798749}
   hitFX: {fileID: 167058, guid: 4a461d33dcfb80945878ff135e072b9d, type: 3}
   rocketSpeed: 25
-  rocketPower: 100
-  rocketUp: 1
+  rocketPower: 50
+  rocketUp: 0.5
 --- !u!114 &7331865318103212074
 MonoBehaviour:
   m_ObjectHideFlags: 0

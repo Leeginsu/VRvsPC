@@ -15,14 +15,18 @@ public class Rocket : MonoBehaviourPun
 
     [Tooltip("로켓 발사 스피드")]
     [Range(10f,50f)]public float rocketSpeed = 50f;
-    public float rocketPower = 750f;
-    public float rocketUp = 7.5f;
+    public float rocketPower = 50f;
+    public float rocketUp = 0.5f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+        
+        //GetComponent<ConstantForce>().force = new Vector3(0, -9.8f, 0);
+        //Physics.gravity = new Vector3(0,-9.8f,0);
         //rb.velocity = transform.forward * rocketSpeed;
     }
 
