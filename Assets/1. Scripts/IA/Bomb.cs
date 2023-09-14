@@ -10,7 +10,7 @@ public class Bomb : MonoBehaviourPun
     Transform vrPlayerPos;
 
     //public GameObject smokeFX;
-    //public GameObject hitFX;
+    public GameObject hitFX;
     //float turnSpeed = 5f;
     // Start is called before the first frame update
     void Start()
@@ -71,8 +71,10 @@ public class Bomb : MonoBehaviourPun
             Destroy(gameObject);
             ScoreManager.instance.PCSCORE += 1;
         }
+
+        hitFX.SetActive(true);
         //Destroy(fx, 1.5f);
-    
+
     }
     private void OnTriggerEnter(Collider other)
     {
