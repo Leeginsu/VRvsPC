@@ -70,7 +70,7 @@ public class Rocket : MonoBehaviourPun
         var fx = Instantiate(hitFX, transform.position,Quaternion.identity);
         Destroy(fx, 1.5f);
 
-        if(collision.gameObject.tag == "Head")
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             ScoreManager.instance.PCSCORE += 1;
         }
