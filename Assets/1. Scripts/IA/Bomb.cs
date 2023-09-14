@@ -66,7 +66,7 @@ public class Bomb : MonoBehaviourPun
     private void OnCollisionEnter(Collision collision)
     {
         //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
-        if (collision.gameObject.CompareTag("Head"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             Destroy(gameObject);
             ScoreManager.instance.PCSCORE += 1;
