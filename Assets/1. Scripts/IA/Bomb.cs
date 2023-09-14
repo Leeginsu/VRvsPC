@@ -71,7 +71,7 @@ public class Bomb : MonoBehaviourPun
             Destroy(gameObject);
             ScoreManager.instance.PCSCORE += 1;
         }
-
+        Destroy(gameObject);
         hitFX.SetActive(true);
         //Destroy(fx, 1.5f);
 
