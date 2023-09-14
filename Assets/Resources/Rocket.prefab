@@ -111,7 +111,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466776199987807670}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.0001
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -136,6 +136,7 @@ MonoBehaviour:
   spark2: {fileID: 1303567116587798749}
   hitFX: {fileID: 167058, guid: 4a461d33dcfb80945878ff135e072b9d, type: 3}
   rocketSpeed: 25
+  rocketPower: 0.5
 --- !u!114 &7331865318103212074
 MonoBehaviour:
   m_ObjectHideFlags: 0

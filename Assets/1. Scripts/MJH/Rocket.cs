@@ -15,7 +15,9 @@ public class Rocket : MonoBehaviourPun
 
     [Tooltip("로켓 발사 스피드")]
     [Range(10f,50f)]public float rocketSpeed = 50f;
-    public float rocketPower = 7.5f;
+    public float rocketPower = 750f;
+    public float rocketUp = 7.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,9 +48,9 @@ public class Rocket : MonoBehaviourPun
     void RocketTest(Vector3 dir, bool isBool)
     {
         //rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
-        transform.forward = dir + Vector3.up * rocketPower;
+        transform.forward = dir + Vector3.up * rocketUp;
         rb.useGravity = isBool;
-        rb.velocity = transform.forward * 50f;
+        rb.velocity = transform.forward * rocketPower;
         spark1.SetActive(true);
     }
     
