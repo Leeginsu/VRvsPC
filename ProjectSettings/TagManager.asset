@@ -9,6 +9,9 @@ TagManager:
   - Bullet
   - SamplesInfoPanel
   - VRPlayer
+  - Head
+  - Hand
+  - Grabable
   layers:
   - Default
   - TransparentFX
@@ -32,8 +35,8 @@ TagManager:
   - Wave
   - Ground
   - Carving
-  - 
-  - 
+  - Rocket
+  - PCPlayer
   - 
   - 
   - 

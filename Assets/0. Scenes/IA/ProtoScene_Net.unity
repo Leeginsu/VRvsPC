@@ -537,8 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrScore: 0
   pcScore: 0
-  vrScoreTXT: {fileID: 0}
-  pcScoreTXT: {fileID: 0}
+  ScoreTXT: {fileID: 0}
   WinnerTXT: {fileID: 0}
 --- !u!1 &581270365
 GameObject:
