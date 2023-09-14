@@ -22,11 +22,19 @@ public class Bomb : MonoBehaviourPun
         }
         else
         {
-            vrPlayerPos = GameObject.FindWithTag("VRPlayer").transform;
+            vrPlayerPos = GameObject.FindWithTag("Head").transform;
         }
      
         transform.LookAt(vrPlayerPos);
+
+        //박스 소멸 시간
+        Destroy(gameObject, 10f);
     }
+
+
+
+
+
     void Update()
     {
         Turn();
@@ -60,10 +68,11 @@ public class Bomb : MonoBehaviourPun
         //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
         if (collision.gameObject.CompareTag("Head"))
         {
+            Destroy(gameObject);
             ScoreManager.instance.PCSCORE += 1;
         }
         //Destroy(fx, 1.5f);
-        Destroy(gameObject);
+    
     }
     private void OnTriggerEnter(Collider other)
     {
