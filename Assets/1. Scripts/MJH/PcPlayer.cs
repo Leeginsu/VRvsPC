@@ -200,7 +200,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
 
 
-        if(collision.gameObject.tag == "Untagged")
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Grabable"))
         {
             if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
             {
