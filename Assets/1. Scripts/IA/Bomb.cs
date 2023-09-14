@@ -22,7 +22,7 @@ public class Bomb : MonoBehaviourPun
         }
         else
         {
-            vrPlayerPos = GameObject.FindWithTag("VRPlayer_TEST").transform;
+            vrPlayerPos = GameObject.FindWithTag("VRPlayer").transform;
         }
      
         transform.LookAt(vrPlayerPos);
