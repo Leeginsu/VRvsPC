@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     float gameTime;
     
     // Update is called once per frame
-    void SetTime()
+    public void SetTime()
     {
         Timer();
 
