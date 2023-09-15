@@ -46,6 +46,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     void Start()
     {
         PhotonNetwork.SerializationRate = 60;
+        randomIndex = Random.Range(0, respawnPos.transform.childCount);
 
         if (photonView.IsMine)
         {
@@ -80,12 +81,15 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             }  
         }
 
-        
-        PlayerRespawn();
-        if (fall && photonView.IsMine)
+        if (photonView.IsMine)
         {
-            respawn();
+            PlayerRespawn();
+            if (fall)
+            {
+                respawn();
+            }
         }
+        
     }
     void respawn()
     {
@@ -165,8 +169,6 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     bool fall = false;
     void PlayerRespawn()
     {
-        randomIndex = Random.Range(0, respawnPos.transform.childCount);
-
         if (transform.position.y < -60f)
         {
             fall = true;
