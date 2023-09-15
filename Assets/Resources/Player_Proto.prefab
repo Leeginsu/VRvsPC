@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1838340309733776639}
-  moveSpeed: 5
+  moveSpeed: 10
   jumpCount: 1
   jumpPower: 3
   rocketCount: 0
