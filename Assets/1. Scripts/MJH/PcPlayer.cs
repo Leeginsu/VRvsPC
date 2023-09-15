@@ -80,8 +80,9 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             }  
         }
 
+        
         PlayerRespawn();
-        if (fall)
+        if (fall && photonView.IsMine)
         {
             respawn();
         }
