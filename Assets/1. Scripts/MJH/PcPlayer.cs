@@ -174,7 +174,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
 
     public float hitTime = 0;
-    bool isHit;
+    public bool isHit;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
