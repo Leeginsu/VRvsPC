@@ -46,6 +46,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     void Start()
     {
         PhotonNetwork.SerializationRate = 60;
+        
 
         if (photonView.IsMine)
         {
@@ -57,8 +58,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         anim = player.GetComponent<Animator>();
 
         respawnPos = GameObject.Find("PCPlayerPosList");
+        randomIndex = Random.Range(0, respawnPos.transform.childCount);
 
-        
 
     }
 
@@ -80,15 +81,20 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             }  
         }
 
-        PlayerRespawn();
+        if (photonView.IsMine)
+        {
+            PlayerRespawn();
+            
+        }
         if (fall)
         {
             respawn();
         }
+
     }
     void respawn()
     {
-        transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
+        
         ScoreManager.instance.VRSCORE += 1;
         fall = false;
     }
@@ -164,17 +170,16 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     bool fall = false;
     void PlayerRespawn()
     {
-        randomIndex = Random.Range(0, respawnPos.transform.childCount);
-
         if (transform.position.y < -60f)
         {
             fall = true;
+            transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
         }
     }
 
 
     public float hitTime = 0;
-    bool isHit;
+    public bool isHit;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")

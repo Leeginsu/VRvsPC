@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviourPunCallbacks
    
         if (ConnectionManager.instance.isVR)
         {
-            GameObject vr = PhotonNetwork.Instantiate("VRPlayer_TEST", VRspawnPos.position, Quaternion.identity);
+            GameObject vr = PhotonNetwork.Instantiate("VRPlayer_TEST", VRspawnPos.position, VRspawnPos.rotation);
              //GameObject.Find("CenterEyeAnchor").GetComponent<Camera>().enabled = true;
         }
         else
