@@ -46,7 +46,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     void Start()
     {
         PhotonNetwork.SerializationRate = 60;
-        randomIndex = Random.Range(0, respawnPos.transform.childCount);
+        
 
         if (photonView.IsMine)
         {
@@ -58,8 +58,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         anim = player.GetComponent<Animator>();
 
         respawnPos = GameObject.Find("PCPlayerPosList");
+        randomIndex = Random.Range(0, respawnPos.transform.childCount);
 
-        
 
     }
 
