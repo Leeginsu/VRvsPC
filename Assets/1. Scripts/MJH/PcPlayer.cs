@@ -84,16 +84,17 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         if (photonView.IsMine)
         {
             PlayerRespawn();
-            if (fall)
-            {
-                respawn();
-            }
+            
         }
-        
+        if (fall)
+        {
+            respawn();
+        }
+
     }
     void respawn()
     {
-        transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
+        
         ScoreManager.instance.VRSCORE += 1;
         fall = false;
     }
@@ -172,6 +173,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         if (transform.position.y < -60f)
         {
             fall = true;
+            transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
         }
     }
 
