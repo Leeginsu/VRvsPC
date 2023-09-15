@@ -3385,10 +3385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f8f61fa25447a4998d154877ae595e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 1795338882062772867}
+  hand: {fileID: 7688562094821062261}
   controller: 1
   wave: {fileID: 8196539761960262646, guid: 3ec6c2c57e6b5a94eb0f51264f1aca41, type: 3}
-  carving: {fileID: 1733041838389817956, guid: 3047f44cd0131414795a204daddf19eb, type: 3}
 --- !u!1 &5666130603164768316
 GameObject:
   m_ObjectHideFlags: 0
@@ -4649,10 +4648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f8f61fa25447a4998d154877ae595e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 8418412521356839000}
+  hand: {fileID: 1384949306469857957}
   controller: 2
   wave: {fileID: 8196539761960262646, guid: 3ec6c2c57e6b5a94eb0f51264f1aca41, type: 3}
-  carving: {fileID: 1733041838389817956, guid: 3047f44cd0131414795a204daddf19eb, type: 3}
 --- !u!1 &7724228680446057086
 GameObject:
   m_ObjectHideFlags: 0
