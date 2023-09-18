@@ -19,13 +19,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Awake()
     {
         instance = this;
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
     int playerIndex = 0;
    // Start is called before the first frame update
    void Start()
     {
-
-        PhotonNetwork.AutomaticallySyncScene = true;
         SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
      
         gameTime = originGameTime;
