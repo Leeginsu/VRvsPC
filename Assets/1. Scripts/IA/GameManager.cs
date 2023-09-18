@@ -24,8 +24,10 @@ public class GameManager : MonoBehaviourPunCallbacks
    // Start is called before the first frame update
    void Start()
     {
-        SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
+
         PhotonNetwork.AutomaticallySyncScene = true;
+        SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
+     
         gameTime = originGameTime;
         //UI set
         ScorePanel.SetActive(false);
@@ -43,19 +45,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            if (photonView.IsMine)
-            {
-                photonView.RPC("setPlayerCnt", RpcTarget.All);
-            }
+            photonView.RPC("setPlayerCnt", RpcTarget.All);
+         
             PhotonNetwork.Instantiate("Player_Proto", PCspawnList[playerIndex].position, Quaternion.identity);
 
         }
     }
 
     [PunRPC]
-    void setPlayerCnt()
+    public void setPlayerCnt()
     {
         playerIndex++;
+        print("playerIndex" + playerIndex);
     }
 
     float currentTime = 0;
