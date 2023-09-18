@@ -704,7 +704,7 @@ MonoBehaviour:
   VRspawnPos: {fileID: 2028116939}
   TimePanel: {fileID: 1388984362}
   ScorePanel: {fileID: 1815772535}
-  originGameTime: 120
+  originGameTime: 60
 --- !u!4 &485687174
 Transform:
   m_ObjectHideFlags: 0
@@ -2741,17 +2741,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1514427333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eb0fbb8383f28943bfdc02ac82d5fe4, type: 3}
+  m_Script: {fileID: 11500000, guid: 15cb8848ab0464249a2161bdfc6d21f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pvCache: {fileID: 0}
   vrScore: 0
   pcScore: 0
-  ScoreTXT: {fileID: 0}
-  WinnerTXT: {fileID: 0}
-  TimePanel: {fileID: 0}
-  ScorePanel: {fileID: 0}
-  isWinner: 
+  ScoreTXT: {fileID: 173647656}
+  WinnerTXT: {fileID: 775268474}
+  TimePanel: {fileID: 1388984362}
+  ScorePanel: {fileID: 1815772535}
 --- !u!4 &1514427335
 Transform:
   m_ObjectHideFlags: 0
