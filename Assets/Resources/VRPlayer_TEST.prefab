@@ -5206,39 +5206,6 @@ Transform:
   m_Father: {fileID: 7862131487055101931}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8000270605608392599
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8945143921939743839, guid: 33216707d1a4be74389c246d6268911b, type: 3}
-  m_PrefabInstance: {fileID: 1379547044892316616}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7227568311838035245}
-  - component: {fileID: 7790052414253880949}
-  - component: {fileID: 654913035997776090}
-  m_Layer: 0
-  m_Name: 'Head (Missing Prefab with guid: 33216707d1a4be74389c246d6268911b)'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7227568311838035245
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8604225685261049573, guid: 33216707d1a4be74389c246d6268911b, type: 3}
-  m_PrefabInstance: {fileID: 1379547044892316616}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8000270605608392599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4683385420663031454}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8062296754189371537
 GameObject:
   m_ObjectHideFlags: 0
@@ -6053,6 +6020,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33216707d1a4be74389c246d6268911b, type: 3}
+--- !u!4 &7227568311838035245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8604225685261049573, guid: 33216707d1a4be74389c246d6268911b, type: 3}
+  m_PrefabInstance: {fileID: 1379547044892316616}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8000270605608392599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8945143921939743839, guid: 33216707d1a4be74389c246d6268911b, type: 3}
+  m_PrefabInstance: {fileID: 1379547044892316616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &7790052414253880949
 CapsuleCollider:
   m_ObjectHideFlags: 0
