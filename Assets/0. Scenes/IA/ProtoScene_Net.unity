@@ -4485,7 +4485,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435737103}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4498,7 +4498,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 6842137714722353314, guid: 3bc82f08a084fcd4b9ab50acd7963d77, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4527,7 +4527,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435737103}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 5060444177187149915, guid: aab91aa967edff448b4c0cfcc8b42d8e, type: 3}
 --- !u!4 &1435737109
 Transform:
   m_ObjectHideFlags: 0
@@ -4535,7 +4535,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435737103}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -15.699999, y: 0, z: -9.1}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
@@ -4543,7 +4543,7 @@ Transform:
   - {fileID: 1705500941}
   m_Father: {fileID: 1593162976}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &1435737110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5471,6 +5471,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3bc82f08a084fcd4b9ab50acd7963d77, type: 3}
       propertyPath: m_Name
       value: presentbox_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3bc82f08a084fcd4b9ab50acd7963d77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bc82f08a084fcd4b9ab50acd7963d77, type: 3}
