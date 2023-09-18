@@ -41,12 +41,12 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
     int randomIndex;
     GameObject respawnPos;
-
+    PhotonView SC;
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.SerializationRate = 60;
-        
+        SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
 
         if (photonView.IsMine)
         {
@@ -94,8 +94,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     }
     void respawn()
     {
-        
-        ScoreManager.instance.VRSCORE += 1;
+        //ScoreManager.instance.VRSCORE += 1;
+        SC.RPC("UpdateVRScore", RpcTarget.All);
         fall = false;
     }
 

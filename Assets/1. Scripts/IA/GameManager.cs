@@ -14,15 +14,19 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject TimePanel;
     public GameObject ScorePanel;
     TextMeshProUGUI TimeTXT;
+    PhotonView SC;
 
     void Awake()
     {
         instance = this;
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
     int playerIndex = 0;
    // Start is called before the first frame update
    void Start()
     {
+        SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
+     
         gameTime = originGameTime;
         //UI set
         ScorePanel.SetActive(false);
@@ -40,19 +44,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            if (photonView.IsMine)
-            {
-                photonView.RPC("setPlayerCnt", RpcTarget.All);
-            }
+            photonView.RPC("setPlayerCnt", RpcTarget.All);
+         
             PhotonNetwork.Instantiate("Player_Proto", PCspawnList[playerIndex].position, Quaternion.identity);
 
         }
     }
 
     [PunRPC]
-    void setPlayerCnt()
+    public void setPlayerCnt()
     {
         playerIndex++;
+        print("playerIndex" + playerIndex);
     }
 
     float currentTime = 0;
@@ -66,7 +69,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (gameTime < 0)
         {
-            ScoreManager.instance.scoreView();
+            //ScoreManager.instance.scoreView();
+            SC.RPC("scoreView", RpcTarget.All);
 
             //UI 켜기
             ScorePanel.SetActive(true);
@@ -97,5 +101,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         //currentTime += Time.deltaTime;
         SetTime();
+    }
+
+
+    public void onRestart()
+    {
+        print("재시작");
+        PhotonNetwork.LoadLevel("ProtoScene_Net");
+    }
+
+    public void onExit()
+    {
+        print("게임종료");
+        Application.Quit();
     }
 }

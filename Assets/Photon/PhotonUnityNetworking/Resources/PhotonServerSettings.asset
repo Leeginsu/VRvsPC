@@ -52,6 +52,11 @@ MonoBehaviour:
   - UpdatePosRpc
   - upTrigger
   - setPlayerCnt
+  - UpdateScores
+  - UpdateWinner
+  - scoreView
+  - UpdatePCScore
+  - UpdateVRScore
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
