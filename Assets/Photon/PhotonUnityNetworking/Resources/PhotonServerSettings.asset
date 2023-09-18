@@ -45,18 +45,18 @@ MonoBehaviour:
   - RocketFireRpc
   - RocketInstantiateRpc
   - RocketTest
+  - scoreView
   - SetBool
+  - setPlayerCnt
   - setPlayerTXT
   - setTriggerBomb
   - SetTriggerRpc
-  - UpdatePosRpc
-  - upTrigger
-  - setPlayerCnt
-  - UpdateScores
-  - UpdateWinner
-  - scoreView
   - UpdatePCScore
+  - UpdatePosRpc
+  - UpdateScores
   - UpdateVRScore
+  - UpdateWinner
+  - upTrigger
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

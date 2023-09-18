@@ -73,8 +73,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             SC.RPC("scoreView", RpcTarget.All);
 
             //UI 켜기
-            ScorePanel.SetActive(true);
-            TimePanel.SetActive(false);
+            //ScorePanel.SetActive(true);
+            //TimePanel.SetActive(false);
             gameTime = originGameTime;
         }
     }
