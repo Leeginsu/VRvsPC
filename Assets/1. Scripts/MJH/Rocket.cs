@@ -20,11 +20,12 @@ public class Rocket : MonoBehaviourPun
 
     bool useGravity;
     public float gravity = -9.81f;
-
+    PhotonView SC;
 
     // Start is called before the first frame update
     void Start()
     {
+        SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         
@@ -72,7 +73,8 @@ public class Rocket : MonoBehaviourPun
 
         if(collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
-            ScoreManager.instance.PCSCORE += 1;
+            //ScoreManager.instance.PCSCORE += 1;
+            SC.RPC("UpdatePCScore", RpcTarget.All);
         }
         Destroy(gameObject);
         

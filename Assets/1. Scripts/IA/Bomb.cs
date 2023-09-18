@@ -8,13 +8,14 @@ public class Bomb : MonoBehaviourPun
     float speed = 50;
     bool isHit;
     Transform vrPlayerPos;
-
+    PhotonView SC;
     //public GameObject smokeFX;
     public GameObject hitFX;
     //float turnSpeed = 5f;
     // Start is called before the first frame update
     void Start()
     {
+        SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
         if(GameObject.FindWithTag("VRPlayer") == null)
         {
@@ -69,7 +70,7 @@ public class Bomb : MonoBehaviourPun
         if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             Destroy(gameObject);
-            ScoreManager.instance.PCSCORE += 1;
+            SC.RPC("UpdatePCScore", RpcTarget.All);
         }
         Destroy(gameObject);
         hitFX.SetActive(true);

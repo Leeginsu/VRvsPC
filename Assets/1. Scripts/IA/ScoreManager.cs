@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviourPun
 {
     public static ScoreManager instance;
     public int vrScore;
@@ -18,6 +19,34 @@ public class ScoreManager : MonoBehaviour
     {
         instance = this;
     }
+
+
+    [PunRPC]
+    public void UpdateVRScore()
+    {
+        vrScore++;
+    }
+
+    [PunRPC]
+    public void UpdatePCScore()
+    {
+        pcScore++;
+    }
+
+
+    [PunRPC]
+    void UpdateScores(int vrScore, int pcScore)
+    {
+        ScoreTXT.text = pcScore.ToString() + " - " + vrScore.ToString();
+    }
+
+    [PunRPC]
+    void UpdateWinner(bool isPcWinner)
+    {
+        string winnerText = isPcWinner ? "PC Player WINS!" : "VR Player WINS!";
+        WinnerTXT.text = winnerText;
+    }
+
 
     public int VRSCORE
     {
@@ -39,6 +68,8 @@ public class ScoreManager : MonoBehaviour
         }
     }
     string isWinner;
+
+    [PunRPC]
     public void scoreView()
     {
         isWinner = (pcScore > vrScore) ? "PC Player WINS!" : "VR Player WINS!";
