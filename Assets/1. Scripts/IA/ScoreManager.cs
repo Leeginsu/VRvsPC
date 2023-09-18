@@ -13,7 +13,9 @@ public class ScoreManager : MonoBehaviourPun
     public TextMeshProUGUI ScoreTXT;
     //public TextMeshProUGUI pcScoreTXT;
     public TextMeshProUGUI WinnerTXT;
-
+    //UI ฐüทร
+    public GameObject TimePanel;
+    public GameObject ScorePanel;
     // Start is called before the first frame update
     void Awake()
     {
@@ -77,5 +79,10 @@ public class ScoreManager : MonoBehaviourPun
 
         WinnerTXT.text = isWinner;
         ScoreTXT.text = pcScore.ToString() + " - " + vrScore.ToString();
+
+
+        ScorePanel.SetActive(true);
+        TimePanel.SetActive(false);
+
     }
 }
