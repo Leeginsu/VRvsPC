@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void onRestart()
     {
         print("재시작");
-        PhotonNetwork.LoadLevel("ProtoScene_Net");
+        //PhotonNetwork.LoadLevel("ReloadScene");
     }
 
     public void onExit()
