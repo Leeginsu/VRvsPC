@@ -704,7 +704,7 @@ MonoBehaviour:
   VRspawnPos: {fileID: 2028116939}
   TimePanel: {fileID: 1388984362}
   ScorePanel: {fileID: 1815772535}
-  originGameTime: 20
+  originGameTime: 120
 --- !u!4 &485687174
 Transform:
   m_ObjectHideFlags: 0
