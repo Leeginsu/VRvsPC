@@ -37,6 +37,10 @@ public class HandAttack : MonoBehaviour
     // 물리충돌계산
     private void FixedUpdate()
     {
+        if(!isGrab && shock == false)
+        {
+            shock = true;
+        }
         //print("isGrab"+isGrab);
         if (isGrab)
         {
