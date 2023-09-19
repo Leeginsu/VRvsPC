@@ -70,6 +70,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-*.meta
-Assets/ART/Library/PackageCache/com.unity.textmeshpro@3.0.6/Package Resources/TMP Examples & Extras.unitypackage.meta
-Assets/ART/Library/PackageCache/com.unity.textmeshpro@3.0.6/Package Resources/TMP Essential Resources.unitypackage.meta

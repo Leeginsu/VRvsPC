@@ -73,8 +73,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             SC.RPC("scoreView", RpcTarget.All);
 
             //UI 켜기
-            ScorePanel.SetActive(true);
-            TimePanel.SetActive(false);
+            //ScorePanel.SetActive(true);
+            //TimePanel.SetActive(false);
             gameTime = originGameTime;
         }
     }
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void onRestart()
     {
         print("재시작");
-        PhotonNetwork.LoadLevel("ProtoScene_Net");
+        //PhotonNetwork.LoadLevel("ReloadScene");
     }
 
     public void onExit()
