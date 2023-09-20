@@ -74,6 +74,7 @@ public class Rocket : MonoBehaviourPun
         if(collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             //ScoreManager.instance.PCSCORE += 1;
+            Destroy(gameObject);
             SC.RPC("UpdatePCScore", RpcTarget.All);
         }
         Destroy(gameObject);
