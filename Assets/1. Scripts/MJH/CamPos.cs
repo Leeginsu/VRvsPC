@@ -11,6 +11,8 @@ public class CamPos : MonoBehaviourPun
     public Transform firePos;
     public GameObject ch;
 
+    int rocketCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,8 @@ public class CamPos : MonoBehaviourPun
         //ch.SetActive(false);
         mainCam = Camera.main.gameObject;
         mainCam.transform.eulerAngles = new Vector3(5, 0, 0);
+
+        rocketCount = GetComponentInParent<PcPlayer>().rocketCount;
     }
 
 
@@ -30,6 +34,7 @@ public class CamPos : MonoBehaviourPun
     bool attackMode = false;
     [HideInInspector]
     public GameObject rocket;
+
     
     Vector3 dir;
 
@@ -43,7 +48,7 @@ public class CamPos : MonoBehaviourPun
         
         if (photonView.IsMine)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && rocketCount > 0)
             {
                 //ry = -mainCam.transform.eulerAngles.x;
                 //rx = mainCam.transform.eulerAngles.y;
@@ -63,14 +68,14 @@ public class CamPos : MonoBehaviourPun
                 //rocket.GetComponent<Rigidbody>().useGravity = false;
 
                 rocket = PhotonNetwork.Instantiate("Rocket", firePos.position, transform.rotation);
-
+                rocket.transform.parent = firePos;
                 //photonView.RPC(nameof(RocketInstantiateRpc), RpcTarget.All, false);
                 pv = rocket.GetComponent<PhotonView>();
                 pv.RPC("InstantiateRpc", RpcTarget.All, firePos);
 
             }
 
-            else if (Input.GetButton("Fire1"))
+            else if (Input.GetButton("Fire1") &&  rocketCount > 0)
             {
                 //rocket.transform.eulerAngles = transform.eulerAngles;
 
@@ -78,7 +83,7 @@ public class CamPos : MonoBehaviourPun
 
 
             }
-            else if (Input.GetButtonUp("Fire1"))
+            else if (Input.GetButtonUp("Fire1") && rocketCount > 0)
             {
 
                 //attackMode = false;
@@ -95,7 +100,7 @@ public class CamPos : MonoBehaviourPun
                 //photonView.RPC(nameof(RocketFireRpc), RpcTarget.All , dir);
                 
                 pv.RPC("RocketTest", RpcTarget.All, dir, true);
-                
+                rocketCount--;
             }
 
 
@@ -123,7 +128,7 @@ public class CamPos : MonoBehaviourPun
     {
         //rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
         print("들어왔니");
-        rocket.transform.parent = firePos;
+        //rocket.transform.parent = firePos;
         rocket.GetComponent<Rigidbody>().useGravity = isBool;
     }
 

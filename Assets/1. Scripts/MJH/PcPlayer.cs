@@ -37,14 +37,15 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     float lerpSpeed = 50;
     public GameObject trCam;
 
-
-
     int randomIndex;
     GameObject respawnPos;
     PhotonView SC;
     // Start is called before the first frame update
     void Start()
     {
+        rocketCount = Mathf.Clamp(rocketCount, 0, 5);
+
+
         PhotonNetwork.SerializationRate = 60;
         SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
 
@@ -54,7 +55,6 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         }
 
         jumpCount = 1;
-        rocketCount = 2;
         anim = player.GetComponent<Animator>();
 
         respawnPos = GameObject.Find("PCPlayerPosList");
@@ -178,6 +178,9 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     }
 
 
+
+
+
     public float hitTime = 0;
     public bool isHit;
     private void OnCollisionEnter(Collision collision)
@@ -216,6 +219,12 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
                 
             }
         }
+
+        if(collision.gameObject.tag == "Bullet")
+        {
+            rocketCount++;
+        }
+
     }
 
     [PunRPC]
