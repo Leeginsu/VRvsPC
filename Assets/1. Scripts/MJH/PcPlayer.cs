@@ -222,6 +222,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         if(collision.gameObject.tag == "Bullet")
         {
+            Destroy(collision.gameObject);
             rocketCount++;
         }
 
