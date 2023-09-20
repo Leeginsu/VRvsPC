@@ -28,7 +28,10 @@ public class Rocket : MonoBehaviourPun
         SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-        
+
+      
+        //photonView.ObservedComponents[0] = transform.parent;
+
         //GetComponent<ConstantForce>().force = new Vector3(0, -9.8f, 0);
         //Physics.gravity = new Vector3(0,-9.8f,0);
         //rb.velocity = transform.forward * rocketSpeed;

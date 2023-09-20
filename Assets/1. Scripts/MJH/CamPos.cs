@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class CamPos : MonoBehaviourPun
+public class CamPos : MonoBehaviourPun, IPunObservable
 {
     GameObject mainCam;
     public GameObject rocketBullet;
@@ -12,6 +12,11 @@ public class CamPos : MonoBehaviourPun
     public GameObject ch;
 
     int rocketCount;
+
+    Vector3 receiveRocketPos;
+
+    Quaternion receiveRocketRot = Quaternion.identity;
+    float lerpSpeed = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -68,12 +73,15 @@ public class CamPos : MonoBehaviourPun
                 //rocket.GetComponent<Rigidbody>().useGravity = false;
 
                 rocket = PhotonNetwork.Instantiate("Rocket", firePos.position, transform.rotation);
-                //rocket.transform.parent = firePos;
-                //photonView.RPC(nameof(RocketInstantiateRpc), RpcTarget.All, false);
+                rocket.transform.parent = firePos;
                 pv = rocket.GetComponent<PhotonView>();
+                //rocket.transform.parent = firePos;
+                pv.ObservedComponents[0] = firePos;
+                //photonView.RPC(nameof(RocketInstantiateRpc), RpcTarget.All, false);
                 pv.RPC("InstantiateRpc", RpcTarget.All, firePos);
 
             }
+            
 
             else if (Input.GetButton("Fire1"))
             {
@@ -103,13 +111,14 @@ public class CamPos : MonoBehaviourPun
                 rocketCount--;
             }
 
-
             NormalCam();
         }
         else
         {
-
+            rocket.transform.position = Vector3.Lerp(rocket.transform.position, receiveRocketPos, lerpSpeed * Time.deltaTime);
+            rocket.transform.rotation = Quaternion.Lerp(rocket.transform.rotation, receiveRocketRot, lerpSpeed * Time.deltaTime);
         }
+
         
 
         //if (attackMode == false)
@@ -128,7 +137,7 @@ public class CamPos : MonoBehaviourPun
     {
         //rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
         print("들어왔니");
-        rocket.transform.parent = firePos;
+        //rocket.transform.parent = firePos;
         rocket.GetComponent<Rigidbody>().useGravity = isBool;
     }
 
@@ -174,6 +183,20 @@ public class CamPos : MonoBehaviourPun
 
 
 
-    
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rocket.transform.position);
+            stream.SendNext(rocket.transform.rotation);
+        }
+        else
+        {
+            receiveRocketPos = (Vector3)stream.ReceiveNext();
+            receiveRocketRot = (Quaternion)stream.ReceiveNext();
+        }
+    }
+
+
 
 }
