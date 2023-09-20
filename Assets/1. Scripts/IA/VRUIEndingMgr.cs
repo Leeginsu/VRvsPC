@@ -17,25 +17,23 @@ public class VRUIEndingMgr : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
         onRestartVRBTNClick();
         onQuitVRBTNClick();
     }
 
     public void onRestartVRBTNClick()
     {
-        if (OVRInput.GetDown(OVRInput.Button.One)&& PhotonNetwork.IsMasterClient)
-        {
-            print("재시작 click");
-            PhotonNetwork.LoadLevel("ReloadScene");
-            //PhotonNetwork.LoadLevel("ProtoScene_Net");
-        }
+        //if (OVRInput.GetDown(OVRInput.Button.One)&& PhotonNetwork.IsMasterClient)
+        //{
+        //    print("재시작 click");
+        //    PhotonNetwork.LoadLevel("ReloadScene");
+        //}
     }
 
     public override void OnLeftRoom()
     {
         print("방 나가기");
-        PhotonNetwork.LoadLevel("LobbyScene");
+        //PhotonNetwork.LoadLevel("LobbyScene");
     }
 
     public void onQuitVRBTNClick()
