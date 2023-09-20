@@ -13,7 +13,7 @@ public class CamPos : MonoBehaviourPun, IPunObservable
 
     int rocketCount;
 
-    Vector3 receiveRocketPos;
+    Vector3 receiveRocketPos, receiveFirePos;
 
     Quaternion receiveRocketRot = Quaternion.identity;
     float lerpSpeed = 50;
@@ -73,8 +73,9 @@ public class CamPos : MonoBehaviourPun, IPunObservable
                 //rocket.GetComponent<Rigidbody>().useGravity = false;
 
                 rocket = PhotonNetwork.Instantiate("Rocket", firePos.position, transform.rotation);
-                rocket.transform.parent = firePos;
+                //rocket.transform.parent = firePos;
                 pv = rocket.GetComponent<PhotonView>();
+                photonView.RPC("RocketInstantiateRpc", RpcTarget.All);
                 //rocket.transform.parent = firePos;
                 pv.ObservedComponents[0] = firePos;
                 //photonView.RPC(nameof(RocketInstantiateRpc), RpcTarget.All, false);
@@ -115,6 +116,7 @@ public class CamPos : MonoBehaviourPun, IPunObservable
         }
         else
         {
+            //firePos.position = Vector3.Lerp(firePos.position, receiveFirePos, lerpSpeed * Time.deltaTime);
             rocket.transform.position = Vector3.Lerp(rocket.transform.position, receiveRocketPos, lerpSpeed * Time.deltaTime);
             rocket.transform.rotation = Quaternion.Lerp(rocket.transform.rotation, receiveRocketRot, lerpSpeed * Time.deltaTime);
         }
@@ -133,12 +135,14 @@ public class CamPos : MonoBehaviourPun, IPunObservable
     }
 
     [PunRPC]
-    void RocketInstantiateRpc(bool isBool)
+    void RocketInstantiateRpc()
     {
-        //rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
-        print("들어왔니");
+        ////rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
+        //print("들어왔니");
         //rocket.transform.parent = firePos;
-        rocket.GetComponent<Rigidbody>().useGravity = isBool;
+        //rocket.GetComponent<Rigidbody>().useGravity = isBool;
+        
+        rocket.transform.SetParent(firePos);
     }
 
     [PunRPC]
@@ -187,11 +191,14 @@ public class CamPos : MonoBehaviourPun, IPunObservable
     {
         if (stream.IsWriting)
         {
+            //stream.SendNext(firePos.position);
             stream.SendNext(rocket.transform.position);
             stream.SendNext(rocket.transform.rotation);
         }
         else
         {
+
+            //receiveFirePos = (Vector3)stream.ReceiveNext();
             receiveRocketPos = (Vector3)stream.ReceiveNext();
             receiveRocketRot = (Quaternion)stream.ReceiveNext();
         }
