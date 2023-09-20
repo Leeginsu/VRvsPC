@@ -68,7 +68,7 @@ public class CamPos : MonoBehaviourPun
                 //rocket.GetComponent<Rigidbody>().useGravity = false;
 
                 rocket = PhotonNetwork.Instantiate("Rocket", firePos.position, transform.rotation);
-                rocket.transform.parent = firePos;
+                //rocket.transform.parent = firePos;
                 //photonView.RPC(nameof(RocketInstantiateRpc), RpcTarget.All, false);
                 pv = rocket.GetComponent<PhotonView>();
                 pv.RPC("InstantiateRpc", RpcTarget.All, firePos);
@@ -128,7 +128,7 @@ public class CamPos : MonoBehaviourPun
     {
         //rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
         print("들어왔니");
-        //rocket.transform.parent = firePos;
+        rocket.transform.parent = firePos;
         rocket.GetComponent<Rigidbody>().useGravity = isBool;
     }
 
