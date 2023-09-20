@@ -1,8 +1,9 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandAttack : MonoBehaviour
+public class HandAttack : MonoBehaviourPun
 {
     public Transform hand;
     public OVRInput.Controller controller;
@@ -11,6 +12,8 @@ public class HandAttack : MonoBehaviour
     //public GameObject carving;
 
     bool isGrab;
+
+    int waveNum = 25;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,19 +37,20 @@ public class HandAttack : MonoBehaviour
 
     bool shock = true;
 
+    public Collider[] cols;
     // 물리충돌계산
     private void FixedUpdate()
     {
-        if(!isGrab && shock == false)
+        if (!isGrab && shock == false)
         {
             shock = true;
         }
         //print("isGrab"+isGrab);
         if (isGrab)
         {
-            //int layerMask = 1 << LayerMask.NameToLayer("Ground");
+            int layerMask = 1 << LayerMask.NameToLayer("Ground");
 
-            Collider[] cols = Physics.OverlapSphere(hand.transform.position,0.5f);
+            cols = Physics.OverlapSphere(hand.transform.position, 0.5f, layerMask);
 
             //print("cols"+ cols);
             for (int i = 0; i < cols.Length; i++)
@@ -54,41 +58,46 @@ public class HandAttack : MonoBehaviour
                 //print("colsi" + cols[i]);
                 if (cols[i] != null)
                 {
+                    print(cols);
                     if (cols[i].CompareTag("Ground"))
                     {
                         if (shock)
                         {
-                            StartCoroutine(ShockWave());
+                            Vector3 dir = hand.forward;
+                            dir.y = 0;
+                            StartCoroutine(ShockWave(dir));
                             shock = false;
                         }
                     }
                 }
-               // print("충돌한 물체 : " + cols[i].gameObject.name);
+                // print("충돌한 물체 : " + cols[i].gameObject.name);
             }
         }
     }
 
-    IEnumerator ShockWave()
+    IEnumerator ShockWave(Vector3 dir)
     {
         Ray ray = new Ray(hand.position, hand.forward);
         RaycastHit hitInfo;
 
+
+
         if (Physics.Raycast(ray, out hitInfo))
         {
-            for (int i = 0; i < 50; i++)
+
+            for (int i = 0; i < waveNum; i++)
             {
-                print(hitInfo);
+                //print("쇼크웨이브!");
+                //GameObject shockWave = PhotonNetwork.Instantiate("Wave", transform.localPosition = hitInfo.point + (hand.forward * i) + new Vector3(1 * Random.value * 2f, 0, 0), Quaternion.identity);
                 GameObject shockWave = Instantiate(wave);
-                shockWave.transform.localPosition = hitInfo.point + (hand.forward * i) + new Vector3(1 * Random.value * 2f, 0, 0);
-                //shockWave.transform.forward = hand.transform.forward + new Vector3(0,0,3);
-                shockWave.transform.localScale = new Vector3(1, 1, 1) * Random.Range(1.8f, 2.8f);
+                Vector3 fx = hitInfo.point + ((dir * (i * 3.5f)) + new Vector3(1 * Random.value * 3f, 0, 0));
+                shockWave.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
+                shockWave.transform.localScale = new Vector3(2, 2, 2) * Random.Range(1.0f, 2.0f);
                 shockWave.transform.localRotation = Quaternion.Euler(1 * Random.value * 45, 1 * Random.value * 45, 1 * Random.value * 45);
                 Destroy(shockWave.gameObject, 2);
-                
-                yield return new WaitForSeconds(0.01f);
+
+                yield return new WaitForSeconds(0.05f);
             }
-
-
         }
     }
 }
