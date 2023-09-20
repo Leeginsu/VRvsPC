@@ -43,6 +43,7 @@ public class Rocket : MonoBehaviourPun
         if (useGravity)
         {
             rb.velocity += new Vector3(0, gravity * Time.fixedDeltaTime, 0);
+            rb.transform.forward = rb.velocity.normalized;
         }
 
         
@@ -62,6 +63,7 @@ public class Rocket : MonoBehaviourPun
         transform.forward = dir + Vector3.up * rocketUp;
         useGravity = isBool;
         rb.velocity = transform.forward * rocketPower;
+        
         spark1.SetActive(true);
     }
     

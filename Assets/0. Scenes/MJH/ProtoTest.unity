@@ -1614,10 +1614,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: firecracker_nostick1
       objectReference: {fileID: 0}
-    - target: {fileID: 2636320021397006565, guid: 6ced5d8a7f68cc340b6de0c6134ef214, type: 3}
-      propertyPath: m_TagString
-      value: Bullet
-      objectReference: {fileID: 0}
     - target: {fileID: 3449132499621261919, guid: 6ced5d8a7f68cc340b6de0c6134ef214, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1664,25 +1660,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ced5d8a7f68cc340b6de0c6134ef214, type: 3}
---- !u!1 &1938508685 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2636320021397006565, guid: 6ced5d8a7f68cc340b6de0c6134ef214, type: 3}
-  m_PrefabInstance: {fileID: 1938508684}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1938508686
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938508685}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2745994737368711580, guid: 51fe5fceaf7d71143b208152be73a88a, type: 3}
 --- !u!1 &1943571741
 GameObject:
   m_ObjectHideFlags: 0
