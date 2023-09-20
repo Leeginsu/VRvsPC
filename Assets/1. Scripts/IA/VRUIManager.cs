@@ -26,7 +26,7 @@ public class VRUIManager : MonoBehaviourPunCallbacks
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
             print("click");
-            PhotonNetwork.LoadLevel("ReloadScene");
+            PhotonNetwork.LoadLevel("ProtoScene_Net");
         }
     }
 }
