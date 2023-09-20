@@ -43,7 +43,7 @@ public class Rocket : MonoBehaviourPun
         if (useGravity)
         {
             rb.velocity += new Vector3(0, gravity * Time.fixedDeltaTime, 0);
-            rb.transform.forward = rb.velocity.normalized;
+            //rb.transform.forward = rb.velocity.normalized;
         }
 
         
