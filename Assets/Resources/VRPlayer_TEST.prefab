@@ -1312,6 +1312,7 @@ MonoBehaviour:
   hand: {fileID: 7082553678738213765}
   controller: 2
   wave: {fileID: 8196539761960262646, guid: 3ec6c2c57e6b5a94eb0f51264f1aca41, type: 3}
+  cols: []
 --- !u!114 &1195153912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3431,6 +3432,7 @@ MonoBehaviour:
   hand: {fileID: 1999984680686536533}
   controller: 1
   wave: {fileID: 8196539761960262646, guid: 3ec6c2c57e6b5a94eb0f51264f1aca41, type: 3}
+  cols: []
 --- !u!114 &1195153915
 MonoBehaviour:
   m_ObjectHideFlags: 0
