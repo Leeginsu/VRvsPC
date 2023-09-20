@@ -32,7 +32,7 @@ public class CamPos : MonoBehaviourPun
     float rx, ry;
     float rotSpeed = 220f;
     bool attackMode = false;
-    [HideInInspector]
+    
     public GameObject rocket;
 
     
@@ -48,7 +48,7 @@ public class CamPos : MonoBehaviourPun
         
         if (photonView.IsMine)
         {
-            if (Input.GetButtonDown("Fire1") || rocketCount > 0)
+            if (Input.GetButtonDown("Fire1"))
             {
                 //ry = -mainCam.transform.eulerAngles.x;
                 //rx = mainCam.transform.eulerAngles.y;
@@ -75,7 +75,7 @@ public class CamPos : MonoBehaviourPun
 
             }
 
-            else if (Input.GetButton("Fire1") ||  rocketCount > 0)
+            else if (Input.GetButton("Fire1"))
             {
                 //rocket.transform.eulerAngles = transform.eulerAngles;
 
@@ -83,7 +83,7 @@ public class CamPos : MonoBehaviourPun
 
 
             }
-            else if (Input.GetButtonUp("Fire1") || rocketCount > 0)
+            else if (Input.GetButtonUp("Fire1"))
             {
 
                 //attackMode = false;
