@@ -54,7 +54,6 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
         makeNickName();
         //로비 진입 요청
         PhotonNetwork.JoinLobby();
-
     }
 
 
