@@ -88,8 +88,8 @@ public class HandAttack : MonoBehaviourPun
             for (int i = 0; i < waveNum; i++)
             {
                 //print("¼îÅ©¿þÀÌºê!");
-                //GameObject shockWave = PhotonNetwork.Instantiate("Wave", transform.localPosition = hitInfo.point + (hand.forward * i) + new Vector3(1 * Random.value * 2f, 0, 0), Quaternion.identity);
-                GameObject shockWave = Instantiate(wave);
+                GameObject shockWave = PhotonNetwork.Instantiate("Wave", new Vector3(0, 0, 0), Quaternion.identity);
+                //GameObject shockWave = Instantiate(wave);
                 Vector3 fx = hitInfo.point + ((dir * (i * 3.5f)) + new Vector3(1 * Random.value * 3f, 0, 0));
                 shockWave.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
                 shockWave.transform.localScale = new Vector3(2, 2, 2) * Random.Range(1.0f, 2.0f);
