@@ -24,11 +24,10 @@ public class VRUIEndingMgr : MonoBehaviourPunCallbacks
 
     public void onRestartVRBTNClick()
     {
-        if (OVRInput.GetDown(OVRInput.Button.One))
+        if (OVRInput.GetDown(OVRInput.Button.One)&& PhotonNetwork.IsMasterClient)
         {
             print("¿ÁΩ√¿€ click");
-            //PhotonNetwork.LeaveRoom();
-          
+            PhotonNetwork.LoadLevel("ReloadScene");
             //PhotonNetwork.LoadLevel("ProtoScene_Net");
         }
     }

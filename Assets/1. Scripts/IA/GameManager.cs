@@ -104,33 +104,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         //currentTime += Time.deltaTime;
         SetTime();
-        if (Input.GetKeyDown(KeyCode.Q)&& PhotonNetwork.IsMasterClient)
-        {
-         
-            PhotonNetwork.LoadLevel("ReloadScene");
-            //photonView.RPC("removePlayerList", RpcTarget.All);
-        }
-    }
-
-    [PunRPC]
-    void removePlayerList()
-    {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var item in players)
-        {
-            print(item.gameObject);
-            Destroy(item.gameObject);
-        }
-        GameObject vrplayer = GameObject.FindWithTag("VRPlayer");
-        Destroy(vrplayer);
-        print("리로드씬 전환");
-        PhotonNetwork.LoadLevel("ReloadScene");
+      
     }
 
     public void onRestart()
     {
         print("재시작");
-        PhotonNetwork.LoadLevel("ReloadScene");
+        if (PhotonNetwork.IsMasterClient)
+        {
+
+            PhotonNetwork.LoadLevel("ReloadScene");
+            //photonView.RPC("removePlayerList", RpcTarget.All);
+        }
         //PhotonNetwork.LoadLevel("ReloadScene");
     }
 
