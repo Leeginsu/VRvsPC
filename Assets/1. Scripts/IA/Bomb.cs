@@ -72,8 +72,27 @@ public class Bomb : MonoBehaviourPun
             Destroy(gameObject);
             SC.RPC("UpdatePCScore", RpcTarget.All);
         }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
+        {
+
+            ContactPoint contact = collision.contacts[0];
+
+            if (rb != null)
+            {
+                rb.velocity = contact.normal * 10f;
+            }
+
+            //rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+           
+            Destroy(gameObject);
+
+        }
         Destroy(gameObject);
-        hitFX.SetActive(true);
+        //hitFX.SetActive(true);
         //Destroy(fx, 1.5f);
 
     }

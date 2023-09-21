@@ -110,13 +110,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void onRestart()
     {
         print("재시작");
-        //if (PhotonNetwork.IsMasterClient)
-        //{
+        if (PhotonNetwork.IsMasterClient)
+        {
 
-        //    PhotonNetwork.LoadLevel("ReloadScene");
-       
-        //}
-       
+            PhotonNetwork.LoadLevel("ReloadScene");
+
+        }
+
     }
 
     public void onExit()
