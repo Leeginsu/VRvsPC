@@ -6,42 +6,41 @@ using Photon.Pun;
 public class ItemManager : MonoBehaviourPun
 {
 
-    public GameObject[] rocPos;
+    public List<GameObject> items;
+    public GameObject item;
+
+    public float delayTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //item = Instantiate(Resources.Load<GameObject>("Item"));
+        item = PhotonNetwork.Instantiate("Item", transform.position, transform.rotation);
+        item.transform.position = transform.position;
+        item.GetComponent<ItemCheck>().mySpawner = this;
+        items.Add(item);
     }
 
     // Update is called once per frame
     void Update()
     {
-        InstantiateManager();
-    }
-
-
-    GameObject item;
-    // 로켓을 소환한다.
-    void InstantiateManager()
-    {
-        for (int i = 0; i < rocPos.Length; i++)
+        if (items.Count <= 0)
         {
-            if(rocPos[i].transform.childCount < 2)
+            delayTime += Time.deltaTime;
+            if (delayTime > 3)
             {
-                Invoke("InstantiateRocket", 3);
+                //item = Instantiate(Resources.Load<GameObject>("Item"));
+                item = PhotonNetwork.Instantiate("Item", transform.position, transform.rotation);
+                item.GetComponent<ItemCheck>().mySpawner = this;
+                items.Add(item);
             }
         }
     }
-
-    void InstatianteRocket(Vector3 position)
+    internal void DestroyedItem(ItemCheck item)
     {
-        item = PhotonNetwork.Instantiate("Item", position, Quaternion.identity);
-        
-        item.transform.SetParent(gameObject.transform);
+        if (items.Contains(item.gameObject))
+            items.Remove(item.gameObject);
+        delayTime = 0;
     }
-    // 소환된 로켓은 배열의 자식으로 들어간다.
-    // 만약 자식에 로켓이 있는지 판단 후 없으면 5초 뒤 재생성 한다.
-   
 
 }
