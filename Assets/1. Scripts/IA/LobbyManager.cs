@@ -12,11 +12,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public Transform PlayerPanel;
     public GameObject VRPlayerTXT;
+    public GameObject LoadingUI;
+
 
     bool isVR;
     public int VRPlayerCnt = 0;
     public List<int> VRPlayerList = new List<int>();
+
     public Canvas cv;
+    //public GameObject vrCanvas;
+    //public GameObject pcCanvas;
+
+
     private void Awake()
     {
         isVR = ConnectionManager.instance.isVR;
@@ -28,14 +35,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.AutomaticallySyncScene = true;
 
-        //if (isVR)
-        //{
-        //    cv.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-        //}
-        //else
-        //{
-        //    cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
-        //}
+        if (isVR)
+        {
+            //vrCanvas.SetActive(true);
+            //pcCanvas.SetActive(false);
+
+            cv.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+            //onStartVRBTNClick();
+
+           
+
+        }
+        else
+        {
+        //    vrCanvas.SetActive(false);
+        //    pcCanvas.SetActive(true);
+            cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        }
 
         CreateRoom();
         //setVRPlayer();
@@ -46,6 +62,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         print(PhotonNetwork.NickName);
     }
+
 
     public void CreateRoom()
     {
@@ -188,10 +205,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void onStartVRBTNClick()
     {
 
-        //if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
-        //{
-        PhotonNetwork.LoadLevel("ProtoScene_Net");
-        //}
+        print("StartBTN");
     }
 
     public void onStartBTNClick()
@@ -199,7 +213,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         //if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
         //{
-            PhotonNetwork.LoadLevel("ProtoScene_Net");
+        StartCoroutine(LoadingImg());
+        
         //}
     }
+
+
+    IEnumerator LoadingImg()
+    {
+        LoadingUI.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        PhotonNetwork.LoadLevel("ProtoScene_Net");
+    }
+
+ 
+
 }

@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
 
 public class CamPos : MonoBehaviourPun
 {
     GameObject mainCam;
-    public GameObject rocketBullet;
+    //public GameObject rocketBullet;
     public Transform firePos;
     public GameObject ch;
+
+    int rocketCount;
 
     // Start is called before the first frame update
     void Start()
@@ -17,87 +18,60 @@ public class CamPos : MonoBehaviourPun
         if (photonView.IsMine)
         {
             firePos.gameObject.SetActive(true);
-
         }
         //ch.SetActive(false);
         mainCam = Camera.main.gameObject;
         mainCam.transform.eulerAngles = new Vector3(5, 0, 0);
+
+        rocketCount = GetComponentInParent<PcPlayer>().rocketCount;
     }
 
 
     float rx, ry;
     float rotSpeed = 220f;
-    bool attackMode = false;
-    [HideInInspector]
-    public GameObject rocket;
+    //bool attackMode = false;
     
+    //소환할 로켓 오브젝트
+    public GameObject rocket;
+
+    // 발사할 방향
     Vector3 dir;
 
-    public bool isFire;
+    //public bool isFire;
     PhotonView pv;
 
     // Update is called once per frame
     void Update()
     {
         // 로켓 카운트가 있을 때
-        
+        // 내것일 때 체크
         if (photonView.IsMine)
         {
+            // 마우스 왼쪽 버튼을 눌렀을 때
             if (Input.GetButtonDown("Fire1"))
             {
-                //ry = -mainCam.transform.eulerAngles.x;
-                //rx = mainCam.transform.eulerAngles.y;
-                //attackMode = true;
-                //ch.SetActive(true);
-
-                //일반
-                //로켓을 생성
-                //rocket = Instantiate(rocketBullet);
-                //rocket.transform.position = firePos.position;
+                // 1. 로켓 소환
+                rocket = PhotonNetwork.Instantiate("RocketTest", firePos.position, transform.rotation);
+                // 2. 로켓을 FirePos 자식으로 붙임
                 //rocket.transform.parent = firePos;
-                //rocket.GetComponent<Rigidbody>().useGravity = false;
-
-                //포톤용
-                //rocket = PhotonNetwork.Instantiate("Rocket", firePos.position, transform.rotation);
-                //rocket.transform.parent = firePos;
-                //rocket.GetComponent<Rigidbody>().useGravity = false;
-
-                rocket = PhotonNetwork.Instantiate("Rocket", firePos.position, transform.rotation);
-
-                //photonView.RPC(nameof(RocketInstantiateRpc), RpcTarget.All, false);
+                
+                // 3. 소환된 로켓의 포톤 뷰를 가져옴
                 pv = rocket.GetComponent<PhotonView>();
-                pv.RPC("InstantiateRpc", RpcTarget.All, firePos);
+                //pv.ObservedComponents[0] = firePos;
 
             }
+            
 
             else if (Input.GetButton("Fire1"))
             {
-                //rocket.transform.eulerAngles = transform.eulerAngles;
-
+                rocket.transform.position = firePos.position;
                 dir = transform.forward;
-
-
             }
             else if (Input.GetButtonUp("Fire1"))
             {
-
-                //attackMode = false;
-                //ch.SetActive(false);
-
-                //일반
-                //로켓 발사
-                //rocket.transform.forward = dir + Vector3.up * 0.5f;
-                //rocket.GetComponent<Rigidbody>().useGravity = true;
-                //rocket.GetComponent<Rocket>().rb.velocity = rocket.transform.forward * 50f;
-                //rocket.GetComponent<Rocket>().spark1.SetActive(true);
-
-                //포톤용
-                //photonView.RPC(nameof(RocketFireRpc), RpcTarget.All , dir);
-                
                 pv.RPC("RocketTest", RpcTarget.All, dir, true);
-                
+                rocketCount--;
             }
-
 
             NormalCam();
         }
@@ -105,36 +79,7 @@ public class CamPos : MonoBehaviourPun
         {
 
         }
-        
 
-        //if (attackMode == false)
-        //{
-        //    NormalCam();
-        //}
-        //else
-        //{
-
-        //   // AttackCam();
-        //}
-    }
-
-    [PunRPC]
-    void RocketInstantiateRpc(bool isBool)
-    {
-        //rocket = Instantiate(rocketBullet, firePos.position, transform.rotation);
-        print("들어왔니");
-        rocket.transform.parent = firePos;
-        rocket.GetComponent<Rigidbody>().useGravity = isBool;
-    }
-
-    [PunRPC]
-    void RocketFireRpc(Vector3 dir)
-    {
-        print("해줄래"+dir);
-        rocket.transform.forward = dir + Vector3.up * 0.5f;
-        rocket.GetComponent<Rigidbody>().useGravity = true;
-        rocket.GetComponent<Rocket>().rb.velocity = rocket.transform.forward * 50f;
-        rocket.GetComponent<Rocket>().spark1.SetActive(true);
     }
 
 
@@ -166,9 +111,4 @@ public class CamPos : MonoBehaviourPun
 
         mainCam.transform.localEulerAngles = new Vector3(-ry, rx, 0);
     }
-
-
-
-    
-
 }

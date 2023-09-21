@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     TextMeshProUGUI TimeTXT;
     PhotonView SC;
 
+    public GameObject cv;
+
     void Awake()
     {
         instance = this;
@@ -39,16 +41,16 @@ public class GameManager : MonoBehaviourPunCallbacks
    
         if (ConnectionManager.instance.isVR)
         {
-            GameObject vr = PhotonNetwork.Instantiate("VRPlayer_TEST", VRspawnPos.position, VRspawnPos.rotation);
-             //GameObject.Find("CenterEyeAnchor").GetComponent<Camera>().enabled = true;
+            GameObject vr = PhotonNetwork.Instantiate("VRPlayer", VRspawnPos.position, VRspawnPos.rotation);
+            cv.transform.parent = vr.transform;
+            cv.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
         }
         else
         {
-            photonView.RPC("setPlayerCnt", RpcTarget.All);
-         
+            photonView.RPC("setPlayerCnt", RpcTarget.AllBuffered);
             PhotonNetwork.Instantiate("Player_Proto", PCspawnList[playerIndex].position, Quaternion.identity);
-
-        }
+            cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        }        
     }
 
     [PunRPC]
@@ -101,13 +103,19 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         //currentTime += Time.deltaTime;
         SetTime();
+      
     }
-
 
     public void onRestart()
     {
         print("재시작");
-        //PhotonNetwork.LoadLevel("ReloadScene");
+        if (PhotonNetwork.IsMasterClient)
+        {
+
+            PhotonNetwork.LoadLevel("ReloadScene");
+
+        }
+
     }
 
     public void onExit()

@@ -5,7 +5,7 @@ using Photon.Pun;
 public class Bomb : MonoBehaviourPun
 {
     Rigidbody rb;
-    float speed = 50;
+    float speed = 70;
     bool isHit;
     Transform vrPlayerPos;
     PhotonView SC;
@@ -66,15 +66,34 @@ public class Bomb : MonoBehaviourPun
 
     private void OnCollisionEnter(Collision collision)
     {
-        //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             Destroy(gameObject);
             SC.RPC("UpdatePCScore", RpcTarget.All);
         }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
+        {
+
+            ContactPoint contact = collision.contacts[0];
+
+            if (rb != null)
+            {
+                rb.velocity = contact.normal * 10f;
+            }
+
+            //rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+           
+            Destroy(gameObject);
+
+        }
         Destroy(gameObject);
-        hitFX.SetActive(true);
-        //Destroy(fx, 1.5f);
+        //hitFX.SetActive(true);
+        Destroy(fx, 1.5f);
 
     }
     private void OnTriggerEnter(Collider other)

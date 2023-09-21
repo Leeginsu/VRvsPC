@@ -6,7 +6,7 @@ using Photon.Pun;
 
 public class ScoreManager : MonoBehaviourPun
 {
-    //public static ScoreManager instance;
+    public static ScoreManager instance;
     public int vrScore;
     public int pcScore;
 
@@ -17,10 +17,10 @@ public class ScoreManager : MonoBehaviourPun
     public GameObject TimePanel;
     public GameObject ScorePanel;
     // Start is called before the first frame update
-    //void Awake()
-    //{
-    //    instance = this;
-    //}
+    void Awake()
+    {
+        instance = this;
+    }
 
 
     [PunRPC]

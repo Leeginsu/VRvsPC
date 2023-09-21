@@ -302,11 +302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f76aedbd2b496d4793f617d02f34e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketBullet: {fileID: 466776199987807670, guid: 9e9157092e641064380e904884ba72e9, type: 3}
   firePos: {fileID: 1531911155538872253}
   ch: {fileID: 0}
   rocket: {fileID: 0}
-  isFire: 0
 --- !u!114 &208359547721649739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,7 +464,7 @@ MonoBehaviour:
   player: {fileID: 1838340309733776639}
   moveSpeed: 10
   jumpCount: 1
-  jumpPower: 3
+  jumpPower: 4
   rocketCount: 0
   isRocket: 0
   rocketPower: 20
