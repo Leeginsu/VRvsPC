@@ -323,8 +323,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 1531911154161681054}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -465,7 +464,7 @@ MonoBehaviour:
   player: {fileID: 1838340309733776639}
   moveSpeed: 10
   jumpCount: 1
-  jumpPower: 3
+  jumpPower: 4
   rocketCount: 0
   isRocket: 0
   rocketPower: 20
@@ -540,7 +539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1531911155538872253
 Transform:
   m_ObjectHideFlags: 0
