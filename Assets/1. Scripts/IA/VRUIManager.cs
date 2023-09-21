@@ -7,7 +7,7 @@ using UnityEngine.XR;
 using OVRTouchSample;
 public class VRUIManager : MonoBehaviourPunCallbacks
 {
-    public GameObject StartBTN;
+    public GameObject LoadingUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +20,19 @@ public class VRUIManager : MonoBehaviourPunCallbacks
         onStartVRBTNClick();
     }
 
+    IEnumerator LoadingImg()
+    {
+        LoadingUI.SetActive(true);
+        yield return new WaitForSeconds(3f);
+    }
+
     public void onStartVRBTNClick()
     {
 
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
             print("click");
+            StartCoroutine(LoadingImg());
             PhotonNetwork.LoadLevel("ProtoScene_Net");
         }
     }
