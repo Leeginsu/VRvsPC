@@ -214,14 +214,18 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         if(collision.gameObject.layer == LayerMask.NameToLayer("Grabable"))
         {
-            if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
+            if(collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 0.5f)
             {
                 photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", true);
                 //anim.SetBool("Hit",true);
                 isHit = true;
-                
-                
             }
+            //if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
+            //{
+            //    photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", true);
+            //    //anim.SetBool("Hit",true);
+            //    isHit = true; 
+            //}
         }
 
         if(collision.gameObject.tag == "Bullet")
