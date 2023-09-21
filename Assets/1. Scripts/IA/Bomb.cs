@@ -66,7 +66,7 @@ public class Bomb : MonoBehaviourPun
 
     private void OnCollisionEnter(Collision collision)
     {
-        //var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
+        var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             Destroy(gameObject);
@@ -93,7 +93,7 @@ public class Bomb : MonoBehaviourPun
         }
         Destroy(gameObject);
         //hitFX.SetActive(true);
-        //Destroy(fx, 1.5f);
+        Destroy(fx, 1.5f);
 
     }
     private void OnTriggerEnter(Collider other)
