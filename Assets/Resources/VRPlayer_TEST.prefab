@@ -1066,7 +1066,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1229366428816771820}
-  m_Layer: 17
+  m_Layer: 25
   m_Name: LeftHandOnControllerAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2960181800515907926}
   - component: {fileID: 1195153913}
-  m_Layer: 17
+  m_Layer: 25
   m_Name: LeftControllerInHandAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 407057416001173880}
   - component: {fileID: 8174628184856745465}
   - component: {fileID: 1195153912}
-  m_Layer: 17
+  m_Layer: 25
   m_Name: RightHandAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1338,7 +1338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3325900670876018361}
-  m_Layer: 17
+  m_Layer: 25
   m_Name: RightControllerInHandAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1569,7 +1569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8931282477487899812}
-  m_Layer: 17
+  m_Layer: 25
   m_Name: RightHandOnControllerAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1667,7 +1667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6591012363730614598}
   - component: {fileID: 1195153914}
-  m_Layer: 17
+  m_Layer: 25
   m_Name: LeftControllerAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3393,7 +3393,7 @@ GameObject:
   - component: {fileID: 7608917567281863587}
   - component: {fileID: 8174628184856745466}
   - component: {fileID: 1195153915}
-  m_Layer: 17
+  m_Layer: 25
   m_Name: LeftHandAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5910,7 +5910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2966126877655911888}
   - component: {fileID: 1195153911}
-  m_Layer: 17
+  m_Layer: 25
   m_Name: RightControllerAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
