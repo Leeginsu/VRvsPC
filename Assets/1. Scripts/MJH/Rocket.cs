@@ -28,13 +28,6 @@ public class Rocket : MonoBehaviourPun
         SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-
-      
-        //photonView.ObservedComponents[0] = transform.parent;
-
-        //GetComponent<ConstantForce>().force = new Vector3(0, -9.8f, 0);
-        //Physics.gravity = new Vector3(0,-9.8f,0);
-        //rb.velocity = transform.forward * rocketSpeed;
     }
 
     
@@ -46,18 +39,12 @@ public class Rocket : MonoBehaviourPun
         if (useGravity)
         {
             rb.velocity += new Vector3(0, gravity * Time.fixedDeltaTime, 0);
-            //rb.transform.forward = rb.velocity.normalized;
+            rb.transform.forward = rb.velocity.normalized;
         }
 
         
     }
 
-    [PunRPC]
-    void InstantiateRpc(Transform dir)
-    {
-        transform.parent = dir;
-        //rb.useGravity = isBool;
-    }
 
     [PunRPC]
     void RocketTest(Vector3 dir, bool isBool)
@@ -66,10 +53,10 @@ public class Rocket : MonoBehaviourPun
         transform.forward = dir + Vector3.up * rocketUp;
         useGravity = isBool;
         rb.velocity = transform.forward * rocketPower;
-        
+
         spark1.SetActive(true);
     }
-    
+
 
     private void OnCollisionEnter(Collision collision)
     {
