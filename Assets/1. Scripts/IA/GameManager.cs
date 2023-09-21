@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviourPunCallbacks
    
         if (ConnectionManager.instance.isVR)
         {
-            GameObject vr = PhotonNetwork.Instantiate("VRPlayer", VRspawnPos.position, VRspawnPos.rotation);
+            GameObject vr = PhotonNetwork.Instantiate("VRPlayer_TEST", VRspawnPos.position, VRspawnPos.rotation);
             cv.transform.parent = vr.transform;
             cv.GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
         }
