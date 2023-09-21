@@ -75,6 +75,7 @@ public class Bomb : MonoBehaviourPun
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
 
+            print("collider check");
             ContactPoint contact = collision.contacts[0];
 
             if (rb != null)
@@ -91,9 +92,13 @@ public class Bomb : MonoBehaviourPun
             Destroy(gameObject);
 
         }
-        Destroy(gameObject);
-        //hitFX.SetActive(true);
-        Destroy(fx, 1.5f);
+        else
+        {
+
+            Destroy(gameObject);
+            //hitFX.SetActive(true);
+            Destroy(fx, 1.5f);
+        }
 
     }
     private void OnTriggerEnter(Collider other)
