@@ -469,6 +469,7 @@ MonoBehaviour:
   isRocket: 0
   rocketPower: 20
   trCam: {fileID: 1531911155070573512}
+  check: {fileID: 0}
   hitTime: 0
   isHit: 0
 --- !u!54 &1531911155282027244

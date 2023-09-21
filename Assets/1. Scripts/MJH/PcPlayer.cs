@@ -43,8 +43,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        rocketCount = Mathf.Clamp(rocketCount, 0, 5);
-
+        
 
         PhotonNetwork.SerializationRate = 60;
         SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
@@ -52,6 +51,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         if (photonView.IsMine)
         {
             trCam.SetActive(true);
+            rocketCount = 0;
         }
 
         jumpCount = 1;
@@ -66,7 +66,10 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        PlayerMove();
+        if(isHit == false)
+        {
+            PlayerMove();
+        }
 
         if (photonView.IsMine && isHit == true)
         {
@@ -148,12 +151,15 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (rocketCount > 0 && isRocket == false)
+                if (rocketCount > 0)
                 {
                     transform.GetComponent<Rigidbody>().AddForce(Vector3.up * rocketPower, ForceMode.Impulse);
                     isRocket = true;
                     photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Jumping");
-                    rocketCount--;
+                    if(rocketCount > 0)
+                    {
+                        rocketCount--;
+                    }
                 }
             }
         }
@@ -223,7 +229,10 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         if(collision.gameObject.tag == "Bullet")
         {
             Destroy(collision.gameObject);
-            rocketCount++;
+            if (rocketCount < 4 && photonView.IsMine)
+            {
+                rocketCount++;
+            }
         }
 
     }

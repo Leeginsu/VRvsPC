@@ -10,8 +10,6 @@ public class CamPos : MonoBehaviourPun
     public Transform firePos;
     public GameObject ch;
 
-    int rocketCount;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +20,6 @@ public class CamPos : MonoBehaviourPun
         //ch.SetActive(false);
         mainCam = Camera.main.gameObject;
         mainCam.transform.eulerAngles = new Vector3(5, 0, 0);
-
-        rocketCount = GetComponentInParent<PcPlayer>().rocketCount;
     }
 
 
@@ -48,7 +44,7 @@ public class CamPos : MonoBehaviourPun
         if (photonView.IsMine)
         {
             // 마우스 왼쪽 버튼을 눌렀을 때
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && GetComponentInParent<PcPlayer>().rocketCount >0)
             {
                 // 1. 로켓 소환
                 rocket = PhotonNetwork.Instantiate("RocketTest", firePos.position, transform.rotation);
@@ -62,15 +58,18 @@ public class CamPos : MonoBehaviourPun
             }
             
 
-            else if (Input.GetButton("Fire1"))
+            else if (Input.GetButton("Fire1") && GetComponentInParent<PcPlayer>().rocketCount > 0)
             {
                 rocket.transform.position = firePos.position;
                 dir = transform.forward;
             }
-            else if (Input.GetButtonUp("Fire1"))
+            else if (Input.GetButtonUp("Fire1") && GetComponentInParent<PcPlayer>().rocketCount > 0)
             {
                 pv.RPC("RocketTest", RpcTarget.All, dir, true);
-                rocketCount--;
+                if(GetComponentInParent<PcPlayer>().rocketCount > 0)
+                {
+                    GetComponentInParent<PcPlayer>().rocketCount--;
+                }
             }
 
             NormalCam();
