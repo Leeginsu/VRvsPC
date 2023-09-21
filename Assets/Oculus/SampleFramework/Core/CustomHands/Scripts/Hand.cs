@@ -118,8 +118,10 @@ namespace OVRTouchSample
             m_thumbsUpBlend = InputValueRateChange(m_isGivingThumbsUp, m_thumbsUpBlend);
 
             float flex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
+            bool aa = OVRInput.Get(OVRInput.Button.One, m_controller);
 
-            bool collisionEnabled = m_grabber.grabbedObject == null && flex >= THRESH_COLLISION_FLEX;
+
+            bool collisionEnabled = m_grabber.grabbedObject == null && (flex >= THRESH_COLLISION_FLEX || aa == true);
             CollisionEnable(collisionEnabled);
 
             UpdateAnimStates();
