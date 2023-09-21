@@ -99,9 +99,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 
 
-
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        
         Debug.Log($"플레이어 {newPlayer.NickName} 방 참가.");
         Debug.Log($"MAX {PhotonNetwork.CurrentRoom.PlayerCount} / {PhotonNetwork.CurrentRoom.MaxPlayers}");
         //players.Add(newPlayer.NickName);
@@ -132,7 +132,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
     public override void OnJoinedRoom()
     {
-
+        print(PhotonNetwork.CurrentRoom.PlayerCount);
         base.OnJoinedRoom();
         print("OnJoinedRoom 입장!");
         
@@ -217,15 +217,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         
         //}
     }
-
+   
 
     IEnumerator LoadingImg()
     {
-        LoadingUI.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        photonView.RPC("viewImg", RpcTarget.All);
+      
+        yield return new WaitForSeconds(3f);
         PhotonNetwork.LoadLevel("ProtoScene_Net");
     }
 
- 
+
+    [PunRPC]
+    void viewImg()
+    {
+        LoadingUI.SetActive(true);
+    }
 
 }

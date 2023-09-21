@@ -59,8 +59,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         respawnPos = GameObject.Find("PCPlayerPosList");
         randomIndex = Random.Range(0, respawnPos.transform.childCount);
-
-
+        
+        GameManager.instance.AddPcPlayer(photonView);
     }
 
     // Update is called once per frame

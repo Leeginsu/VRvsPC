@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public GameObject cv;
 
+    public Dictionary<int, PhotonView> pcPlayer = new Dictionary<int, PhotonView>();
+
     void Awake()
     {
         instance = this;
@@ -35,7 +37,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         TimePanel.SetActive(true);
         TimeTXT = TimePanel.GetComponent<TextMeshProUGUI>();
         int PCplayerCnt = PhotonNetwork.CurrentRoom.PlayerCount;
- 
 
         // 게임 씬에 입장한 플레이어 수에 따라 스폰 위치 선택
    
@@ -47,18 +48,53 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            photonView.RPC("setPlayerCnt", RpcTarget.AllBuffered);
-            PhotonNetwork.Instantiate("Player_Proto", PCspawnList[playerIndex].position, Quaternion.identity);
-            cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+            //PCspawnList[playerIndex].position
+            //photonView.RPC("setPlayerCnt", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.UserId);
+            PhotonNetwork.Instantiate("Player_Proto", Vector3.zero, Quaternion.identity);
+            //StartCoroutine(CheckRPC());
+            cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;          
         }        
     }
 
-    [PunRPC]
-    public void setPlayerCnt()
+    public void AddPcPlayer(PhotonView pv)
     {
-        playerIndex++;
-        print("playerIndex" + playerIndex);
+        pcPlayer[pv.ViewID] = pv;
+
+        if(PhotonNetwork.IsMasterClient)
+        {
+            if(pcPlayer.Count == PhotonNetwork.CurrentRoom.MaxPlayers - 1)
+            {
+                int index = 0;
+                foreach(PhotonView view in pcPlayer.Values)
+                {                    
+                    photonView.RPC(nameof(setPlayerCnt), RpcTarget.All, view.ViewID, index);
+                    index++;
+                }
+            }
+        }
     }
+
+
+
+    [PunRPC]
+    public void setPlayerCnt(int viewId, int index)
+    {
+        pcPlayer[viewId].transform.position = PCspawnList[index].position;
+    }
+
+    IEnumerator CheckRPC()
+    {
+        // RPC 호출
+        photonView.RPC("setPlayerCnt", RpcTarget.All);
+
+        // RPC 호출 완료까지 대기
+        yield return new WaitForSeconds(2f);
+        print("RPCplayerIndex" + playerIndex);
+      
+        // 대기 후에 실행될 코드
+        Debug.Log("RPC 호출 완료 확인");
+    }
+
 
     float currentTime = 0;
     public float originGameTime = 60f;

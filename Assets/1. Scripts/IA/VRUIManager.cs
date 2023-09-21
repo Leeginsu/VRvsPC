@@ -22,9 +22,16 @@ public class VRUIManager : MonoBehaviourPunCallbacks
 
     IEnumerator LoadingImg()
     {
-        LoadingUI.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        photonView.RPC("viewImg", RpcTarget.All);
+       
+        yield return new WaitForSeconds(3f);
         PhotonNetwork.LoadLevel("ProtoScene_Net");
+    }
+
+    [PunRPC]
+    void viewImg()
+    {
+        LoadingUI.SetActive(true);
     }
 
     public void onStartVRBTNClick()
