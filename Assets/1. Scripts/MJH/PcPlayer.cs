@@ -43,8 +43,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        rocketCount = Mathf.Clamp(rocketCount, 0, 5);
-
+        
 
         PhotonNetwork.SerializationRate = 60;
         SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
@@ -52,6 +51,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         if (photonView.IsMine)
         {
             trCam.SetActive(true);
+            rocketCount = 0;
         }
 
         jumpCount = 1;
@@ -59,14 +59,17 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         respawnPos = GameObject.Find("PCPlayerPosList");
         randomIndex = Random.Range(0, respawnPos.transform.childCount);
-
-
+        
+        GameManager.instance.AddPcPlayer(photonView);
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerMove();
+        if(isHit == false)
+        {
+            PlayerMove();
+        }
 
         if (photonView.IsMine && isHit == true)
         {
@@ -148,12 +151,13 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (rocketCount > 0 && isRocket == false)
+                if (rocketCount > 0)
                 {
                     transform.GetComponent<Rigidbody>().AddForce(Vector3.up * rocketPower, ForceMode.Impulse);
                     isRocket = true;
                     photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Jumping");
-                    rocketCount--;
+                        rocketCount--;
+
                 }
             }
         }
@@ -196,8 +200,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
             if(isRocket == true)
             {
-                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
                 isRocket = false;
+                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
             }
             else
             {
@@ -222,8 +226,20 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         if(collision.gameObject.tag == "Bullet")
         {
+            print("++");
             Destroy(collision.gameObject);
-            rocketCount++;
+            print("prev_rocketCount" + rocketCount);
+            print("photonView.IsMine" + photonView.IsMine);
+            if (photonView.IsMine)
+            {
+              
+                if (rocketCount < 4)
+                {
+                    print("rocketCount"+ rocketCount);
+                    this.rocketCount++;
+                }
+            }
+            
         }
 
     }
