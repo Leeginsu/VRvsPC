@@ -17,7 +17,7 @@ public class ItemManager : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        
+        InstantiateManager();
     }
 
 
@@ -29,14 +29,15 @@ public class ItemManager : MonoBehaviourPun
         {
             if(rocPos[i].transform.childCount < 2)
             {
-                Invoke("InstatiateRocket", 3);
+                Invoke("InstantiateRocket", 3);
             }
         }
     }
 
-    void InstatiateRocket(Vector3 position)
+    void InstatianteRocket(Vector3 position)
     {
         item = PhotonNetwork.Instantiate("Item", position, Quaternion.identity);
+        
         item.transform.SetParent(gameObject.transform);
     }
     // 소환된 로켓은 배열의 자식으로 들어간다.

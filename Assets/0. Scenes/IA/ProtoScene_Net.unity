@@ -4662,9 +4662,10 @@ GameObject:
   - component: {fileID: 9220316526713591406}
   - component: {fileID: 8684152611298671136}
   - component: {fileID: 1838137125745770526}
+  - component: {fileID: 9220316526713591407}
   m_Layer: 0
   m_Name: SnowBall.001
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9492,3 +9493,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &9220316526713591407
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093424574986825351}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -700013313413671452, guid: 6651b302ee087d34a8a71e8013092d70, type: 3}
