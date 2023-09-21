@@ -17,7 +17,7 @@ MonoBehaviour:
     AppIdFusion: 
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 1
+    AppVersion: 1.2
     UseNameServer: 1
     FixedRegion: asia
     Server: 
@@ -39,24 +39,22 @@ MonoBehaviour:
   - DestroySpaceship
   - downTrigger
   - Fire
-  - InstantiateRpc
   - NotionRPC
   - RespawnSpaceship
-  - RocketFireRpc
-  - RocketInstantiateRpc
   - RocketTest
+  - scoreView
   - SetBool
+  - setPlayerCnt
   - setPlayerTXT
   - setTriggerBomb
   - SetTriggerRpc
-  - UpdatePosRpc
-  - upTrigger
-  - setPlayerCnt
-  - UpdateScores
-  - UpdateWinner
-  - scoreView
   - UpdatePCScore
+  - UpdatePosRpc
+  - UpdateScores
   - UpdateVRScore
+  - UpdateWinner
+  - upTrigger
+  - viewImg
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

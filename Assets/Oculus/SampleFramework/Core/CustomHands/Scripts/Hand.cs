@@ -41,7 +41,8 @@ namespace OVRTouchSample
 
         public const float INPUT_RATE_CHANGE = 20.0f;
 
-        public const float COLLIDER_SCALE_MIN = 0.01f;
+        //public const float COLLIDER_SCALE_MIN = 0.01f;
+        public const float COLLIDER_SCALE_MIN = 1.0f;
         public const float COLLIDER_SCALE_MAX = 1.0f;
         public const float COLLIDER_SCALE_PER_SECOND = 1.0f;
 
@@ -117,8 +118,10 @@ namespace OVRTouchSample
             m_thumbsUpBlend = InputValueRateChange(m_isGivingThumbsUp, m_thumbsUpBlend);
 
             float flex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
+            bool aa = OVRInput.Get(OVRInput.Button.One, m_controller);
 
-            bool collisionEnabled = m_grabber.grabbedObject == null && flex >= THRESH_COLLISION_FLEX;
+
+            bool collisionEnabled = m_grabber.grabbedObject == null && (flex >= THRESH_COLLISION_FLEX || aa == true);
             CollisionEnable(collisionEnabled);
 
             UpdateAnimStates();
@@ -142,8 +145,8 @@ namespace OVRTouchSample
                 for (int i = 0; i < m_colliders.Length; ++i)
                 {
                     Collider collider = m_colliders[i];
-                    collider.transform.localScale = new Vector3(m_collisionScaleCurrent, m_collisionScaleCurrent,
-                        m_collisionScaleCurrent);
+                    //collider.transform.localScale = new Vector3(m_collisionScaleCurrent, m_collisionScaleCurrent,
+                    //    m_collisionScaleCurrent);
                 }
             }
         }
@@ -231,7 +234,8 @@ namespace OVRTouchSample
             m_animator.SetFloat("Pinch", pinch);
         }
 
-        private float m_collisionScaleCurrent = 0.0f;
+        //private float m_collisionScaleCurrent = 0.0f;
+        private float m_collisionScaleCurrent = 1f;
 
         private void CollisionEnable(bool enabled)
         {
@@ -250,7 +254,7 @@ namespace OVRTouchSample
                     Collider collider = m_colliders[i];
                     collider.transform.localScale =
                         new Vector3(COLLIDER_SCALE_MIN, COLLIDER_SCALE_MIN, COLLIDER_SCALE_MIN);
-                    collider.enabled = true;
+                    collider.enabled = false;
                 }
             }
             else
@@ -259,7 +263,7 @@ namespace OVRTouchSample
                 for (int i = 0; i < m_colliders.Length; ++i)
                 {
                     Collider collider = m_colliders[i];
-                    collider.enabled = false;
+                    collider.enabled = true;
                     collider.transform.localScale =
                         new Vector3(COLLIDER_SCALE_MIN, COLLIDER_SCALE_MIN, COLLIDER_SCALE_MIN);
                 }
