@@ -23,11 +23,11 @@ public class VRUIEndingMgr : MonoBehaviourPunCallbacks
 
     public void onRestartVRBTNClick()
     {
-        //if (OVRInput.GetDown(OVRInput.Button.One)&& PhotonNetwork.IsMasterClient)
-        //{
-        //    print("재시작 click");
-        //    PhotonNetwork.LoadLevel("ReloadScene");
-        //}
+        if (OVRInput.GetDown(OVRInput.Button.One) && PhotonNetwork.IsMasterClient)
+        {
+            print("재시작 click");
+            PhotonNetwork.LoadLevel("ReloadScene");
+        }
     }
 
     public override void OnLeftRoom()
@@ -41,6 +41,7 @@ public class VRUIEndingMgr : MonoBehaviourPunCallbacks
         if (OVRInput.GetDown(OVRInput.RawButton.A))
         {
             print("종료 버튼 클릭");
+            Application.Quit();
             //PhotonNetwork.LoadLevel("ProtoScene_Net");
         }
     }

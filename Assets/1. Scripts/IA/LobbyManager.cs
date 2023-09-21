@@ -203,7 +203,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void onStartVRBTNClick()
     {
 
-
+        print("StartBTN");
     }
 
     public void onStartBTNClick()
