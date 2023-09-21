@@ -56,13 +56,18 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
 
-
+    IEnumerator yieldTime()
+    {
+        yield return new WaitForSeconds(4f);
+    }
 
     //로비 진입 성공 시 호출
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
+        
         print("씬이동");
+        StartCoroutine(yieldTime());
         PhotonNetwork.LoadLevel("LobbyScene");
     }
 
