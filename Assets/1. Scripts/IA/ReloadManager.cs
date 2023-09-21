@@ -4,22 +4,25 @@ using UnityEngine;
 using Photon.Pun;
 public class ReloadManager : MonoBehaviourPunCallbacks
 {
+    //public GameObject LoadingUI;
     // Start is called before the first frame update
     void Start()
     {
-        //if (PhotonNetwork.IsMasterClient)
-        //{
-        //    PhotonNetwork.LoadLevel("ProtoScene_Net");
-        //}
-        
+        if (PhotonNetwork.IsMasterClient)
+        {
+            //PhotonNetwork.LoadLevel("ProtoScene_Net");
+            StartCoroutine(LoadScene());
+        }
+
     }
 
-    //IEnumerator LoadScene()
-    //{
-    //    yield return new WaitForSeconds(2f);
-    //    PhotonNetwork.LoadLevel("ProtoScene_Net");
-       
-    //}
+    IEnumerator LoadScene()
+    {
+        //LoadingUI.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        PhotonNetwork.LoadLevel("ProtoScene_Net");
+
+    }
 
     // Update is called once per frame
     void Update()

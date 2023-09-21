@@ -5,7 +5,7 @@ using Photon.Pun;
 public class Bomb : MonoBehaviourPun
 {
     Rigidbody rb;
-    float speed = 50;
+    float speed = 70;
     bool isHit;
     Transform vrPlayerPos;
     PhotonView SC;
