@@ -12,6 +12,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public Transform PlayerPanel;
     public GameObject VRPlayerTXT;
+    public GameObject LoadingUI;
+
 
     bool isVR;
     public int VRPlayerCnt = 0;
@@ -211,7 +213,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         //if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
         //{
-            PhotonNetwork.LoadLevel("ProtoScene_Net");
+        StartCoroutine(LoadingImg());
+        
         //}
     }
+
+
+    IEnumerator LoadingImg()
+    {
+        LoadingUI.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        PhotonNetwork.LoadLevel("ProtoScene_Net");
+    }
+
+ 
+
 }

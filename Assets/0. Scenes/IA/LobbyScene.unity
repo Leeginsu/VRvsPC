@@ -2229,6 +2229,7 @@ MonoBehaviour:
   StartBTN: {fileID: 900653594}
   PlayerPanel: {fileID: 1757698031}
   VRPlayerTXT: {fileID: 1713237529}
+  LoadingUI: {fileID: 788382732}
   VRPlayerCnt: 0
   VRPlayerList: 
   cv: {fileID: 1789133143}
@@ -3025,7 +3026,7 @@ RectTransform:
   m_GameObject: {fileID: 1757698030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5284486, z: 1}
+  m_LocalScale: {x: 1, y: 0.5614766, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1789133144}
@@ -3090,7 +3091,7 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: 74
   m_ChildAlignment: 7
   m_Spacing: 10
   m_ChildForceExpandWidth: 1

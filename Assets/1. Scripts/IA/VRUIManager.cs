@@ -23,7 +23,8 @@ public class VRUIManager : MonoBehaviourPunCallbacks
     IEnumerator LoadingImg()
     {
         LoadingUI.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
+        PhotonNetwork.LoadLevel("ProtoScene_Net");
     }
 
     public void onStartVRBTNClick()
@@ -33,7 +34,7 @@ public class VRUIManager : MonoBehaviourPunCallbacks
         {
             print("click");
             StartCoroutine(LoadingImg());
-            PhotonNetwork.LoadLevel("ProtoScene_Net");
+            
         }
     }
 }
