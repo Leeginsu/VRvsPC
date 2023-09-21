@@ -156,10 +156,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
                     transform.GetComponent<Rigidbody>().AddForce(Vector3.up * rocketPower, ForceMode.Impulse);
                     isRocket = true;
                     photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Jumping");
-                    if(rocketCount > 0)
-                    {
                         rocketCount--;
-                    }
+
                 }
             }
         }
@@ -202,8 +200,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
             if(isRocket == true)
             {
-                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
                 isRocket = false;
+                photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
             }
             else
             {
@@ -228,11 +226,20 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         if(collision.gameObject.tag == "Bullet")
         {
+            print("++");
             Destroy(collision.gameObject);
-            if (rocketCount < 4 && photonView.IsMine)
+            print("prev_rocketCount" + rocketCount);
+            print("photonView.IsMine" + photonView.IsMine);
+            if (photonView.IsMine)
             {
-                rocketCount++;
+              
+                if (rocketCount < 4)
+                {
+                    print("rocketCount"+ rocketCount);
+                    this.rocketCount++;
+                }
             }
+            
         }
 
     }
