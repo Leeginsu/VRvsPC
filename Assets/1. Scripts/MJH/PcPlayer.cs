@@ -179,7 +179,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
 
 
-
+    public ItemCheck check;
 
     public float hitTime = 0;
     public bool isHit;
