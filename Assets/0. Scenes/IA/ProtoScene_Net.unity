@@ -214,9 +214,9 @@ GameObject:
   - component: {fileID: 69496895}
   - component: {fileID: 69496894}
   - component: {fileID: 69496893}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (5)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,9 +606,9 @@ GameObject:
   - component: {fileID: 312452228}
   - component: {fileID: 312452227}
   - component: {fileID: 312452226}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (14)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -756,9 +756,9 @@ GameObject:
   - component: {fileID: 408922229}
   - component: {fileID: 408922228}
   - component: {fileID: 408922227}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (4)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1539,9 +1539,9 @@ GameObject:
   - component: {fileID: 839708937}
   - component: {fileID: 839708936}
   - component: {fileID: 839708935}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (6)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1689,9 +1689,9 @@ GameObject:
   - component: {fileID: 855542040}
   - component: {fileID: 855542039}
   - component: {fileID: 855542038}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (11)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1839,9 +1839,9 @@ GameObject:
   - component: {fileID: 857651907}
   - component: {fileID: 857651906}
   - component: {fileID: 857651905}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (12)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2339,9 +2339,9 @@ GameObject:
   - component: {fileID: 995207658}
   - component: {fileID: 995207657}
   - component: {fileID: 995207656}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (9)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2489,9 +2489,9 @@ GameObject:
   - component: {fileID: 1001175035}
   - component: {fileID: 1001175034}
   - component: {fileID: 1001175033}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (7)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3010,9 +3010,9 @@ GameObject:
   - component: {fileID: 1175631750}
   - component: {fileID: 1175631749}
   - component: {fileID: 1175631748}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (3)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3983,9 +3983,9 @@ GameObject:
   - component: {fileID: 1563070579}
   - component: {fileID: 1563070578}
   - component: {fileID: 1563070577}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (10)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4300,9 +4300,9 @@ GameObject:
   - component: {fileID: 1797371783}
   - component: {fileID: 1797371782}
   - component: {fileID: 1797371781}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (13)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5103,9 +5103,9 @@ GameObject:
   - component: {fileID: 2111584117}
   - component: {fileID: 2111584116}
   - component: {fileID: 2111584115}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (8)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5518,7 +5518,7 @@ GameObject:
   - component: {fileID: 913005093256575801}
   - component: {fileID: 4252663443374552220}
   - component: {fileID: 2080814310177751126}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: presentbox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5578,7 +5578,7 @@ GameObject:
   - component: {fileID: 206713677223973142}
   - component: {fileID: 3851069625935158963}
   - component: {fileID: 1339055775770323577}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: presentbox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5596,7 +5596,7 @@ GameObject:
   - component: {fileID: 528739992037405678}
   - component: {fileID: 3529042745553435723}
   - component: {fileID: 1665587372629248129}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: macaron_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5756,7 +5756,7 @@ GameObject:
   - component: {fileID: 1778863113107256332}
   - component: {fileID: 3386725640987392937}
   - component: {fileID: 640890274856456035}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: macaron_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5782,7 +5782,7 @@ GameObject:
   - component: {fileID: 2289659309703027449}
   - component: {fileID: 2911958241167332700}
   - component: {fileID: 1120743053420405142}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: macaron_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6052,7 +6052,7 @@ GameObject:
   - component: {fileID: 2571715898017191986}
   - component: {fileID: 1449959443801642903}
   - component: {fileID: 3745795492313162589}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: presentbox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6089,7 +6089,7 @@ GameObject:
   - component: {fileID: 2790808532816997779}
   - component: {fileID: 1230936279565247030}
   - component: {fileID: 3959188881738323708}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: macaron_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6123,7 +6123,7 @@ GameObject:
   - component: {fileID: 4104813692686484656}
   - component: {fileID: 1105882040906271509}
   - component: {fileID: 2935245875768934367}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: presentbox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7094,7 +7094,7 @@ GameObject:
   - component: {fileID: 5665709678860344625}
   - component: {fileID: 8723331165453914772}
   - component: {fileID: 6839710215557441118}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: presentbox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8607,7 +8607,7 @@ GameObject:
   - component: {fileID: 6716011378386260024}
   - component: {fileID: 7681957139274719133}
   - component: {fileID: 5584248139561184087}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: presentbox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8640,7 +8640,7 @@ GameObject:
   - component: {fileID: 6328526491573666410}
   - component: {fileID: 6952619688642399695}
   - component: {fileID: 5158976232351217925}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: presentbox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10663,7 +10663,7 @@ GameObject:
   - component: {fileID: 7694333850803872448}
   - component: {fileID: 6730656356700958053}
   - component: {fileID: 8830695762652453295}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: presentbox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10845,9 +10845,9 @@ GameObject:
   - component: {fileID: 8196539762368188068}
   - component: {fileID: 8196539762368188091}
   - component: {fileID: 1747081594643922536}
-  m_Layer: 18
+  m_Layer: 26
   m_Name: Stone (2)
-  m_TagString: Untagged
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10880,7 +10880,7 @@ GameObject:
   - component: {fileID: 8965734039616581452}
   - component: {fileID: 5459334776848015593}
   - component: {fileID: 7793342025078051875}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: macaron_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
