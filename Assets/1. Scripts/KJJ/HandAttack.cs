@@ -88,7 +88,7 @@ public class HandAttack : MonoBehaviourPun
             for (int i = 0; i < waveNum; i++)
             {
                 //print("¼îÅ©¿þÀÌºê!");
-                GameObject shockWave = PhotonNetwork.Instantiate("Wave", new Vector3(0, 0, 0), Quaternion.identity);
+                GameObject shockWave = PhotonNetwork.Instantiate("Wave2", new Vector3(0, 0, 0), Quaternion.identity);
                 //GameObject shockWave = Instantiate(wave);
                 Vector3 fx = hitInfo.point + ((dir * (i * 4f)) + new Vector3(1 * Random.value * 3f, 0, 0));
                 shockWave.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
@@ -98,14 +98,14 @@ public class HandAttack : MonoBehaviourPun
 
                 StartCoroutine(DestroyWave(shockWave, 1f));
                 //Destroy(shockWave.gameObject, 1f);
-                if (i % 2 == 0)
-                {
-                    GameObject shockWave_E = PhotonNetwork.Instantiate("E_Wave", new Vector3(0, 0, 0), Quaternion.identity);
-                    shockWave_E.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
-                    shockWave_E.transform.localScale = new Vector3(8, 3, 8);
+                //if (i % 2 == 0)
+                //{
+                //    GameObject shockWave_E = PhotonNetwork.Instantiate("E_Wave", new Vector3(0, 0, 0), Quaternion.identity);
+                //    shockWave_E.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
+                //    shockWave_E.transform.localScale = new Vector3(8, 3, 8);
 
-                    StartCoroutine(DestroyWave(shockWave_E, 0.9f));
-                }
+                //    StartCoroutine(DestroyWave(shockWave_E, 0.9f));
+                //}
 
                 for (int j = 0; j < 2; j++)
                 {
