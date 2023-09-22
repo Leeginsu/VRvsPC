@@ -94,10 +94,17 @@ public class HandAttack : MonoBehaviourPun
                 shockWave.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
                 shockWave.transform.localScale = new Vector3(2, 2, 2) * Random.Range(1.0f, 2.0f);
                 shockWave.transform.localRotation = Quaternion.Euler(1 * Random.value * 45, 1 * Random.value * 45, 1 * Random.value * 45);
-                PhotonView waveDestroy = shockWave.transform.GetComponent<PhotonView>();
+                //PhotonView waveDestroy = shockWave.transform.GetComponent<PhotonView>();
 
                 StartCoroutine(DestroyWave(shockWave, 1f));
                 //Destroy(shockWave.gameObject, 1f);
+                if (i % 2 == 0)
+                {
+                    GameObject shockWave_E = PhotonNetwork.Instantiate("E_Wave", new Vector3(0, 0, 0), Quaternion.identity);
+                    shockWave_E.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
+
+                    StartCoroutine(DestroyWave(shockWave_E, 2f));
+                }
 
                 for (int j = 0; j < 2; j++)
                 {
@@ -107,7 +114,7 @@ public class HandAttack : MonoBehaviourPun
                     carving.transform.localRotation = Quaternion.Euler(1 * Random.value * 45, 1 * Random.value * 45, 1 * Random.value * 45);
                     //Destroy(carving.gameObject, 0.7f);
 
-                    StartCoroutine(DestroyWave(carving, 1f));
+                    StartCoroutine(DestroyWave(carving, 1.5f));
                 }
 
                 yield return new WaitForSeconds(0.05f);
