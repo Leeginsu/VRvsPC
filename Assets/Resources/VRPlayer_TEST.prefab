@@ -838,7 +838,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 117375031
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2051,7 +2051,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 117375031
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3653,6 +3653,7 @@ MonoBehaviour:
   - {fileID: 1195153915}
   - {fileID: 1195153912}
   - {fileID: 654913035997776090}
+  - {fileID: 1054869062714027794}
   - {fileID: 1195153914}
   - {fileID: 1195153913}
   - {fileID: 1195153911}
@@ -5365,7 +5366,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 117375031
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6108,11 +6109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8803396966338529267, guid: fb5f806d86a3e7342bfc2cc58e578cb1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.094
       objectReference: {fileID: 0}
     - target: {fileID: 8803396966338529267, guid: fb5f806d86a3e7342bfc2cc58e578cb1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 8803396966338529267, guid: fb5f806d86a3e7342bfc2cc58e578cb1, type: 3}
       propertyPath: m_LocalRotation.w
