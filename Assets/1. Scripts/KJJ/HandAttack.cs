@@ -94,7 +94,10 @@ public class HandAttack : MonoBehaviourPun
                 shockWave.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
                 shockWave.transform.localScale = new Vector3(2, 2, 2) * Random.Range(1.0f, 2.0f);
                 shockWave.transform.localRotation = Quaternion.Euler(1 * Random.value * 45, 1 * Random.value * 45, 1 * Random.value * 45);
-                Destroy(shockWave.gameObject, 1f);
+                PhotonView waveDestroy = shockWave.transform.GetComponent<PhotonView>();
+
+                StartCoroutine(DestroyWave(shockWave, 1f));
+                //Destroy(shockWave.gameObject, 1f);
 
                 for (int j = 0; j < 2; j++)
                 {
@@ -108,5 +111,12 @@ public class HandAttack : MonoBehaviourPun
                 yield return new WaitForSeconds(0.05f);
             }
         }
+    }
+
+    IEnumerator DestroyWave(GameObject target, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        PhotonNetwork.Destroy(target);
     }
 }
