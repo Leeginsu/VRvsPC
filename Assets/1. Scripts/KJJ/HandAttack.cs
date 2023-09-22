@@ -105,7 +105,9 @@ public class HandAttack : MonoBehaviourPun
                     carving.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
                     carving.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f) * Random.Range(1.0f, 2.0f);
                     carving.transform.localRotation = Quaternion.Euler(1 * Random.value * 45, 1 * Random.value * 45, 1 * Random.value * 45);
-                    Destroy(carving.gameObject, 0.7f);
+                    //Destroy(carving.gameObject, 0.7f);
+
+                    StartCoroutine(DestroyWave(carving, 1f));
                 }
 
                 yield return new WaitForSeconds(0.05f);
