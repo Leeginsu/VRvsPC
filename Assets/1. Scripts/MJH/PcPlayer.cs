@@ -11,7 +11,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     public GameObject player;
 
     // 플레이어 속도
-    [Range(1,15)]
+    [Range(1,20)]
     public float moveSpeed = 5f;
 
     // 플레이어 점프 가능 횟수
