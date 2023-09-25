@@ -192,13 +192,13 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         if (collision.gameObject.tag == "Ground")
         {
             jumpCount = 1;
-            if (isJump == true)
+            if (isJump == true && photonView.IsMine == true)
             {
                 photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
                 isJump = false;
             }
 
-            if(isRocket == true)
+            if(isRocket == true && photonView.IsMine == true)
             {
                 isRocket = false;
                 photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
