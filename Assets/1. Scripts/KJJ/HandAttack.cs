@@ -97,15 +97,6 @@ public class HandAttack : MonoBehaviourPun
                 //PhotonView waveDestroy = shockWave.transform.GetComponent<PhotonView>();
 
                 StartCoroutine(DestroyWave(shockWave, 1f));
-                //Destroy(shockWave.gameObject, 1f);
-                //if (i % 2 == 0)
-                //{
-                //    GameObject shockWave_E = PhotonNetwork.Instantiate("E_Wave", new Vector3(0, 0, 0), Quaternion.identity);
-                //    shockWave_E.transform.position = new Vector3(0, hitInfo.point.y, 0) + fx;
-                //    shockWave_E.transform.localScale = new Vector3(8, 3, 8);
-
-                //    StartCoroutine(DestroyWave(shockWave_E, 0.9f));
-                //}
 
                 for (int j = 0; j < 2; j++)
                 {
