@@ -11,7 +11,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     public GameObject player;
 
     // 플레이어 속도
-    [Range(1,10)]
+    [Range(1,20)]
     public float moveSpeed = 5f;
 
     // 플레이어 점프 가능 횟수
@@ -192,13 +192,13 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         if (collision.gameObject.tag == "Ground")
         {
             jumpCount = 1;
-            if (isJump == true)
+            if (isJump == true && photonView.IsMine == true)
             {
                 photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
                 isJump = false;
             }
 
-            if(isRocket == true)
+            if(isRocket == true && photonView.IsMine == true)
             {
                 isRocket = false;
                 photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
@@ -216,9 +216,13 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         {
             if(collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 0.5f)
             {
-                photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", true);
-                //anim.SetBool("Hit",true);
-                isHit = true;
+                if (photonView.IsMine)
+                {
+                    photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", true);
+                    //anim.SetBool("Hit",true);
+                    isHit = true;
+
+                }
             }
             //if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
             //{
