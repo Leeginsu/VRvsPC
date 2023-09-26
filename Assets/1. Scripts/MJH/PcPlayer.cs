@@ -259,7 +259,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
                 Vector3 dir = collision.gameObject.transform.position - transform.position;
 
-                transform.GetComponent<Rigidbody>().AddForce((-dir * 200f + (Vector3.up * 1000f)) * Time.deltaTime, ForceMode.Impulse);
+                transform.GetComponent<Rigidbody>().AddForce(((new Vector3(-dir.x,0, -dir.y) * 200f) + (Vector3.up * 1000f)) * Time.deltaTime, ForceMode.Impulse);
             }
         }
 
