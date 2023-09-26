@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -8708879267625191622}
   m_Layer: 26
   m_Name: Wave2
-  m_TagString: Untagged
+  m_TagString: Earthquake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

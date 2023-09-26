@@ -12,6 +12,7 @@ TagManager:
   - Head
   - Hand
   - Grabable
+  - Earthquake
   layers:
   - Default
   - TransparentFX
