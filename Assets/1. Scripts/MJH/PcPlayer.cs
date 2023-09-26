@@ -222,6 +222,9 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
                     //anim.SetBool("Hit",true);
                     isHit = true;
 
+                    Vector3 dir = collision.gameObject.transform.position - transform.position;
+
+                    transform.GetComponent<Rigidbody>().AddForce((-dir + Vector3.up) * 10f * Time.deltaTime, ForceMode.Impulse);
                 }
             }
             //if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
