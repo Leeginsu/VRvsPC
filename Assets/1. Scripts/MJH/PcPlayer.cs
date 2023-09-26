@@ -249,6 +249,20 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             //}
         }
 
+        if(collision.gameObject.tag == "Earthquake")
+        {
+            if (photonView.IsMine)
+            {
+                photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", true);
+                //anim.SetBool("Hit",true);
+                isHit = true;
+
+                Vector3 dir = collision.gameObject.transform.position - transform.position;
+
+                transform.GetComponent<Rigidbody>().AddForce((-dir * 200f + (Vector3.up * 1000f)) * Time.deltaTime, ForceMode.Impulse);
+            }
+        }
+
         if(collision.gameObject.tag == "Bullet")
         {
             print("++");
