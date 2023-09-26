@@ -75,6 +75,20 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
         {
             hitTime += Time.deltaTime;
 
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (rocketCount > 0)
+                {
+                    photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", false);
+                    photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Jumping");
+                    transform.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0) ;
+                    transform.GetComponent<Rigidbody>().AddForce((transform.forward * 5f + (Vector3.up * rocketPower)), ForceMode.Impulse);
+                    isRocket = true;
+                    rocketCount--;
+
+                }
+            }
+
             if (hitTime >= 3f)
             {
                 photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", false);
@@ -200,8 +214,8 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
             if(isRocket == true && photonView.IsMine == true)
             {
-                isRocket = false;
                 photonView.RPC(nameof(SetTriggerRpc), RpcTarget.All, "Land");
+                isRocket = false;
             }
             else
             {
@@ -214,7 +228,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         if(collision.gameObject.layer == LayerMask.NameToLayer("Grabable"))
         {
-            if(collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 0.5f)
+            if (collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 0.5f)
             {
                 if (photonView.IsMine)
                 {
@@ -222,6 +236,9 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
                     //anim.SetBool("Hit",true);
                     isHit = true;
 
+                    Vector3 dir = collision.gameObject.transform.position - transform.position;
+
+                    transform.GetComponent<Rigidbody>().AddForce((-dir * 200f + (Vector3.up * 1000f)) * Time.deltaTime, ForceMode.Impulse);
                 }
             }
             //if(collision.gameObject.GetComponent<Rigidbody>().isKinematic == false)
@@ -230,6 +247,20 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
             //    //anim.SetBool("Hit",true);
             //    isHit = true; 
             //}
+        }
+
+        if(collision.gameObject.tag == "Earthquake")
+        {
+            if (photonView.IsMine)
+            {
+                photonView.RPC(nameof(SetBool), RpcTarget.All, "Hit", true);
+                //anim.SetBool("Hit",true);
+                isHit = true;
+
+                Vector3 dir = collision.gameObject.transform.position - transform.position;
+
+                transform.GetComponent<Rigidbody>().AddForce((-dir * 200f + (Vector3.up * 1000f)) * Time.deltaTime, ForceMode.Impulse);
+            }
         }
 
         if(collision.gameObject.tag == "Bullet")
