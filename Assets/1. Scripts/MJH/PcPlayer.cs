@@ -228,8 +228,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
 
         if(collision.gameObject.layer == LayerMask.NameToLayer("Grabable"))
         {
-            //if(collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 0.5f)
-            //if (collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 0.5f)
+            if (collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 0.5f)
             {
                 if (photonView.IsMine)
                 {
