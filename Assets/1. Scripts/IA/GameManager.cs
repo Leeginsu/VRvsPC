@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static GameManager instance;
     public Transform[] PCspawnList;
     public Transform VRspawnPos;
-
+    public AudioClip bgm;
     //UI 관련
     public GameObject TimePanel;
     public GameObject ScorePanel;
@@ -74,6 +74,17 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+
+    //사운드
+    public void PlayBGM()
+    {
+        bgm.Play();
+    }
+
+    public void StopBGM()
+    {
+        bgm.Stop();
+    }
 
 
     [PunRPC]
