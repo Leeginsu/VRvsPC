@@ -26,9 +26,9 @@ public class ItemManager : MonoBehaviourPun
             item = PhotonNetwork.Instantiate("Item", transform.position, transform.rotation);
             item.transform.position = transform.position;
             item.GetComponent<ItemCheck>().mySpawner = this;
-            print(item);
+            //print(item);
             items.Add(item);
-            print(items.Count);
+            //print(items.Count);
         }
     }
 
