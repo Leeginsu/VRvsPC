@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c655393bb5e0440a0d59efcf24b5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1838340309733776639}
+  player: {fileID: 2949307920716072409}
   moveSpeed: 20
   jumpCount: 1
   jumpPower: 4
@@ -745,7 +745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1353552041511142981
 Transform:
   m_ObjectHideFlags: 0
@@ -2937,5 +2937,10 @@ PrefabInstance:
 --- !u!4 &2568700235127152483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4650872807821269346, guid: 5d145192b9596a74ea1a8e4230075622, type: 3}
+  m_PrefabInstance: {fileID: 7146899713768457729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2949307920716072409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5458618393400017880, guid: 5d145192b9596a74ea1a8e4230075622, type: 3}
   m_PrefabInstance: {fileID: 7146899713768457729}
   m_PrefabAsset: {fileID: 0}
