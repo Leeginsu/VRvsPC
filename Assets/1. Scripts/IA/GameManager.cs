@@ -9,13 +9,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static GameManager instance;
     public Transform[] PCspawnList;
     public Transform VRspawnPos;
-    public AudioClip bgm;
+    //public AudioSource bgm;
+    //public AudioClip bgm;
     //UI 관련
     public GameObject TimePanel;
     public GameObject ScorePanel;
     TextMeshProUGUI TimeTXT;
     PhotonView SC;
-
+    AudioSource audioSource;
     public GameObject cv;
 
     public Dictionary<int, PhotonView> pcPlayer = new Dictionary<int, PhotonView>();
@@ -24,13 +25,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         instance = this;
         PhotonNetwork.AutomaticallySyncScene = true;
+        
     }
     int playerIndex = 0;
    // Start is called before the first frame update
    void Start()
     {
         SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
-     
         gameTime = originGameTime;
         //UI set
         ScorePanel.SetActive(false);
@@ -75,16 +76,15 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
 
-    //사운드
-    public void PlayBGM()
+
+
+    public void SoundPlay(string str)
     {
-        bgm.Play();
+        audioSource.clip = Resources.Load(str) as AudioClip;
+        audioSource.Play();
+        audioSource.volume = 0.2f;
     }
 
-    public void StopBGM()
-    {
-        bgm.Stop();
-    }
 
 
     [PunRPC]
@@ -120,11 +120,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             //ScoreManager.instance.scoreView();
             SC.RPC("scoreView", RpcTarget.All);
-
             //UI 켜기
             //ScorePanel.SetActive(true);
             //TimePanel.SetActive(false);
             gameTime = originGameTime;
+
         }
     }
 
