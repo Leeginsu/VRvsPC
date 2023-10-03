@@ -25,7 +25,8 @@ public class Bomb : MonoBehaviourPun
         {
             vrPlayerPos = GameObject.FindWithTag("Head").transform;
         }
-     
+
+        SoundManager.instance.PlayEffect("Audio/canon_sound");
         transform.LookAt(vrPlayerPos);
 
         //박스 소멸 시간
@@ -69,6 +70,7 @@ public class Bomb : MonoBehaviourPun
         var fx = Instantiate(hitFX, transform.position, Quaternion.identity);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
+            SoundManager.instance.PlayEffect("Audio/crash_sound");
             Destroy(gameObject);
             SC.RPC("UpdatePCScore", RpcTarget.All);
         }
@@ -88,7 +90,7 @@ public class Bomb : MonoBehaviourPun
         }
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-           
+            SoundManager.instance.PlayEffect("Audio/crash_sound");
             Destroy(gameObject);
 
         }

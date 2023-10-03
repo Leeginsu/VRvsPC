@@ -65,6 +65,7 @@ public class CamPos : MonoBehaviourPun
             }
             else if (Input.GetButtonUp("Fire1") && GetComponentInParent<PcPlayer>().rocketCount > 0)
             {
+                SoundManager.instance.PlayEffect("Audio/firework_sound");
                 pv.RPC("RocketTest", RpcTarget.All, dir, true);
                 if(GetComponentInParent<PcPlayer>().rocketCount > 0)
                 {

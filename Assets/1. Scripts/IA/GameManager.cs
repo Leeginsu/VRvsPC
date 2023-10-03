@@ -49,9 +49,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            //PCspawnList[playerIndex].position
-            //photonView.RPC("setPlayerCnt", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.UserId);
+
+
+         
+
             PhotonNetwork.Instantiate("Player_Proto", Vector3.zero, Quaternion.identity);
+
+            //if (GameObject.Find("Player_BetaM"))
+            //{
+            //    PhotonNetwork.Instantiate("Player_BetaG", Vector3.zero, Quaternion.identity);
+            //}
+            //else
+            //{
+            //    PhotonNetwork.Instantiate("Player_BetaM", Vector3.zero, Quaternion.identity);
+            //}
             //StartCoroutine(CheckRPC());
             cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;          
         }        
@@ -77,13 +88,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
-
-    public void SoundPlay(string str)
-    {
-        audioSource.clip = Resources.Load(str) as AudioClip;
-        audioSource.Play();
-        audioSource.volume = 0.2f;
-    }
 
 
 

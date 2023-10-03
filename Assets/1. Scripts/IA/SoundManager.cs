@@ -4,43 +4,40 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager _instance;
+    public static SoundManager instance;
 
-    AudioSource bgm;
+    AudioSource audio;
+
     public AudioClip[] bgmList;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        Camera[] cameras = GameObject.FindObjectsOfType<Camera>();
-
-        if (cameras.Length > 0)
-        {
-            // 찾은 카메라들을 순회하면서 처리
-            foreach (Camera camera in cameras)
-            {
-                Debug.Log("Found Camera: " + camera.name);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("No cameras found in the scene.");
-        }
-
-        bgm = GetComponent<AudioSource>();
-        print(bgm);
-        bgm.Play();
+        audio = GetComponent<AudioSource>();
+        audio.Play();
     }
     
     public void PlayBGM()
     {
-        bgm.Play();
+        audio.Play();
     }
 
     public void StopBGM()
     {
-        bgm.Stop();
+        audio.Stop();
     }
 
+
+    public void PlayEffect(string str)
+    {
+        //bgm.clip = Resources.Load(str) as AudioClip;
+        audio.PlayOneShot(Resources.Load(str) as AudioClip);
+        audio.volume = 1f;
+    }
 
 }
 
