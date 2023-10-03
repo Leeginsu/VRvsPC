@@ -54,13 +54,20 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
 
         CreateRoom();
-        //setVRPlayer();
 
     }
 
     void Update()
     {
         print(PhotonNetwork.NickName);
+
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            print("skip");
+            StartCoroutine(LoadingImg());
+        }
+
     }
 
 
@@ -207,6 +214,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         print("StartBTN");
     }
+
+
 
     public void onStartBTNClick()
     {
