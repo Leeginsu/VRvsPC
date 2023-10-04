@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
     float currentTime = 0;
-    public float originGameTime = 60f;
+    public float originGameTime = 90f;
     float gameTime;
     
     // Update is called once per frame
