@@ -110,7 +110,7 @@ public class HandAttack : MonoBehaviourPun
                 if (i % 10 == 0)
                 {
                     GameObject giftBox = PhotonNetwork.Instantiate("GiftBox", new Vector3(0, 0, 0), Quaternion.identity);
-                    giftBox.transform.position = hand.transform.position;
+                    giftBox.transform.position = hand.transform.position + new Vector3(0,2,0);
                 }
 
                 StartCoroutine(DestroyWave(shockWave, 1f));
