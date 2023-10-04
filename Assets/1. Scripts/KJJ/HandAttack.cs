@@ -50,6 +50,15 @@ public class HandAttack : MonoBehaviourPun
 
         if (isGrab)
         {
+
+            if(shock && OVRInput.GetUp(OVRInput.Button.One, controller))
+            {
+                Vector3 dir = hand.forward;
+                dir.y = 0;
+                StartCoroutine(ShockWave(dir));
+                shock = false;
+            }
+
             int layerMask = 1 << LayerMask.NameToLayer("Ground");
 
             cols = Physics.OverlapSphere(hand.transform.position, 0.5f, layerMask);
@@ -63,7 +72,7 @@ public class HandAttack : MonoBehaviourPun
                     print(cols);
                     if (cols[i].CompareTag("Ground"))
                     {
-                        if (shock || OVRInput.GetUp(OVRInput.Button.One,controller))
+                        if (shock)
                         {
                             Vector3 dir = hand.forward;
                             dir.y = 0;
