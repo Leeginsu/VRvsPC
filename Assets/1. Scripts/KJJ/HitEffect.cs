@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class HitEffect : MonoBehaviour
+public class HitEffect : MonoBehaviourPun
 {
     public GameObject hitEffectFactory;
     bool effectOn = false;
@@ -27,8 +28,7 @@ public class HitEffect : MonoBehaviour
     {
         if (effectOn)
         {
-            GameObject hitEffect = Instantiate(hitEffectFactory);
-            hitEffect.transform.position = transform.position;
+            GameObject hitEffect = PhotonNetwork.Instantiate("hitEffectFactory", transform.position, Quaternion.identity);
             Destroy(hitEffect.gameObject, 5);
             effectOn = false;
         }
