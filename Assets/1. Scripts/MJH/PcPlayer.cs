@@ -188,7 +188,7 @@ public class PcPlayer : MonoBehaviourPun, IPunObservable
     bool fall = false;
     void PlayerRespawn()
     {
-        if (transform.position.y < -60f)
+        if (transform.position.y < -30f)
         {
             fall = true;
             transform.position = respawnPos.transform.GetChild(randomIndex).transform.position;
