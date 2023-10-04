@@ -14,10 +14,13 @@ public class HandAttack : MonoBehaviourPun
     bool isGrab;
 
     int waveNum = 20;
+
+    Vector3 dir;
     // Start is called before the first frame update
     void Start()
     {
-
+        dir = hand.forward;
+        dir.y = 0;
     }
 
     // Update is called once per frame
@@ -32,6 +35,10 @@ public class HandAttack : MonoBehaviourPun
         if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger, controller))
         {
             isGrab = false;
+        }
+        if(isGrab && shock && OVRInput.GetUp(OVRInput.Button.One, controller))
+        {
+            StartCoroutine(ShockWave(dir));
         }
     }
 
@@ -63,8 +70,8 @@ public class HandAttack : MonoBehaviourPun
                     {
                         if (shock)
                         {
-                            Vector3 dir = hand.forward;
-                            dir.y = 0;
+                            //dir = hand.forward;
+                            //dir.y = 0;
                             StartCoroutine(ShockWave(dir));
                             shock = false;
                         }
