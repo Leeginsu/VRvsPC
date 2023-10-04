@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class HitEffect : MonoBehaviourPun
 {
-    public GameObject hitEffectFactory;
+    //public GameObject hitEffectFactory;
     bool effectOn = false;
 
     Rigidbody rb;
@@ -28,8 +28,9 @@ public class HitEffect : MonoBehaviourPun
     {
         if (effectOn)
         {
-            GameObject hitEffect = PhotonNetwork.Instantiate("hitEffectFactory", transform.position, Quaternion.identity);
+            GameObject hitEffect = PhotonNetwork.Instantiate("E_Star", transform.position, Quaternion.identity);
             Destroy(hitEffect.gameObject, 5);
+            //PhotonNetwork.Destroy(hitEffect);
             effectOn = false;
         }
     }
