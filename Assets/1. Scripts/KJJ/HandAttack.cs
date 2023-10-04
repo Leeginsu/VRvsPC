@@ -15,12 +15,10 @@ public class HandAttack : MonoBehaviourPun
 
     int waveNum = 20;
 
-    Vector3 dir;
     // Start is called before the first frame update
     void Start()
     {
-        dir = hand.forward;
-        dir.y = 0;
+
     }
 
     // Update is called once per frame
@@ -36,10 +34,6 @@ public class HandAttack : MonoBehaviourPun
         {
             isGrab = false;
         }
-        if(isGrab && shock && OVRInput.GetUp(OVRInput.Button.One, controller))
-        {
-            StartCoroutine(ShockWave(dir));
-        }
     }
 
     bool shock = true;
@@ -53,6 +47,7 @@ public class HandAttack : MonoBehaviourPun
             shock = true;
         }
         //print("isGrab"+isGrab);
+
         if (isGrab)
         {
             int layerMask = 1 << LayerMask.NameToLayer("Ground");
@@ -68,10 +63,10 @@ public class HandAttack : MonoBehaviourPun
                     print(cols);
                     if (cols[i].CompareTag("Ground"))
                     {
-                        if (shock)
+                        if (shock || OVRInput.GetUp(OVRInput.Button.One,controller))
                         {
-                            //dir = hand.forward;
-                            //dir.y = 0;
+                            Vector3 dir = hand.forward;
+                            dir.y = 0;
                             StartCoroutine(ShockWave(dir));
                             shock = false;
                         }
