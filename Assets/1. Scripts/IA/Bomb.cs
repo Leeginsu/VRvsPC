@@ -72,11 +72,12 @@ public class Bomb : MonoBehaviourPun
         {
             SoundManager.instance.PlayEffect("Audio/crash_sound");
             Destroy(gameObject);
+            Destroy(fx, 1.5f);
             SC.RPC("UpdatePCScore", RpcTarget.All);
         }
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
-
+            Destroy(fx, 1.5f);
             print("collider check");
             ContactPoint contact = collision.contacts[0];
 
@@ -90,6 +91,7 @@ public class Bomb : MonoBehaviourPun
         }
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            Destroy(fx, 1.5f);
             SoundManager.instance.PlayEffect("Audio/crash_sound");
             Destroy(gameObject);
 
@@ -101,6 +103,7 @@ public class Bomb : MonoBehaviourPun
             //hitFX.SetActive(true);
             Destroy(fx, 1.5f);
         }
+       
 
     }
     private void OnTriggerEnter(Collider other)
