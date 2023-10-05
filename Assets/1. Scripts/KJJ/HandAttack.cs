@@ -107,11 +107,11 @@ public class HandAttack : MonoBehaviourPun
                 shockWave.transform.localRotation = Quaternion.Euler(1 * Random.value * 45, 1 * Random.value * 45, 1 * Random.value * 45);
                 //PhotonView waveDestroy = shockWave.transform.GetComponent<PhotonView>();
 
-                if (i % 10 == 0)
-                {
-                    GameObject giftBox = PhotonNetwork.Instantiate("GiftBox", new Vector3(0, 0, 0), Quaternion.identity);
-                    giftBox.transform.position = hand.transform.position + new Vector3(0,2,0);
-                }
+                //if (i % 10 == 0)
+                //{
+                //    GameObject giftBox = PhotonNetwork.Instantiate("GiftBox", new Vector3(0, 0, 0), Quaternion.identity);
+                //    giftBox.transform.position = hand.transform.position + new Vector3(0,2,0);
+                //}
 
                 StartCoroutine(DestroyWave(shockWave, 1f));
 
