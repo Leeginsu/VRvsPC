@@ -9,13 +9,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static GameManager instance;
     public Transform[] PCspawnList;
     public Transform VRspawnPos;
-    public AudioClip bgm;
+    //public AudioSource bgm;
+    //public AudioClip bgm;
     //UI 관련
     public GameObject TimePanel;
     public GameObject ScorePanel;
     TextMeshProUGUI TimeTXT;
     PhotonView SC;
-
+    AudioSource audioSource;
     public GameObject cv;
 
     public Dictionary<int, PhotonView> pcPlayer = new Dictionary<int, PhotonView>();
@@ -24,13 +25,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         instance = this;
         PhotonNetwork.AutomaticallySyncScene = true;
+        
     }
     int playerIndex = 0;
    // Start is called before the first frame update
    void Start()
     {
         SC = GameObject.Find("ScoreManager").GetComponent<PhotonView>();
-     
         gameTime = originGameTime;
         //UI set
         ScorePanel.SetActive(false);
@@ -48,9 +49,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            //PCspawnList[playerIndex].position
-            //photonView.RPC("setPlayerCnt", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.UserId);
+
+
+         
+
             PhotonNetwork.Instantiate("Player_Proto", Vector3.zero, Quaternion.identity);
+
+            //if (GameObject.Find("Player_BetaM"))
+            //{
+            //    PhotonNetwork.Instantiate("Player_BetaG", Vector3.zero, Quaternion.identity);
+            //}
+            //else
+            //{
+            //    PhotonNetwork.Instantiate("Player_BetaM", Vector3.zero, Quaternion.identity);
+            //}
             //StartCoroutine(CheckRPC());
             cv.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;          
         }        
@@ -75,16 +87,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
 
-    //사운드
-    public void PlayBGM()
-    {
-        bgm.Play();
-    }
 
-    public void StopBGM()
-    {
-        bgm.Stop();
-    }
+
 
 
     [PunRPC]
@@ -120,11 +124,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             //ScoreManager.instance.scoreView();
             SC.RPC("scoreView", RpcTarget.All);
-
             //UI 켜기
             //ScorePanel.SetActive(true);
             //TimePanel.SetActive(false);
             gameTime = originGameTime;
+
         }
     }
 

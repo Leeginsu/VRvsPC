@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.UI;
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     public static LobbyManager instance;
@@ -13,7 +14,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Transform PlayerPanel;
     public GameObject VRPlayerTXT;
     public GameObject LoadingUI;
-
+    public Slider LoadingUISlider;
 
     bool isVR;
     public int VRPlayerCnt = 0;
@@ -54,13 +55,24 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
 
         CreateRoom();
-        //setVRPlayer();
 
     }
 
     void Update()
     {
         print(PhotonNetwork.NickName);
+
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            print("skip");
+            StartCoroutine(LoadingImg());
+        }
+
+        if (isLoading)
+        {
+            LoadingUISlider.value += Time.deltaTime * 0.4f;
+        }
     }
 
 
@@ -208,6 +220,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         print("StartBTN");
     }
 
+
+
     public void onStartBTNClick()
     {
 
@@ -218,20 +232,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //}
     }
    
-
+    
     IEnumerator LoadingImg()
     {
         photonView.RPC("viewImg", RpcTarget.All);
       
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
         PhotonNetwork.LoadLevel("ProtoScene_Net");
     }
 
+    public bool isLoading;
 
     [PunRPC]
     void viewImg()
     {
+        
         LoadingUI.SetActive(true);
+        isLoading = true;
     }
 
 }

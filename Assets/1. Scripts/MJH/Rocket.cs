@@ -66,9 +66,11 @@ public class Rocket : MonoBehaviourPun
         if(collision.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             //ScoreManager.instance.PCSCORE += 1;
+            SoundManager.instance.PlayEffect("Audio/crash_sound");
             Destroy(gameObject);
             SC.RPC("UpdatePCScore", RpcTarget.All);
         }
+        SoundManager.instance.PlayEffect("Audio/crash_sound");
         Destroy(gameObject);
         
     }
