@@ -14,6 +14,7 @@ public class HandAttack : MonoBehaviourPun
     bool isGrab;
 
     int waveNum = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +47,18 @@ public class HandAttack : MonoBehaviourPun
             shock = true;
         }
         //print("isGrab"+isGrab);
+
         if (isGrab)
         {
+
+            if (shock && OVRInput.GetUp(OVRInput.Button.One, controller))
+            {
+                Vector3 dir = hand.forward;
+                dir.y = 0;
+                StartCoroutine(ShockWave(dir));
+                shock = false;
+            }
+
             int layerMask = 1 << LayerMask.NameToLayer("Ground");
 
             cols = Physics.OverlapSphere(hand.transform.position, 0.5f, layerMask);
@@ -95,6 +106,12 @@ public class HandAttack : MonoBehaviourPun
                 shockWave.transform.localScale = new Vector3(2, 2, 2) * Random.Range(1.0f, 2.0f);
                 shockWave.transform.localRotation = Quaternion.Euler(1 * Random.value * 45, 1 * Random.value * 45, 1 * Random.value * 45);
                 //PhotonView waveDestroy = shockWave.transform.GetComponent<PhotonView>();
+
+                //if (i % 10 == 0)
+                //{
+                //    GameObject giftBox = PhotonNetwork.Instantiate("GiftBox", new Vector3(0, 0, 0), Quaternion.identity);
+                //    giftBox.transform.position = hand.transform.position + new Vector3(0,2,0);
+                //}
 
                 StartCoroutine(DestroyWave(shockWave, 1f));
 

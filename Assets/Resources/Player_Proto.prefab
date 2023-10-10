@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c655393bb5e0440a0d59efcf24b5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5528321160645273601}
+  player: {fileID: 3440226006865387779}
   moveSpeed: 20
   jumpCount: 1
   jumpPower: 4
@@ -2933,16 +2933,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: boy
       objectReference: {fileID: 0}
+    - target: {fileID: 5458618393400017880, guid: 5d145192b9596a74ea1a8e4230075622, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d145192b9596a74ea1a8e4230075622, type: 3}
 --- !u!4 &5184586975976960699 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4650872807821269346, guid: 5d145192b9596a74ea1a8e4230075622, type: 3}
-  m_PrefabInstance: {fileID: 538288250529049561}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5528321160645273601 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5458618393400017880, guid: 5d145192b9596a74ea1a8e4230075622, type: 3}
   m_PrefabInstance: {fileID: 538288250529049561}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2394340552541969876
@@ -3005,5 +3004,10 @@ PrefabInstance:
 --- !u!4 &2663303035043052473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 418724763136321133, guid: 4f1630a7bbb17ec438f2f7a4802263c2, type: 3}
+  m_PrefabInstance: {fileID: 2394340552541969876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3440226006865387779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1046043857064967383, guid: 4f1630a7bbb17ec438f2f7a4802263c2, type: 3}
   m_PrefabInstance: {fileID: 2394340552541969876}
   m_PrefabAsset: {fileID: 0}
